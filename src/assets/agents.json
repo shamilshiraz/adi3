@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Ahmed Al Mansoori",
+    "slug": "ahmed-al-mansoori",
+    "role": "Senior Investment Advisor",
+    "languages": ["English", "Arabic"],
+    "specialization": "Capital Appreciation",
+    "experience": "12 Years",
+    "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43d?q=80&w=1200&auto=format&fit=crop"
+  },
+  {
+    "id": 2,
+    "name": "Sarah Thompson",
+    "slug": "sarah-thompson",
+    "role": "Investment Advisor",
+    "languages": ["English", "French"],
+    "specialization": "Rental Yield Investments",
+    "experience": "8 Years",
+    "image": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop"
+  },
+  {
+    "id": 3,
+    "name": "Omar Khalid",
+    "slug": "omar-khalid",
+    "role": "Property Investment Strategist",
+    "languages": ["English", "Arabic", "Urdu"],
+    "specialization": "Golden Visa Opportunities",
+    "experience": "10 Years",
+    "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1200&auto=format&fit=crop"
+  }
+]
