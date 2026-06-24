@@ -62,7 +62,7 @@ export default function Hero() {
         bg-cover
         bg-center
         flex
-        items-center
+        items-end
         px-6
         sm:px-20
         py-20
@@ -142,11 +142,15 @@ export default function Hero() {
             solutions—delivered with precision, innovation, and uncompromising
             safety.
           </motion.p>
+          <div className="flex flex-col gap-4 sm:flex-row py-8">
+            <div className="btn-gold">Book your consultation</div>
+            <div className="btn-violet">Talk to agents</div>
 
+          </div>
         </div>
 
         {/* Event Form */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{
@@ -242,7 +246,7 @@ export default function Hero() {
               Register Now
             </button>
           </form>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

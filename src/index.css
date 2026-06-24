@@ -12,9 +12,9 @@
   color: #3A0026;
   background: linear-gradient(
     90deg,
-    #ffd79a 0%,
+    #e4e2df 0%,
     #fff1c8 50%,
-    #ffc473 100%
+    #e4d8c8 100%
   );
   box-shadow: 0 0 20px rgba(255, 196, 115, 0.35);
   transition: all 0.3s ease;
@@ -76,7 +76,6 @@
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1.05;
   letter-spacing: -0.03em;
-  font-weight: 300;
 }
 
 .heading-4 {

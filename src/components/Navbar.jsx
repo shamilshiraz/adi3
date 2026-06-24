@@ -47,7 +47,7 @@ function Navbar() {
               ease: "easeOut",
             }}
           >
-            {["Home", "Agents", "Events", "Consultaions"].map(
+            {["Home", "Agents", "Events", "Consultations"].map(
               (item, i) => (
                 <motion.div
                   key={item}

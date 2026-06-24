@@ -60,7 +60,7 @@ export default function InvestmentAdvisors() {
         </motion.div>
 
         {/* Advisors Grid */}
-        <div className="mt-16 grid gap-8 lg:grid-cols-3">
+        <div className="mt-16 grid gap-8 lg:grid-cols-4">
           {advisors.map((advisor, index) => (
             <motion.div
               key={advisor.id}
@@ -116,7 +116,7 @@ export default function InvestmentAdvisors() {
               </div>
 
               {/* Content */}
-              <div className="p-8">
+              <div className="p-4">
                 <h3 className="heading-4 text-dark">
                   {advisor.name}
                 </h3>

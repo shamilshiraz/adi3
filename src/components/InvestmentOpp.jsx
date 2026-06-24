@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 import {
@@ -5,77 +7,73 @@ import {
   Coins,
   Crown,
   Landmark,
-  ArrowUpRight,
 } from "lucide-react";
 
 const opportunities = [
   {
     icon: TrendingUp,
     title: "Capital Appreciation",
-    subtitle: "Emerging growth districts.",
+    subtitle: "Emerging growth districts",
     image:
       "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=80",
     thesis:
-      "Focused on communities positioned for long-term value growth through infrastructure expansion, population growth, and increasing demand.",
+      "Focused on communities positioned for long-term value growth through infrastructure expansion and increasing demand.",
     risk: "Moderate",
     investor: "Growth-Focused Investors",
   },
   {
     icon: Coins,
     title: "Rental Yield",
-    subtitle: "Income-focused investments.",
+    subtitle: "Income-focused investments",
     image:
       "https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1400&q=80",
     thesis:
-      "Designed for investors seeking consistent rental income and strong occupancy potential in established communities.",
+      "Designed for investors seeking consistent rental income and strong occupancy potential.",
     risk: "Low to Moderate",
     investor: "Income Investors",
   },
   {
     icon: Crown,
     title: "Luxury Wealth Preservation",
-    subtitle: "Ultra-prime assets.",
+    subtitle: "Ultra-prime assets",
     image:
       "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1400&q=80",
     thesis:
-      "Premium residences in sought-after locations offering scarcity, prestige, and long-term capital preservation.",
+      "Premium residences offering scarcity, prestige and long-term capital preservation.",
     risk: "Low",
     investor: "High-Net-Worth Individuals",
   },
   {
     icon: Landmark,
     title: "Golden Visa Opportunities",
-    subtitle: "Residency-linked investments.",
+    subtitle: "Residency-linked investments",
     image:
       "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1400&q=80",
     thesis:
-      "Strategic investment opportunities aligned with UAE residency objectives and long-term relocation planning.",
+      "Strategic investment opportunities aligned with UAE residency and relocation planning.",
     risk: "Moderate",
     investor: "International Investors",
   },
 ];
 
-export default function InvestmentOpportunities() {
+export default function InvestmentStrategiesCarousel() {
   return (
     <section
       className="
         relative
         overflow-hidden
-        bg-[#1C0D17]
-        page-padding
-        section-spacing
+        bg-[#4E0026]
+        py-24
       "
     >
-      {/* Ambient Glow */}
-      <div className="absolute top-0 right-0 h-[600px] w-[600px] rounded-full bg-[#EFBD78]/10 blur-[180px]" />
 
-      <div className="container-custom relative">
-        {/* Header */}
+      <div className="relative">
         <motion.div
+          className="px-6 lg:px-20"
           initial={{
             opacity: 0,
-            y: 40,
-            filter: "blur(10px)",
+            y: 30,
+            filter: "blur(12px)",
           }}
           whileInView={{
             opacity: 1,
@@ -83,145 +81,145 @@ export default function InvestmentOpportunities() {
             filter: "blur(0px)",
           }}
           viewport={{ once: true }}
-          transition={{
-            duration: 0.8,
-            ease: [0.16, 1, 0.3, 1],
-          }}
-          className="max-w-4xl"
         >
           <p className="eyebrow">
             FEATURED INVESTMENT OPPORTUNITIES
           </p>
 
-          <h2 className="heading-2 text-light mt-6">
+          <h2 className="heading-2 text-light mt-6 max-w-4xl">
             Investment Strategies
             <br />
             Tailored To Different Objectives
           </h2>
 
           <p className="sub text-muted mt-6 max-w-2xl">
-            Every investor has different priorities. We help
-            identify opportunities aligned with growth,
-            income generation, wealth preservation, and
+            Every investor has different priorities.
+            Explore opportunities aligned with growth,
+            income generation, wealth preservation and
             residency objectives.
           </p>
         </motion.div>
 
-        {/* Cards */}
-        <div className="mt-16 space-y-6">
-          {opportunities.map((item, index) => {
-            const Icon = item.icon;
+        <div className="mt-16 px-6 lg:px-20">
+          <div
+            className="
+              flex
+              gap-8
+              overflow-x-auto
+              snap-x
+              snap-mandatory
+              scroll-smooth
+              pb-6
+              [-webkit-overflow-scrolling:touch]
+            "
+          >
+            {opportunities.map((item, i) => {
+              const Icon = item.icon;
 
-            return (
-              <motion.div
-                key={item.title}
-                initial={{
-                  opacity: 0,
-                  y: 40,
-                  filter: "blur(10px)",
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                  filter: "blur(0px)",
-                }}
-                viewport={{ once: true }}
-                transition={{
-                  delay: index * 0.08,
-                  duration: 0.8,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className="
-                  glass-card
-                  overflow-hidden
-                "
-              >
-                <div className="grid lg:grid-cols-[420px_1fr]">
-                  {/* Image */}
-                  <div className="relative h-[300px] lg:h-full">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="
-                        absolute
-                        inset-0
-                        h-full
-                        w-full
-                        object-cover
-                      "
-                    />
+              return (
+                <motion.div
+                  key={item.title}
+                  initial={{
+                    opacity: 0,
+                    y: 30,
+                    filter: "blur(10px)",
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                    filter: "blur(0px)",
+                  }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.8,
+                    delay: i * 0.08,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="
+                    relative
+                    snap-center
+                    flex-shrink-0
+                    w-[380px]
+                    h-[540px]
+                    overflow-hidden
+                    rounded-[32px]
+                    group
+                  "
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="
+                      absolute inset-0
+                      h-full w-full
+                      object-cover
+                      transition-transform
+                      duration-700
+                      group-hover:scale-105
+                    "
+                  />
 
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
-                  </div>
+                  <div
+                    className="
+                      absolute inset-0
+                      bg-gradient-to-t
+                      from-[#0A0608]
+                      via-[#0A0608]/40
+                      to-transparent
+                    "
+                  />
 
-                  {/* Content */}
-                  <div className="p-8 lg:p-12">
+                  <div
+                    className="
+                      absolute inset-0
+                      bg-gradient-to-br
+                      from-[#EFBD78]/10
+                      to-transparent
+                    "
+                  />
+
+                  <div
+                    className="
+                      absolute
+                      bottom-0
+                      left-0
+                      right-0
+                      p-8
+                    "
+                  >
                     <div className="flex items-center gap-3">
                       <Icon
-                        size={22}
+                        size={20}
                         className="text-[#EFBD78]"
-                        strokeWidth={1.5}
                       />
 
-                      <span className="small text-muted">
-                        Investment Category
+                      <span className="text-xs uppercase tracking-[0.2em] text-[#EFBD78]">
+                        {item.subtitle}
                       </span>
                     </div>
 
-                    <h3 className="heading-4 text-light mt-6">
+                    <h3 className="mt-5 text-3xl text-white">
                       {item.title}
                     </h3>
 
-                    <p className="sub text-muted mt-2">
-                      {item.subtitle}
+                    <p className="mt-4 text-white/75 leading-relaxed">
+                      {item.thesis}
                     </p>
 
-                    <div className="divider-light my-8" />
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      <span className="rounded-full border border-white/10 bg-white/10 px-3 py-2 text-xs text-white">
+                        {item.risk} Risk
+                      </span>
 
-                    <div>
-                      <p className="small text-[#EFBD78]">
-                        Investment Thesis
-                      </p>
-
-                      <p className="sub text-muted mt-3">
-                        {item.thesis}
-                      </p>
+                      <span className="rounded-full border border-white/10 bg-white/10 px-3 py-2 text-xs text-white">
+                        {item.investor}
+                      </span>
                     </div>
-
-                    <div className="mt-8 grid md:grid-cols-2 gap-6">
-                      <div>
-                        <p className="small text-[#EFBD78]">
-                          Risk Profile
-                        </p>
-
-                        <p className="sub text-light mt-2">
-                          {item.risk}
-                        </p>
-                      </div>
-
-                      <div>
-                        <p className="small text-[#EFBD78]">
-                          Investor Type
-                        </p>
-
-                        <p className="sub text-light mt-2">
-                          {item.investor}
-                        </p>
-                      </div>
-                    </div>
-
-                    <button className="mt-10 btn-secondary">
-                      Learn More
-                      <ArrowUpRight
-                        size={16}
-                        className="ml-2"
-                      />
-                    </button>
                   </div>
-                </div>
-              </motion.div>
-            );
-          })}
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

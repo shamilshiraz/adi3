@@ -1,3 +1,4 @@
+
 import React from "react";
 import { motion } from "framer-motion";
 import {
@@ -38,97 +39,110 @@ export default function RoadshowsEvents() {
     <section
       className="
         relative
-        overflow-hidden
-        bg-[#4E0026]
+        bg-[#fff]
         page-padding
-        section-spacing
+        py-32
       "
     >
-      <div className="absolute top-0 left-0 h-[600px] w-[600px] rounded-full bg-[#EFBD78]/10 blur-[180px]" />
-
       <div className="container-custom relative">
-        <div className="grid lg:grid-cols-[500px_1fr] gap-20">
-          {/* Left */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 40,
-              filter: "blur(10px)",
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              filter: "blur(0px)",
-            }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.8,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            className="lg:sticky lg:top-32 h-fit"
+        <div
+          className="
+            grid
+            lg:grid-cols-[480px_1fr]
+            gap-16
+            lg:gap-24
+            items-start
+          "
+        >
+          {/* LEFT STICKY */}
+          <div
+            className="
+              lg:sticky
+              lg:top-32
+              h-fit
+            "
           >
-            <p className="eyebrow">
-              ROADSHOWS & EVENTS
-            </p>
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 40,
+                filter: "blur(10px)",
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+                filter: "blur(0px)",
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.8,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+            >
+              <p className="eyebrow">
+                ROADSHOWS & EVENTS
+              </p>
 
-            <h2 className="heading-2 text-light mt-6">
-              Meet Us
-              <br />
-              Around The World
-            </h2>
+              <h2 className="heading-3 text-[#4e0026] mt-6">
+                Meet Us
+                <br />
+                Around The World
+              </h2>
 
-            <p className="sub text-muted mt-6">
-              Join exclusive investor events,
-              roadshows and private briefings
-              hosted across key international
-              markets.
-            </p>
+              <p className="sub text-[#4e0026] mt-6">
+                Join exclusive investor roadshows,
+                private briefings and curated events
+                hosted across major global markets.
+              </p>
 
-            <div className="mt-12 grid grid-cols-3 gap-6">
-              <div>
-                <div className="heading-3 text-light">
-                  25+
+              <div className="divider-light my-10" />
+
+              <div className="grid grid-cols-3 gap-6">
+                <div>
+                  <div className="heading-3 text-">
+                    25+
+                  </div>
+
+                  <div className="small text- mt-2">
+                    Investor Events
+                  </div>
                 </div>
 
-                <div className="small text-muted">
-                  Investor Events
+                <div>
+                  <div className="heading-3 text-">
+                    1000+
+                  </div>
+
+                  <div className="small text- mt-2">
+                    Attendees
+                  </div>
+                </div>
+
+                <div>
+                  <div className="heading-3 text-">
+                    4+
+                  </div>
+
+                  <div className="small text- mt-2">
+                    Countries
+                  </div>
                 </div>
               </div>
 
-              <div>
-                <div className="heading-3 text-light">
-                  1000+
-                </div>
+              <button className="btn-gold mt-10">
+                View Events
+              </button>
+            </motion.div>
+          </div>
 
-                <div className="small text-muted">
-                  Attendees
-                </div>
-              </div>
-
-              <div>
-                <div className="heading-3 text-light">
-                  4+
-                </div>
-
-                <div className="small text-muted">
-                  Countries
-                </div>
-              </div>
-            </div>
-
-            <button className="btn-gold mt-10">
-              View Events
-            </button>
-          </motion.div>
-
-          {/* Right */}
-          <div className="space-y-6">
+          {/* RIGHT SCROLLING CARDS */}
+          <div className="space-y-10">
             {events.map((event, index) => (
               <motion.div
                 key={event.city}
                 initial={{
                   opacity: 0,
-                  y: 40,
+                  y: 50,
                   filter: "blur(10px)",
                 }}
                 whileInView={{
@@ -145,8 +159,9 @@ export default function RoadshowsEvents() {
                 className="
                   relative
                   overflow-hidden
-                  rounded-3xl
-                  h-[340px]
+                  rounded-[32px]
+                  h-[460px]
+                  group
                 "
               >
                 <img
@@ -158,6 +173,9 @@ export default function RoadshowsEvents() {
                     h-full
                     w-full
                     object-cover
+                    transition-transform
+                    duration-700
+                    group-hover:scale-105
                   "
                 />
 
@@ -166,8 +184,8 @@ export default function RoadshowsEvents() {
                     absolute
                     inset-0
                     bg-gradient-to-t
-                    from-black/80
-                    via-black/20
+                    from-black
+                    via-black/30
                     to-transparent
                   "
                 />
@@ -177,31 +195,39 @@ export default function RoadshowsEvents() {
                     absolute
                     inset-x-0
                     bottom-0
-                    p-8
+                    p-10
                   "
                 >
                   <div className="flex items-center gap-2 text-[#EFBD78]">
                     <MapPin size={16} />
+
                     <span className="small">
                       {event.city}
                     </span>
                   </div>
 
-                  <h3 className="heading-4 text-light mt-4">
+                  <h3 className="heading-4 text-light mt-5">
                     {event.title}
                   </h3>
 
-                  <div className="mt-6 flex items-center gap-6">
+                  <div className="mt-8 flex items-center justify-between">
                     <div className="flex items-center gap-2 text-white/70">
                       <CalendarDays size={16} />
+
                       <span className="small">
                         Upcoming Event
                       </span>
                     </div>
 
                     <ArrowUpRight
-                      size={18}
-                      className="text-[#EFBD78]"
+                      size={20}
+                      className="
+                        text-[#EFBD78]
+                        transition-transform
+                        duration-300
+                        group-hover:translate-x-1
+                        group-hover:-translate-y-1
+                      "
                     />
                   </div>
                 </div>

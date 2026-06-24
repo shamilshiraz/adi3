@@ -6,6 +6,7 @@ import InvestmentOpportunities from '../components/InvestmentOpp'
 import InvestmentAdvisors from '../components/InvestmentAdvisor'
 import InvestorJourney from '../components/InvestorJourney'
 import RoadshowsEvents from '../components/RoadshowEvents'
+import WhyChooseAdhiWhite from '../components/WhyChooseAdiW'
 
 function Landing() {
   return (
@@ -13,6 +14,7 @@ function Landing() {
         <Hero/>
         <Clients/>
         <WhyChooseAdhi/>
+        <WhyChooseAdhiWhite/>
         <InvestmentOpportunities/>
         <InvestmentAdvisors/>
         <InvestorJourney/>

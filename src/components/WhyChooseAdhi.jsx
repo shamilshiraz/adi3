@@ -87,7 +87,17 @@ export default function WhyChooseAdhi() {
 
       <div className="relative mx-auto ">
 
+      <div className=" mb-16">
+        <h2 className="              text-xl
+              md:text-3xl
+              uppercase
+              font-regular
+              text-center
+              ">
 
+          WHY CHOOSE ADHI
+        </h2>
+      </div>
         {/* Editorial Pillars */}
         <div className="mt-20 grid gap-10 md:grid-cols-2 xl:grid-cols-4">
           {pillars.map((item, index) => {
@@ -117,71 +127,6 @@ export default function WhyChooseAdhi() {
                   size={26}
                   className="text-[#EFBD78]"
                   strokeWidth={1.5}
-                />
-
-                <h3 className="mt-6 text-2xl text-white">
-                  {item.title}
-                </h3>
-
-                <p className="mt-3 text-white/70 leading-relaxed">
-                  {item.description}
-                </p>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Divider */}
-        <div className="my-24 h-px w-full bg-white/10" />
-
-        {/* Advantage Header */}
-        <div className="max-w-3xl">
-          <p className="eyebrow">
-            THE ADHI INVESTMENT ADVANTAGE
-          </p>
-
-          <h2 className="heading-2 heading-light mt-6">
-            A Complete Investment Advisory Experience
-          </h2>
-        </div>
-
-        {/* Advantage Cards */}
-        <div className="mt-16 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {advantages.map((item, index) => {
-            const Icon = item.icon;
-
-            return (
-              <motion.div
-                key={item.title}
-                initial={{
-                  opacity: 0,
-                  y: 40,
-                  filter: "blur(10px)",
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                  filter: "blur(0px)",
-                }}
-                viewport={{ once: true }}
-                transition={{
-                  delay: index * 0.05,
-                  duration: 0.8,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className="
-                  rounded-3xl
-                  border
-                  border-white/10
-                  bg-white/5
-                  backdrop-blur-xl
-                  p-8
-                "
-              >
-                <Icon
-                  size={28}
-                  strokeWidth={1.5}
-                  className="text-[#EFBD78]"
                 />
 
                 <h3 className="mt-6 text-2xl text-white">

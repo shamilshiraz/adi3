@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Phone,
   Compass,
@@ -13,56 +13,48 @@ import {
 
 const steps = [
   {
-    number: "01",
     title: "Discovery Call",
     description:
       "Understanding your objectives, risk appetite and investment goals.",
     icon: Phone,
   },
   {
-    number: "02",
     title: "Investment Strategy",
     description:
       "Building a personalized strategy aligned with your objectives.",
     icon: Compass,
   },
   {
-    number: "03",
     title: "Market Analysis",
     description:
       "Reviewing market data, growth indicators and opportunities.",
     icon: ChartColumn,
   },
   {
-    number: "04",
     title: "Opportunity Selection",
     description:
       "Shortlisting opportunities that match your investment profile.",
     icon: Search,
   },
   {
-    number: "05",
     title: "Reservation",
     description:
       "Securing the selected opportunity with guided support.",
     icon: FileSignature,
   },
   {
-    number: "06",
     title: "Purchase",
     description:
       "Managing the transaction process from start to finish.",
     icon: Building2,
   },
   {
-    number: "07",
     title: "Handover",
     description:
       "Transitioning ownership and preparing for occupancy.",
     icon: KeyRound,
   },
   {
-    number: "08",
     title: "Portfolio Support",
     description:
       "Continued advisory support beyond the purchase.",
@@ -70,21 +62,112 @@ const steps = [
   },
 ];
 
+// One step in the vertical timeline. Each step tracks its own
+// scroll progress so its node can transition from hollow to
+// filled right as the drawing spine line reaches it.
+function TimelineStep({ step, index }) {
+  const Icon = step.icon;
+  const stepRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: stepRef,
+    offset: ["start 0.85", "start 0.4"],
+  });
+
+  const nodeBg = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["rgba(255,255,255,0.05)", "#EFBD78"]
+  );
+  const nodeBorder = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["rgba(255,255,255,0.1)", "#EFBD78"]
+  );
+  const iconColor = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["#EFBD78", "#1C0D17"]
+  );
+
+  return (
+    <motion.div
+      ref={stepRef}
+      initial={{
+        opacity: 0,
+        y: 40,
+        filter: "blur(10px)",
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+      }}
+      viewport={{ once: true }}
+      transition={{
+        delay: (index % 4) * 0.05,
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      className="relative flex gap-x-6 lg:gap-x-8"
+    >
+      {/* Node - sits on the spine, same position mobile through desktop */}
+      <div className="relative flex-none">
+        <motion.div
+          style={{
+            backgroundColor: nodeBg,
+            borderColor: nodeBorder,
+          }}
+          className="
+            relative
+            z-10
+            flex
+            h-14
+            w-14
+            items-center
+            justify-center
+            rounded-2xl
+            border
+            backdrop-blur-xl
+          "
+        >
+          <motion.div style={{ color: iconColor }}>
+            <Icon size={22} strokeWidth={1.5} />
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Content */}
+      <div className="pb-2 pt-1">
+        <h3 className="heading-4 text-light">{step.title}</h3>
+        <p className="small text-muted mt-3 max-w-md">{step.description}</p>
+      </div>
+    </motion.div>
+  );
+}
+
 export default function InvestorJourney() {
+  const timelineRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 0.15", "end 0.85"],
+  });
+
+  // Drives the pathLength of the SVG line so it "draws"
+  // downward as the timeline scrolls through view.
+  const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
   return (
     <section
       className="
         relative
         overflow-hidden
-        bg-[#1C0D17]
+        bg-[#4E0026]
         page-padding
         section-spacing
       "
-    >
-      {/* Ambient Glows */}
-      <div className="absolute top-0 right-0 h-[700px] w-[700px] rounded-full bg-[#EFBD78]/10 blur-[200px]" />
-
-      <div className="absolute bottom-0 left-0 h-[700px] w-[700px] rounded-full bg-[#301120]/60 blur-[200px]" />
+>
 
       <div className="container-custom relative">
         {/* Header */}
@@ -106,9 +189,7 @@ export default function InvestorJourney() {
           }}
           className="max-w-4xl"
         >
-          <p className="eyebrow">
-            INVESTOR JOURNEY
-          </p>
+          <p className="eyebrow">INVESTOR JOURNEY</p>
 
           <h2 className="heading-2 text-light mt-6">
             A Structured Process
@@ -117,102 +198,49 @@ export default function InvestorJourney() {
           </h2>
 
           <p className="sub text-muted mt-6 max-w-2xl">
-            Every investment follows a clear framework,
-            ensuring confidence, transparency and informed
-            decision-making from the first conversation to
-            long-term portfolio support.
+            Every investment follows a clear framework, ensuring confidence,
+            transparency and informed decision-making from the first
+            conversation to long-term portfolio support.
           </p>
         </motion.div>
 
         {/* Timeline */}
-        <div className="mt-24">
-          <div className="grid lg:grid-cols-4 gap-x-8 gap-y-20">
-            {steps.map((step, index) => {
-              const Icon = step.icon;
+        <div ref={timelineRef} className="relative mt-24">
+          {/* Scroll-drawn connector line - always visible, anchored to the
+              node column center (h-14 = 56px, so center sits at 28px) */}
+          <svg
+            className="absolute left-7 top-0 h-full w-px -translate-x-1/2"
+            width="2"
+            preserveAspectRatio="none"
+            style={{ height: "100%" }}
+          >
+            {/* Static track, same opacity as the original connector */}
+            <line
+              x1="1"
+              y1="0"
+              x2="1"
+              y2="100%"
+              stroke="rgba(255,255,255,0.1)"
+              strokeWidth="1"
+            />
+            {/* Animated draw-on progress line */}
+            <motion.line
+              x1="1"
+              y1="0"
+              x2="1"
+              y2="100%"
+              stroke="#EFBD78"
+              strokeWidth="1"
+              style={{
+                pathLength,
+              }}
+            />
+          </svg>
 
-              return (
-                <motion.div
-                  key={step.number}
-                  initial={{
-                    opacity: 0,
-                    y: 40,
-                    filter: "blur(10px)",
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                    filter: "blur(0px)",
-                  }}
-                  viewport={{ once: true }}
-                  transition={{
-                    delay: index * 0.05,
-                    duration: 0.8,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                  className="relative"
-                >
-                  {/* Connector */}
-                  {index % 4 !== 3 && index !== steps.length - 1 && (
-                    <div
-                      className="
-                        hidden lg:block
-                        absolute
-                        top-12
-                        left-[90px]
-                        right-[-30px]
-                        h-px
-                        bg-white/10
-                      "
-                    />
-                  )}
-
-                  {/* Number */}
-                  <div
-                    className="
-                      text-[5rem]
-                      leading-none
-                      tracking-[-0.06em]
-                      text-white/10
-                      font-light
-                    "
-                  >
-                    {step.number}
-                  </div>
-
-                  {/* Icon */}
-                  <div
-                    className="
-                      mt-4
-                      flex
-                      h-14
-                      w-14
-                      items-center
-                      justify-center
-                      rounded-2xl
-                      bg-white/5
-                      border
-                      border-white/10
-                      backdrop-blur-xl
-                    "
-                  >
-                    <Icon
-                      size={22}
-                      strokeWidth={1.5}
-                      className="text-[#EFBD78]"
-                    />
-                  </div>
-
-                  {/* Content */}
-                  <h3 className="heading-4 text-light mt-6">
-                    {step.title}
-                  </h3>
-
-                  <p className="small text-muted mt-3">
-                    {step.description}
-                  </p>
-                </motion.div>
-              );
-            })}
+          <div className="flex flex-col gap-y-12 lg:gap-y-16">
+            {steps.map((step, index) => (
+              <TimelineStep key={step.title} step={step} index={index} />
+            ))}
           </div>
         </div>
 
@@ -238,13 +266,9 @@ export default function InvestorJourney() {
             gap-4
           "
         >
-          <button className="btn-gold">
-            Book Consultation
-          </button>
+          <button className="btn-gold">Book Consultation</button>
 
-          <button className="btn-violet">
-            Speak With An Advisor
-          </button>
+          <button className="btn-violet">Speak With An Advisor</button>
         </motion.div>
       </div>
     </section>
