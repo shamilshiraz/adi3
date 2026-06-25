@@ -129,7 +129,7 @@ export default function RoadshowsEvents() {
                 </div>
               </div>
 
-              <button className="btn-gold mt-10">
+              <button className="btn-violet mt-10">
                 View Events
               </button>
             </motion.div>

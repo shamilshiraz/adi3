@@ -285,22 +285,22 @@ export default function Agents() {
                     </div>
                   </div>
 
-                  <Link
+                  <a
                     to={`/agents/${advisor.slug}`}
                     className="
                       mt-8
                       inline-flex
                       items-center
                       gap-2
-                      btn-gold
+                      btn-violet
                     "
                   >
-                    View Profile
+                    Contact
 
                     <ArrowUpRight
                       size={16}
                     />
-                  </Link>
+                  </a>
                 </div>
               </motion.div>
             ))}

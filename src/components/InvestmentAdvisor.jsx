@@ -61,7 +61,7 @@ export default function InvestmentAdvisors() {
 
         {/* Advisors Grid */}
         <div className="mt-16 grid gap-8 lg:grid-cols-4">
-          {advisors.map((advisor, index) => (
+          {advisors.slice(0,4).map((advisor, index) => (
             <motion.div
               key={advisor.id}
               initial={{
