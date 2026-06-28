@@ -464,7 +464,6 @@ export default function InvestorJourney() {
         >
           <button className="btn-gold">Book Consultation</button>
 
-          <button className="btn-violet">Speak With An Advisor</button>
         </motion.div>
       </div>
     </section>
