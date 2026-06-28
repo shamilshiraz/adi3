@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Phone,
@@ -208,7 +208,7 @@ function InvestorJourneyVertical() {
 }
 
 // ---------------------------------------------------------------------------
-// DESKTOP — horizontal timeline.
+// DESKTOP — horizontal timeline with pinned header.
 // ---------------------------------------------------------------------------
 
 // One step in the horizontal timeline. Instead of tracking its own
@@ -216,134 +216,172 @@ function InvestorJourneyVertical() {
 // translated horizontally by a shared progress value), each node's
 // fill state is derived from a slice of that same shared progress -
 // it "fills" right as the spine line reaches it.
-function TimelineStepHorizontal({ step, index, total, progress }) {
-  const Icon = step.icon;
-
-  const start = index / total;
-  const end = (index + 0.6) / total;
-
-  const nodeBg = useTransform(
-    progress,
-    [start, end],
-    ["rgba(255,255,255,0.05)", "#EFBD78"]
-  );
-  const nodeBorder = useTransform(
-    progress,
-    [start, end],
-    ["rgba(255,255,255,0.1)", "#EFBD78"]
-  );
-  const iconColor = useTransform(
-    progress,
-    [start, end],
-    ["#EFBD78", "#1C0D17"]
-  );
-
-  return (
-    <div className="relative flex flex-none flex-col items-start">
-      {/* Node - sits on the horizontal spine */}
-      <div className="relative flex-none">
-        <motion.div
-          style={{
-            backgroundColor: nodeBg,
-            borderColor: nodeBorder,
-          }}
-          className="
-            relative
-            z-10
-            flex
-            h-14
-            w-14
-            items-center
-            justify-center
-            rounded-2xl
-            border
-            backdrop-blur-xl
-          "
-        >
-          <motion.div style={{ color: iconColor }}>
-            <Icon size={22} strokeWidth={1.5} />
-          </motion.div>
-        </motion.div>
-      </div>
-
-      {/* Content */}
-      <div className="pt-6 pr-6">
-        <h3 className="heading-4 text-light">{step.title}</h3>
-        <p className="small text-muted mt-3 max-w-[18rem]">
-          {step.description}
-        </p>
-      </div>
-    </div>
-  );
-}
-
 function InvestorJourneyHorizontal() {
   const targetRef = useRef(null);
+  const rowRef = useRef(null);
+  const [distance, setDistance] = useState(0);
 
-  // Drives the whole row's horizontal position across a pinned
-  // (sticky) viewport as the user scrolls down through the section.
+  // Trailing padding so the last card's text can't run off the
+  // right edge of the viewport when it arrives - it gets the same
+  // breathing room as the row's own px-4/gap.
+  const END_PADDING = 96;
+
+  useEffect(() => {
+    const measure = () => {
+      if (!rowRef.current) return;
+      const rowWidth = rowRef.current.scrollWidth;
+      const viewportWidth = window.innerWidth;
+      setDistance(Math.max(rowWidth - viewportWidth + END_PADDING, 0));
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: targetRef,
+    offset: ["start start", "end end"],
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-72%"]);
+  const x = useTransform(
+    scrollYProgress,
+    [0, 0.08, 0.92, 1],
+    [0, 0, -distance, -distance]
+  );
 
-  // Drives the spine's pathLength so it "draws" left-to-right in
-  // lockstep with the row translation above.
-  const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1.5]);
+  const pathLength = useTransform(
+    scrollYProgress,
+    [0.08, 0.92],
+    [0, 1],
+    { clamp: true }
+  );
 
   return (
     <section ref={targetRef} className="relative h-[300vh]">
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-        <motion.div style={{ x }} className="relative w-max">
-          {/* Scroll-drawn connector line - anchored to the node row
-              center (h-14 = 56px, so center sits at 28px) */}
-          <svg
-            className="absolute left-0 top-7 h-px w-full -translate-y-1/2"
-            height="2"
-            preserveAspectRatio="none"
-            style={{ width: "100%" }}
+      <div className="sticky top-0 flex h-screen flex-col overflow-hidden">
+        {/* Header lives inside the pinned viewport, so it holds in
+            place for the entire 300vh scroll range instead of scrolling
+            away before the timeline even starts. */}
+        <div className="container-custom pt-24">
+          <motion.div
+            initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-4xl"
           >
-            {/* Static track, same opacity as the original connector */}
-            <line
-              x1="0"
-              y1="1"
-              x2="100%"
-              y2="1"
-              stroke="rgba(255,255,255,0.1)"
-              strokeWidth="1"
-            />
-            {/* Animated draw-on progress line */}
-            <motion.line
-              x1="0"
-              y1="1"
-              x2="100%"
-              y2="1"
-              stroke="#EFBD78"
-              strokeWidth="1"
-              style={{
-                pathLength,
-              }}
-            />
-          </svg>
+            <p className="eyebrow">INVESTOR JOURNEY</p>
 
-          <div className="flex gap-x-16 px-4">
-            {steps.map((step, index) => (
-              <TimelineStepHorizontal
-                key={step.title}
-                step={step}
-                index={index}
-                total={steps.length}
-                progress={scrollYProgress}
-              />
-            ))}
-          </div>
-        </motion.div>
+            <h2 className="heading-2 text-light mt-6">
+              A Structured Process
+              <br />
+              Designed Around Investors
+            </h2>
+
+            <p className="sub text-muted mt-6 max-w-2xl">
+              Every investment follows a clear framework, ensuring confidence,
+              transparency and informed decision-making from the first
+              conversation to long-term portfolio support.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Timeline row takes the remaining space below the header and
+            centers itself vertically within it. */}
+        <div className="flex flex-1 flex-col justify-center overflow-hidden">
+          <motion.div ref={rowRef} style={{ x }} className="relative w-max">
+            {/* Spine sits in its own row above the cards, with real
+                space below it before text starts. */}
+            <div className="relative h-px w-full">
+              <svg
+                className="absolute left-0 top-0 h-px w-full"
+                height="2"
+                preserveAspectRatio="none"
+              >
+                {/* Static track, same opacity as the original connector */}
+                <line
+                  x1="0"
+                  y1="1"
+                  x2="100%"
+                  y2="1"
+                  stroke="rgba(255,255,255,0.1)"
+                  strokeWidth="1"
+                />
+                {/* Animated draw-on progress line */}
+                <motion.line
+                  x1="0"
+                  y1="1"
+                  x2="100%"
+                  y2="1"
+                  stroke="#EFBD78"
+                  strokeWidth="1"
+                  style={{
+                    pathLength,
+                  }}
+                />
+              </svg>
+            </div>
+
+            <div className="flex gap-x-20 px-4 pt-16">
+              {steps.map((step, index) => (
+                <TimelineStepHorizontal
+                  key={step.title}
+                  step={step}
+                  index={index}
+                  total={steps.length}
+                  progress={scrollYProgress}
+                />
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
 }
 
+function TimelineStepHorizontal({ step, index, total, progress }) {
+  // Each node activates over its own slice of the scroll range, inside
+  // the same [0.08, 0.92] effective window as the row/spine motion,
+  // so node state changes line up with where the node actually is
+  // on screen rather than drifting relative to the spine.
+  const segment = (0.92 - 0.08) / total;
+  const start = 0.08 + index * segment;
+  const end = start + segment * 0.6;
+
+  const fill = useTransform(progress, [start, end], [0, 1], { clamp: true });
+  const opacity = useTransform(progress, [start, end], [0.4, 1], { clamp: true });
+  const y = useTransform(progress, [start, end], [16, 0], { clamp: true });
+
+  return (
+    <motion.div
+      style={{ opacity, y }}
+      className="relative flex w-[340px] flex-col"
+    >
+      {/* Node sits at the top of the card, aligned back up to the
+          spine via negative margin - removes the dead gap between
+          line and dot. */}
+      <motion.div
+        className="-mt-[7px] mb-10 h-3.5 w-3.5 rounded-full border border-[#EFBD78]"
+        style={{
+          backgroundColor: useTransform(
+            fill,
+            [0, 1],
+            ["rgba(239,189,120,0)", "rgba(239,189,120,1)"]
+          ),
+        }}
+      />
+
+      <div className="flex flex-col gap-3">
+        <span className="small text-[#EFBD78]/70 uppercase tracking-wide">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        <h3 className="heading-4 text-light">{step.title}</h3>
+        <p className="small text-muted mt-1 max-w-md">{step.description}</p>
+      </div>
+    </motion.div>
+  );
+}
 // ---------------------------------------------------------------------------
 
 export default function InvestorJourney() {
@@ -356,8 +394,8 @@ export default function InvestorJourney() {
         section-spacing
       "
     >
-      <div className="container-custom relative">
-        {/* Header */}
+      {/* Mobile / tablet: header + vertical timeline (unchanged) */}
+      <div className="container-custom relative lg:hidden">
         <motion.div
           initial={{
             opacity: 0,
@@ -391,15 +429,12 @@ export default function InvestorJourney() {
           </p>
         </motion.div>
 
-        {/* Mobile / tablet: vertical timeline (unchanged) */}
-        <div className="lg:hidden">
-          <InvestorJourneyVertical />
-        </div>
+        <InvestorJourneyVertical />
       </div>
 
-      {/* Desktop: horizontal pinned-scroll timeline - full-bleed, outside
-          the max-width container so the row has room to translate across
-          the full viewport width */}
+      {/* Desktop: pinned header + horizontal scroll timeline - full-bleed,
+          outside the max-width container so the row has room to translate
+          across the full viewport width */}
       <div className="hidden lg:block">
         <InvestorJourneyHorizontal />
       </div>

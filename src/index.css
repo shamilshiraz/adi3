@@ -10,20 +10,15 @@
   padding: 0.5rem 2rem;
   border-radius: 0.75rem;
   color: #3A0026;
-  background: linear-gradient(
-    90deg,
-    #e4e2df 0%,
-    #fff1c8 50%,
-    #e4d8c8 100%
-  );
-  box-shadow: 0 0 20px rgba(255, 196, 115, 0.35);
-  transition: all 0.3s ease;
+  background: white;
+  font-weight: 300;
 }
 
 .btn-gold:hover {
   transform: translateY(-2px);
   box-shadow: 0 0 30px rgba(255, 196, 115, 0.6);
 }
+
 
 .btn-violet {
   position: relative;
@@ -32,15 +27,9 @@
   border-radius: 0.75rem;
   color: #ffffff;
 
-  background: linear-gradient(
-    90deg,
-    #3A0026 0%,
-    #702355 50%,
-    #3A0026 100%
-  );
-
-  transition: all 0.3s ease;
+  background: #4E0026;
 }
+
 
 .btn-violet:hover {
   transform: translateY(-2px);
