@@ -37,7 +37,7 @@ const features = [
 export default function WhyChooseAdhiWhite() {
   return (
     <section className="bg-white py-32">
-      <div className="container mx-auto px-2 sm:px-20">
+      <div className="container mx-auto px-4 sm:px-20">
         <div className="max-w-3xl">
           <p className="eyebrow text-[#8B6A3E]">
             WHY INVESTORS CHOOSE ADHI
@@ -70,7 +70,8 @@ export default function WhyChooseAdhiWhite() {
                   border
                   border-black/5
                   bg-[#FAFAFA]
-                  p-10
+                  p-4
+                  sm:p-10
                   transition-all
                   hover:-translate-y-2
                   hover:shadow-xl

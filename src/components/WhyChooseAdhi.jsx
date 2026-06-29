@@ -104,39 +104,44 @@ export default function WhyChooseAdhi() {
             const Icon = item.icon;
 
             return (
-              <motion.div
-                key={item.title}
-                initial={{
-                  opacity: 0,
-                  y: 40,
-                  filter: "blur(10px)",
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                  filter: "blur(0px)",
-                }}
-                viewport={{ once: true }}
-                transition={{
-                  delay: index * 0.08,
-                  duration: 0.8,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-              >
-                <Icon
-                  size={26}
-                  className="text-[#EFBD78]"
-                  strokeWidth={1.5}
-                />
+<motion.div
+  key={item.title}
+  initial={{
+    opacity: 0,
+    y: 40,
+    filter: "blur(10px)",
+  }}
+  whileInView={{
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+  }}
+  viewport={{ once: true }}
+  transition={{
+    delay: index * 0.08,
+    duration: 0.8,
+    ease: [0.16, 1, 0.3, 1],
+  }}
+  className="flex items-start gap-5"
+>
+  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#EFBD78]/30 bg-white/5">
+    <Icon
+      size={22}
+      className="text-[#EFBD78]"
+      strokeWidth={1.5}
+    />
+  </div>
 
-                <h3 className="mt-6 text-2xl text-white">
-                  {item.title}
-                </h3>
+  <div>
+    <h3 className="text-2xl text-white">
+      {item.title}
+    </h3>
 
-                <p className="mt-3 text-white/70 leading-relaxed">
-                  {item.description}
-                </p>
-              </motion.div>
+    <p className="mt-2 text-white/70 leading-relaxed">
+      {item.description}
+    </p>
+  </div>
+</motion.div>
             );
           })}
         </div>

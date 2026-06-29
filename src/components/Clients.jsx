@@ -32,7 +32,7 @@ function LogoRow({ logos, reverse = false }) {
   return (
     <div className="relative overflow-hidden w-full">
       <motion.div
-        className="flex gap-16 w-max"
+        className="flex  sm:gap-16 w-max"
         animate={{
           x: reverse ? ["-50%", "0%"] : ["0%", "-50%"],
         }}
