@@ -416,7 +416,7 @@ export default function InvestorJourney() {
         >
           <p className="eyebrow">INVESTOR JOURNEY</p>
 
-          <h2 className="heading-2 text-light mt-6">
+          <h2 className="heading-3 sm:heading-2 text-light mt-6">
             A Structured Process
             <br />
             Designed Around Investors
