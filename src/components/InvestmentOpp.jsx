@@ -64,12 +64,13 @@ export default function InvestmentStrategiesCarousel() {
         overflow-hidden
         bg-[#4E0026]
         py-24
+        px-4
       "
     >
 
       <div className="relative">
         <motion.div
-          className="px-6 lg:px-20"
+          className="lg:px-20"
           initial={{
             opacity: 0,
             y: 30,
@@ -100,7 +101,7 @@ export default function InvestmentStrategiesCarousel() {
           </p>
         </motion.div>
 
-        <div className="mt-16 px-6 lg:px-20">
+        <div className="mt-16 px-2 sm:px-6 lg:px-20">
           <div
             className="
               flex
@@ -139,8 +140,10 @@ export default function InvestmentStrategiesCarousel() {
                     relative
                     snap-center
                     flex-shrink-0
-                    w-[380px]
-                    h-[540px]
+                    w-[350px]
+                    sm:w-[380px]
+                    h-[480px]
+                    sm:h-[540px]
                     overflow-hidden
                     rounded-[32px]
                     group
@@ -184,7 +187,9 @@ export default function InvestmentStrategiesCarousel() {
                       bottom-0
                       left-0
                       right-0
-                      p-8
+                      sm:p-8
+                      px-4
+                      py-5
                     "
                   >
                     <div className="flex items-center gap-3">
