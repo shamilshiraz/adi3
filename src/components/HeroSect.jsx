@@ -68,7 +68,7 @@ export default function Hero() {
         py-20
       "
       style={{
-        backgroundImage: "url('/landing.png')",
+        backgroundImage: "url('/lanindg.png')",
       }}
     >
       {/* Luxury Overlay */}
