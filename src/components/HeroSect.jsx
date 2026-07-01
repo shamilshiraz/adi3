@@ -63,7 +63,7 @@ export default function Hero() {
         bg-center
         flex
         items-end
-        px-6
+        px-4
         sm:px-20
         py-20
       "
