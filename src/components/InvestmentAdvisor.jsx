@@ -12,15 +12,7 @@ import advisors from "../assets/agents.json";
 
 export default function InvestmentAdvisors() {
   return (
-    <section
-      className="
-        relative
-        overflow-hidden
-        bg-white
-        page-padding
-        section-spacing
-      "
-    >
+    <section className="relative overflow-hidden bg-white page-padding section-spacing">
       <div className="container-custom">
         {/* Header */}
         <motion.div
@@ -41,9 +33,7 @@ export default function InvestmentAdvisors() {
           }}
           className="max-w-4xl"
         >
-          <p className="eyebrow">
-            MEET THE ADVISORS
-          </p>
+          <p className="eyebrow">MEET THE ADVISORS</p>
 
           <h2 className="heading-2 text-dark mt-6">
             Meet The Advisors
@@ -52,16 +42,15 @@ export default function InvestmentAdvisors() {
           </h2>
 
           <p className="sub text-dark-muted mt-6 max-w-2xl">
-            Connect with experienced investment advisors who
-            help investors evaluate opportunities, understand
-            market dynamics, and build long-term strategies in
-            Dubai real estate.
+            Connect with experienced investment advisors who help investors
+            evaluate opportunities, understand market dynamics, and build
+            long-term strategies in Dubai real estate.
           </p>
         </motion.div>
 
         {/* Advisors Grid */}
-        <div className="mt-16 grid gap-8 lg:grid-cols-4">
-          {advisors.slice(0,4).map((advisor, index) => (
+        <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
+          {advisors.slice(0, 4).map((advisor, index) => (
             <motion.div
               key={advisor.id}
               initial={{
@@ -80,103 +69,81 @@ export default function InvestmentAdvisors() {
                 duration: 0.8,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="
-                overflow-hidden
-                rounded-3xl
-                border
-                border-black/5
-                bg-[#FAFAFA]
-              "
+              className="overflow-hidden rounded-2xl lg:rounded-3xl border border-black/5 bg-[#FAFAFA]"
             >
               {/* Portrait */}
               <div className="relative aspect-[4/5] overflow-hidden">
                 <img
                   src={advisor.image}
                   alt={advisor.name}
-                  className="
-                    h-full
-                    w-full
-                    object-cover
-                    transition-transform
-                    duration-700
-                    hover:scale-105
-                  "
+                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 />
 
-                <div
-                  className="
-                    absolute
-                    inset-0
-                    bg-gradient-to-t
-                    from-black/30
-                    via-transparent
-                    to-transparent
-                  "
-                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
               </div>
 
               {/* Content */}
-              <div className="p-4">
-                <h3 className="heading-4 text-dark">
+              <div className="p-3 lg:p-5">
+                <h3 className="text-sm lg:text-xl font-medium text-dark leading-tight">
                   {advisor.name}
                 </h3>
 
-                <p className="small text-dark-muted mt-2">
+                <p className="text-[11px] lg:text-sm text-dark-muted mt-1">
                   {advisor.role}
                 </p>
 
-                <div className="divider-dark my-6" />
+                <div className="divider-dark my-3 lg:my-5" />
 
-                <div className="space-y-5">
-                  <div className="flex gap-3">
+                <div className="space-y-2 lg:space-y-4">
+                  <div className="flex gap-2">
                     <Languages
-                      size={18}
+                      size={14}
                       strokeWidth={1.5}
-                      className="text-[#D4AF37] mt-1"
+                      className="text-[#D4AF37] mt-0.5 lg:mt-1 flex-shrink-0 lg:w-[18px] lg:h-[18px]"
                     />
 
-                    <div>
-                      <p className="small text-[#D4AF37]">
+                    <div className="min-w-0">
+                      <p className="text-[10px] lg:text-xs text-[#D4AF37] uppercase tracking-wide">
                         Languages
                       </p>
 
-                      <p className="small text-dark-muted">
+                      <p className="text-[10px] lg:text-sm text-dark-muted leading-snug break-words">
                         {advisor.languages.join(" • ")}
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex gap-3">
+                  <div className="flex gap-2">
                     <BriefcaseBusiness
-                      size={18}
+                      size={14}
                       strokeWidth={1.5}
-                      className="text-[#D4AF37] mt-1"
+                      className="text-[#D4AF37] mt-0.5 lg:mt-1 flex-shrink-0 lg:w-[18px] lg:h-[18px]"
                     />
 
-                    <div>
-                      <p className="small text-[#D4AF37]">
+                    <div className="min-w-0">
+                      <p className="text-[10px] lg:text-xs text-[#D4AF37] uppercase tracking-wide">
                         Specialization
                       </p>
 
-                      <p className="small text-dark-muted">
+                      <p className="text-[10px] lg:text-sm text-dark-muted leading-snug break-words">
                         {advisor.specialization}
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex gap-3">
+                  <div className="flex gap-2">
                     <Clock3
-                      size={18}
+                      size={14}
                       strokeWidth={1.5}
-                      className="text-[#D4AF37] mt-1"
+                      className="text-[#D4AF37] mt-0.5 lg:mt-1 flex-shrink-0 lg:w-[18px] lg:h-[18px]"
                     />
 
-                    <div>
-                      <p className="small text-[#D4AF37]">
+                    <div className="min-w-0">
+                      <p className="text-[10px] lg:text-xs text-[#D4AF37] uppercase tracking-wide">
                         Experience
                       </p>
 
-                      <p className="small text-dark-muted">
+                      <p className="text-[10px] lg:text-sm text-dark-muted leading-snug">
                         {advisor.experience}
                       </p>
                     </div>
@@ -185,19 +152,14 @@ export default function InvestmentAdvisors() {
 
                 <Link
                   to={`/agents/${advisor.slug}`}
-                  className="
-                    mt-8
-                    inline-flex
-                    items-center
-                    gap-2
-                    btn-gold
-                  "
+                  className="mt-4 lg:mt-6 w-full inline-flex items-center justify-center gap-1.5 lg:gap-2 rounded-xl bg-[#341222] px-2 lg:px-4 py-2 lg:py-3 text-[10px] lg:text-sm text-white hover:bg-[#4a1930] transition"
                 >
-                  Schedule Consultation
+                  <span className="truncate">Consult</span>
 
                   <ArrowUpRight
-                    size={16}
+                    size={14}
                     strokeWidth={1.8}
+                    className="lg:w-4 lg:h-4"
                   />
                 </Link>
               </div>
@@ -220,12 +182,9 @@ export default function InvestmentAdvisors() {
             delay: 0.2,
             duration: 0.8,
           }}
-          className="mt-16 flex justify-center"
+          className="mt-12 lg:mt-16 flex justify-center"
         >
-          <Link
-            to="/agents"
-            className="btn-violet"
-          >
+          <Link to="/agents" className="btn-violet">
             View All Advisors
           </Link>
         </motion.div>
