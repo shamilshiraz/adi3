@@ -20,7 +20,7 @@ const Footer = () => {
 
         {/* Sitemap */}
         <div className="min-w-0">
-          <h4 className="mb-3 font-medium">Sitemap</h4>
+          <h4 className="mb-3 font-semibold">Sitemap</h4>
 
           <div className="flex flex-col gap-2 text-sm sm:text-base">
             <Link to="/">Home</Link>
@@ -33,7 +33,7 @@ const Footer = () => {
 
         {/* Quick Links */}
         <div className="min-w-0">
-          <h4 className="mb-3 font-medium">Quick Links</h4>
+          <h4 className="mb-3 font-semibold">Quick Links</h4>
 
           <div className="flex flex-col gap-2 text-sm sm:text-base">
             <a href="https://www.instagram.com/invites/contact/?igsh=1dlgs97h494r6&utm_content=zukf6i4">
@@ -47,7 +47,7 @@ const Footer = () => {
 
         {/* Address */}
         <div className="min-w-0">
-          <h4 className="mb-3 font-medium">Address</h4>
+          <h4 className="mb-3 font-semibold">Address</h4>
 
           <div className="space-y-1 text-sm sm:text-base break-words">
             <p>Al Hannan Market, Office No. 3</p>
