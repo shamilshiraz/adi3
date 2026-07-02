@@ -91,7 +91,7 @@ const Footer = () => {
 
     {/* Sitemap */}
     <div className="min-w-0">
-      <h4 className="mb-3">Sitemap</h4>
+      <h4 className="mb-3  font-semibold">Sitemap</h4>
       <div className="flex flex-col space-y-2">
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
@@ -103,7 +103,7 @@ const Footer = () => {
 
     {/* Quick Links */}
     <div className="min-w-0">
-      <h4 className="mb-3">Quick Links</h4>
+      <h4 className="mb-3 font-semibold">Quick Links</h4>
       <div className="flex flex-col space-y-2">
         <a href="https://www.instagram.com/invites/contact/?igsh=1dlgs97h494r6&utm_content=zukf6i4">
           Instagram
@@ -116,7 +116,7 @@ const Footer = () => {
 
     {/* Address */}
     <div className="col-span-2 sm:col-span-1 min-w-0">
-      <h4 className="mb-3">Address</h4>
+      <h4 className="mb-3 font-semibold">Address</h4>
 
       <p>Al Hannan Market, Office No. 3</p>
       <p>Al Zuhur District, Yanbu Al Bahar</p>
