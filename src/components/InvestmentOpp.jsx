@@ -101,7 +101,7 @@ export default function InvestmentStrategiesCarousel() {
           </p>
         </motion.div>
 
-        <div className="mt-16 px-2 sm:px-6 lg:px-20">
+        <div className="mt-16 sm:px-6 lg:px-20">
           <div
             className="
               flex
