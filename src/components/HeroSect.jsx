@@ -59,25 +59,18 @@ export default function Hero() {
         w-full
         min-h-screen
         overflow-hidden
+        bg-cover
+        bg-center
         flex
         items-end
         px-4
         sm:px-20
         py-20
       "
+      style={{
+        backgroundImage: "url('/lanindg.png')",
+      }}
     >
-      {/* Background Video */}
-      <div className="absolute inset-0 overflow-hidden">
-        <iframe
-          className="absolute top-1/2 left-1/2 h-[56.25vw] min-h-full w-[177.78vh] min-w-full -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-          src="https://www.youtube.com/embed/IdejM6wCkxA?autoplay=1&mute=1&loop=1&playlist=IdejM6wCkxA&controls=0&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&playsinline=1"
-          title="Background Video"
-          frameBorder="0"
-          allow="autoplay; encrypted-media"
-          referrerPolicy="strict-origin-when-cross-origin"
-        />
-      </div>
-
       {/* Luxury Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-[#08050d]/95 via-[#170813]/35 to-transparent" />
 
@@ -149,12 +142,111 @@ export default function Hero() {
             solutions—delivered with precision, innovation, and uncompromising
             safety.
           </motion.p>
-
           <div className="flex flex-col gap-4 sm:flex-row py-8">
             <div className="btn-gold">Book your consultation</div>
             <div className="btn-violet">Talk to agents</div>
+
           </div>
         </div>
+
+        {/* Event Form */}
+        {/* <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{
+            delay: 1.3,
+            duration: 0.8,
+          }}
+          className="
+            w-full
+            max-w-md
+            rounded-3xl
+            border
+            border-white/10
+            bg-white/5
+            backdrop-blur-xl
+            p-8
+            shadow-2xl
+          "
+        >
+          <h3 className="text-3xl  text-white">
+            Sign Up for Events
+          </h3>
+
+          <p className="mt-2 text-white/60">
+            Register your interest and we'll contact you with upcoming event
+            details.
+          </p>
+
+          <form className="mt-8 space-y-4">
+            <input
+              type="text"
+              placeholder="Full Name"
+              className="
+                w-full
+                rounded-xl
+                border
+                border-white/10
+                bg-white/5
+                px-4
+                py-3
+                text-white
+                placeholder:text-white/40
+                outline-none
+                transition-all
+                focus:border-[#FFC473]
+              "
+            />
+
+            <input
+              type="email"
+              placeholder="Email Address"
+              className="
+                w-full
+                rounded-xl
+                border
+                border-white/10
+                bg-white/5
+                px-4
+                py-3
+                text-white
+                placeholder:text-white/40
+                outline-none
+                transition-all
+                focus:border-[#FFC473]
+              "
+            />
+
+            <input
+              type="tel"
+              placeholder="Phone Number"
+              className="
+                w-full
+                rounded-xl
+                border
+                border-white/10
+                bg-white/5
+                px-4
+                py-3
+                text-white
+                placeholder:text-white/40
+                outline-none
+                transition-all
+                focus:border-[#FFC473]
+              "
+            />
+
+            <button
+              type="submit"
+              className="
+                w-full
+                btn-violet
+              "
+            >
+              Register Now
+            </button>
+          </form>
+        </motion.div> */}
       </div>
     </section>
   );
