@@ -123,17 +123,17 @@ const Footer = () => {
       <p>Saudi Arabia</p>
 
       <div className="flex items-start gap-2 mt-3">
-        <span className="w-12 shrink-0 font-medium">Ph:</span>
+        <span className="w-12 shrink-0 font-semibold">Ph:</span>
         <span className="break-words">+966 509 397408</span>
       </div>
 
       <div className="flex items-start gap-2">
-        <span className="w-12 shrink-0 font-medium">Ph:</span>
+        <span className="w-12 shrink-0 font-semibold">Ph:</span>
         <span className="break-words">+966 536 482159</span>
       </div>
 
       <div className="flex items-start gap-2">
-        <span className="w-12 shrink-0 font-medium">Mail:</span>
+        <span className="w-12 shrink-0 font-semibold">Mail:</span>
         <span className="break-all">info@saudimithal.com.sa</span>
       </div>
     </div>
