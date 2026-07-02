@@ -49,8 +49,7 @@ export default function InvestmentAdvisors() {
         </motion.div>
 
         {/* Advisors Grid */}
-        <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-8">
-          {advisors.slice(0, 4).map((advisor, index) => (
+<div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-8 items-stretch">          {advisors.slice(0, 4).map((advisor, index) => (
             <motion.div
               key={advisor.id}
               initial={{
@@ -69,8 +68,17 @@ export default function InvestmentAdvisors() {
                 duration: 0.8,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="overflow-hidden rounded-2xl lg:rounded-3xl border border-black/5 bg-[#FAFAFA]"
-            >
+className="
+overflow-hidden
+rounded-2xl
+lg:rounded-3xl
+border
+border-black/5
+bg-[#FAFAFA]
+h-full
+flex
+flex-col
+"            >
               {/* Portrait */}
               <div className="relative aspect-[4/5] overflow-hidden">
                 <img
