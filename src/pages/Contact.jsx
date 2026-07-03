@@ -49,7 +49,7 @@ export default function ContactPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="rounded-[32px] border border-black/5 bg-[#FAFAFA] p-8 lg:p-10"
+            className="rounded-[32px] border border-black/5 bg-[#FAFAFA] p-2 lg:p-10"
           >
             <h2 className="heading-3 text-[#4E0026]">
               Schedule Your Consultation
