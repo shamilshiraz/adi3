@@ -105,7 +105,7 @@ export default function InvestmentStrategiesCarousel() {
           <div
             className="
               flex
-              gap-8
+              gap-4
               overflow-x-auto
               snap-x
               snap-mandatory
@@ -140,10 +140,10 @@ export default function InvestmentStrategiesCarousel() {
                     relative
                     snap-center
                     flex-shrink-0
-                    w-[350px]
-                    sm:w-[380px]
-                    h-[480px]
-                    sm:h-[540px]
+                    w-[320px]
+                    sm:w-[350px]
+                    h-[500px]
+                    sm:h-[520px]
                     overflow-hidden
                     rounded-[32px]
                     group
