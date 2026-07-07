@@ -72,22 +72,22 @@ export default function Hero() {
       }}
     >
       {/* Luxury Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#08050d]/95 via-[#170813]/35 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#08050d]/30 via-[#170813]/35 to-transparent" />
 
       {/* Burgundy Tint */}
-      <div className="absolute inset-0 bg-[#3E0029]/10" />
+      {/* <div className="absolute inset-0 bg-[#3E0029]/10" /> */}
 
       {/* Main Glow */}
-      <div className="absolute top-[-200px] right-[-250px] h-[900px] w-[900px] rounded-full bg-[#3E0029]/20 blur-[180px]" />
+      {/* <div className="absolute top-[-200px] right-[-250px] h-[900px] w-[900px] rounded-full bg-[#3E0029]/20 blur-[180px]" /> */}
 
       {/* Secondary Glow */}
-      <div className="absolute bottom-[-250px] left-[-250px] h-[700px] w-[700px] rounded-full bg-[#7A1F42]/20 blur-[180px]" />
+      {/* <div className="absolute bottom-[-250px] left-[-250px] h-[700px] w-[700px] rounded-full bg-[#7A1F42]/20 blur-[180px]" /> */}
 
       {/* Extra Ambient Light */}
-      <div className="absolute top-1/2 right-1/4 h-[500px] w-[500px] rounded-full bg-[#b54f6c]/10 blur-[140px]" />
+      {/* <div className="absolute top-1/2 right-1/4 h-[500px] w-[500px] rounded-full bg-[#b54f6c]/10 blur-[140px]" /> */}
 
       {/* Bottom Fade */}
-      <div className="absolute bottom-0 left-0 h-40 w-full bg-gradient-to-t from-[#09050f] to-transparent" />
+      {/* <div className="absolute bottom-0 left-0 h-40 w-full bg-gradient-to-t from-[#09050f] to-transparent" /> */}
 
       <div className="relative z-10 mx-auto flex w-full flex-col items-center justify-between gap-12 lg:flex-row">
         {/* Left Content */}

@@ -80,19 +80,19 @@ export default function WhyChooseAdhiWhite() {
                 <div
                   className="
                     flex
-                    h-14
-                    w-14
+                    h-18
+                    w-18
                     items-center
                     justify-center
                     rounded-2xl
                     bg-[#EFBD78]/10
                   "
                 >
-                  <Icon
-                    size={28}
-                    strokeWidth={1.5}
-                    className="text-[#C48A3A]"
-                  />
+<Icon
+  size={48}
+  strokeWidth={1.75}
+  className="text-[#C48A3A]"
+/>
                 </div>
 
                 <h3 className="mt-8 text-2xl text-black">

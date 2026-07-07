@@ -124,9 +124,9 @@ export default function WhyChooseAdhi() {
   }}
   className="flex items-start gap-5"
 >
-  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#EFBD78]/30 bg-white/5">
+  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full border border-[#EFBD78]/30 bg-white/5">
     <Icon
-      size={22}
+      size={48}
       className="text-[#EFBD78]"
       strokeWidth={1.5}
     />
