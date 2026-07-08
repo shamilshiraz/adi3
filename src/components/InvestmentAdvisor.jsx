@@ -126,7 +126,7 @@ export default function InvestmentAdvisors() {
 
                 <a
                   href={advisor.contact}
-                  className="mt-4 lg:mt-6 w-full inline-flex items-center justify-center gap-1.5 lg:gap-2 rounded-xl bg-[#341222] px-2 lg:px-4 py-2 lg:py-3 text-[10px] lg:text-sm text-white hover:bg-[#4a1930] transition"
+                  className="mt-4 lg:mt-6 w-full inline-flex items-center justify-center gap-1.5 lg:gap-2 rounded-xl bg-[#4E0026] px-2 lg:px-4 py-2 lg:py-3 text-[10px] lg:text-sm text-white hover:bg-[#4a1930] transition"
                 >
                   <span className="truncate">Consult</span>
                   <ArrowUpRight
