@@ -143,8 +143,13 @@ export default function Hero() {
             safety.
           </motion.p>
           <div className="flex flex-col gap-4 sm:flex-row py-8">
-            <div className="btn-gold">Book your consultation</div>
-            <div className="btn-violet">Talk to agents</div>
+<button className="w-64 bg-[#fff] text-black py-2 font-medium  rounded-xl transition hover:opacity-90">
+  Book your consultation
+</button>
+
+<button className="w-64 bg-[#4E0026] text-white py-2 rounded-xl font-medium transition hover:opacity-90">
+  Talk to agents
+</button>
 
           </div>
         </div>

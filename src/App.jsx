@@ -21,9 +21,9 @@ function App() {
         <Landing/></>}/>        
         <Route path='/agents' element={<>
         <Agents/></>}/>      
-        <Route path='/events' element={<>
+        <Route path='/roadshows' element={<>
         <RoadshowsPage/></>}/>        
-        <Route path='/consultations' element={<>
+        <Route path='/developer' element={<>
         <Consultations/></>}/>        
         <Route path='/contact' element={<>
         <ContactPage/></>}/>

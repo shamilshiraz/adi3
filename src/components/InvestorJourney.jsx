@@ -1,64 +1,43 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
-  Phone,
-  Compass,
-  ChartColumn,
   Search,
+  Wallet,
   FileSignature,
-  Building2,
-  KeyRound,
-  ShieldCheck,
+  FileCheck,
+  CalendarClock,
 } from "lucide-react";
 
 const steps = [
   {
-    title: "Discovery Call",
+    title: "Select",
     description:
-      "Understanding your objectives, risk appetite and investment goals.",
-    icon: Phone,
-  },
-  {
-    title: "Investment Strategy",
-    description:
-      "Building a personalized strategy aligned with your objectives.",
-    icon: Compass,
-  },
-  {
-    title: "Market Analysis",
-    description:
-      "Reviewing market data, growth indicators and opportunities.",
-    icon: ChartColumn,
-  },
-  {
-    title: "Opportunity Selection",
-    description:
-      "Shortlisting opportunities that match your investment profile.",
+      "Choose your preferred property and developer.",
     icon: Search,
   },
   {
-    title: "Reservation",
+    title: "Booking Payment",
     description:
-      "Securing the selected opportunity with guided support.",
+      "Pay the booking amount/down payment (typically 10%).",
+    icon: Wallet,
+  },
+  {
+    title: "Booking Form",
+    description:
+      "Sign the Booking Form and complete the required payment (up to 24%, including DLD fees, as per the developer's payment plan).",
     icon: FileSignature,
   },
   {
-    title: "Purchase",
+    title: "Sales Agreement",
     description:
-      "Managing the transaction process from start to finish.",
-    icon: Building2,
+      "Sign the Sales Purchase Agreement (SPA).",
+    icon: FileCheck,
   },
   {
-    title: "Handover",
+    title: "Payment Plan",
     description:
-      "Transitioning ownership and preparing for occupancy.",
-    icon: KeyRound,
-  },
-  {
-    title: "Portfolio Support",
-    description:
-      "Continued advisory support beyond the purchase.",
-    icon: ShieldCheck,
+      "Continue making payments according to the developer's payment plan until completion.",
+    icon: CalendarClock,
   },
 ];
 
