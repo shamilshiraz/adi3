@@ -7,9 +7,33 @@ import {
   Coins,
   Crown,
   Landmark,
+  Building2,
+  Globe,
 } from "lucide-react";
 
 const opportunities = [
+  {
+  icon: Building2,
+  title: "Off-Plan Investments",
+  subtitle: "Early-stage developer launches",
+  image:
+    "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1400&q=80",
+  thesis:
+    "Access pre-launch and off-plan developments with attractive payment plans and strong appreciation potential before completion.",
+  risk: "Moderate to High",
+  investor: "Long-Term Investors",
+},
+{
+  icon: Globe,
+  title: "International Diversification",
+  subtitle: "Global property portfolio",
+  image:
+    "https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=1400&q=80",
+  thesis:
+    "Diversify your real estate holdings across key global markets to balance risk and capture international growth opportunities.",
+  risk: "Moderate",
+  investor: "Global Investors",
+},
   {
     icon: TrendingUp,
     title: "Capital Appreciation",
