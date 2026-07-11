@@ -22,7 +22,7 @@ const steps = [
     icon: Wallet,
   },
   {
-    title: "Booking Form",
+    title: "Book your unit",
     description:
       "Sign the Booking Form and complete the required payment (up to 24%, including DLD fees, as per the developer's payment plan).",
     icon: FileSignature,
@@ -34,7 +34,7 @@ const steps = [
     icon: FileCheck,
   },
   {
-    title: "Payment Plan",
+    title: "Continue Payments",
     description:
       "Continue making payments according to the developer's payment plan until completion.",
     icon: CalendarClock,
