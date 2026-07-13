@@ -62,16 +62,17 @@ function TimelineStepVertical({ step, index }) {
     [0, 1],
     ["rgba(255,255,255,0.05)", "#EFBD78"]
   );
+
   const nodeBorder = useTransform(
     scrollYProgress,
     [0, 1],
     ["rgba(255,255,255,0.1)", "#EFBD78"]
   );
-  const iconColor = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ["#EFBD78", "#1C0D17"]
-  );
+
+  // Front face: accent icon, rotates from 0° -> 180°
+  const frontRotateY = useTransform(scrollYProgress, [0, 1], [0, 180]);
+  // Back face: dark icon, rotates from -180° -> 0°, so it lands upright, not mirrored
+  const backRotateY = useTransform(scrollYProgress, [0, 1], [-180, 0]);
 
   return (
     <motion.div
@@ -94,12 +95,13 @@ function TimelineStepVertical({ step, index }) {
       }}
       className="relative flex gap-x-6"
     >
-      {/* Node - sits on the spine, same position mobile through desktop */}
+      {/* Node */}
       <div className="relative flex-none">
         <motion.div
           style={{
             backgroundColor: nodeBg,
             borderColor: nodeBorder,
+            perspective: 1000,
           }}
           className="
             relative
@@ -114,16 +116,58 @@ function TimelineStepVertical({ step, index }) {
             backdrop-blur-xl
           "
         >
-          <motion.div style={{ color: iconColor }}>
-            <Icon size={22} strokeWidth={1.5} />
-          </motion.div>
+          {/* Flip container */}
+          <div
+            style={{
+              position: "relative",
+              width: 22,
+              height: 22,
+              transformStyle: "preserve-3d",
+            }}
+          >
+            {/* Front face — accent icon */}
+            <motion.div
+              style={{
+                position: "absolute",
+                inset: 0,
+                rotateY: frontRotateY,
+                transformPerspective: 1000,
+                backfaceVisibility: "hidden",
+                color: "#EFBD78",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Icon size={22} strokeWidth={1.5} />
+            </motion.div>
+
+            {/* Back face — dark icon, matches filled node */}
+            <motion.div
+              style={{
+                position: "absolute",
+                inset: 0,
+                rotateY: backRotateY,
+                transformPerspective: 1000,
+                backfaceVisibility: "hidden",
+                color: "#1C0D17",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Icon size={22} strokeWidth={1.5} />
+            </motion.div>
+          </div>
         </motion.div>
       </div>
 
       {/* Content */}
       <div className="pb-2 pt-1">
         <h3 className="heading-4 text-light">{step.title}</h3>
-        <p className="small text-muted mt-3 max-w-md">{step.description}</p>
+        <p className="small text-muted mt-3 max-w-md">
+          {step.description}
+        </p>
       </div>
     </motion.div>
   );
@@ -142,48 +186,89 @@ function InvestorJourneyVertical() {
   const pathLength = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <div className="relative">
-      {/* Timeline */}
-      <div ref={timelineRef} className="relative mt-24">
-        {/* Scroll-drawn connector line - always visible, anchored to the
-            node column center (h-14 = 56px, so center sits at 28px) */}
-        <svg
-          className="absolute left-7 top-0 h-full w-px -translate-x-1/2"
-          width="2"
-          preserveAspectRatio="none"
-          style={{ height: "100%" }}
-        >
-          {/* Static track, same opacity as the original connector */}
-          <line
-            x1="1"
-            y1="0"
-            x2="1"
-            y2="100%"
-            stroke="rgba(255,255,255,0.1)"
-            strokeWidth="1"
-          />
-          {/* Animated draw-on progress line */}
-          <motion.line
-            x1="1"
-            y1="0"
-            x2="1"
-            y2="100%"
-            stroke="#EFBD78"
-            strokeWidth="1"
-            style={{
-              pathLength,
-            }}
-          />
-        </svg>
+<div className="relative">
+  <div ref={timelineRef} className="relative mt-24">
+    {/* Timeline Spine */}
+    <div className="absolute left-7 top-0 h-full -translate-x-1/2">
+      <svg
+        width="2"
+        height="100%"
+        preserveAspectRatio="none"
+        className="h-full overflow-visible"
+      >
+        {/* Base line */}
+        <line
+          x1="1"
+          y1="0"
+          x2="1"
+          y2="100%"
+          stroke="rgba(255,255,255,0.08)"
+          strokeWidth="1"
+        />
 
-        <div className="flex flex-col gap-y-12">
-          {steps.map((step, index) => (
-            <TimelineStepVertical key={step.title} step={step} index={index} />
-          ))}
-        </div>
-      </div>
+        {/* Glow */}
+        <motion.line
+          x1="1"
+          y1="0"
+          x2="1"
+          y2="100%"
+          stroke="#EFBD78"
+          strokeWidth="8"
+          strokeLinecap="round"
+          style={{
+            pathLength,
+            opacity: 0.18,
+            filter: "blur(8px)",
+          }}
+        />
+
+        {/* Main Progress */}
+        <motion.line
+          x1="1"
+          y1="0"
+          x2="1"
+          y2="100%"
+          stroke="#EFBD78"
+          strokeWidth="2"
+          strokeLinecap="round"
+          style={{
+            pathLength,
+          }}
+        />
+      </svg>
     </div>
-  );
+
+    {/* Decorative Blur */}
+    <motion.div
+      style={{
+        scaleY: pathLength,
+        transformOrigin: "top",
+      }}
+      className="
+        absolute
+        left-7
+        top-0
+        h-full
+        w-24
+        -translate-x-1/2
+        bg-[#EFBD78]/10
+        blur-3xl
+        pointer-events-none
+      "
+    />
+
+    {/* Timeline Steps */}
+    <div className="relative flex flex-col gap-y-14">
+      {steps.map((step, index) => (
+        <TimelineStepVertical
+          key={step.title}
+          step={step}
+          index={index}
+        />
+      ))}
+    </div>
+  </div>
+</div>  );
 }
 
 // ---------------------------------------------------------------------------
