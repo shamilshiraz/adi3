@@ -148,8 +148,8 @@ function Navbar() {
           {[
             "Home",
             "Agents",
-            "Events",
-            "Consultations",
+            "Roadshows",
+            "Developer",
             "Contact",
           ].map((item, i) => (
             <motion.div
