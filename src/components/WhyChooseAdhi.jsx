@@ -16,23 +16,23 @@ import {
 const pillars = [
   {
     icon: TrendingUp,
-    title: "Expertise",
-    description: "Years of market understanding.",
+    title: "Property advice",
+    description: "Get trusted guidance from experienced real estate professionals.",
   },
   {
     icon: KeyRound,
-    title: "Access",
-    description: "Off-market and early-stage opportunities.",
+    title: "Market Opportunities",
+    description: "Find properties that match your budget and investment goals.",
   },
   {
     icon: Compass,
-    title: "Guidance",
+    title: "Offer& payment plans",
     description: "Investment-first recommendations.",
   },
   {
     icon: Handshake,
-    title: "Relationships",
-    description: "Long-term investor partnerships.",
+    title: "End to end support",
+    description: "From property selection to handover, we're with you every step.",
   },
 ];
 
