@@ -100,6 +100,7 @@ export default function Hero() {
               lg:text-6xl
               leading-[1.05]
               overflow-visible
+              font-medium
             "
           />
 
@@ -107,6 +108,7 @@ export default function Hero() {
             text="Delivering Excellence."
             className="
               text-3xl
+              font-medium
               sm:text-5xl
               lg:text-6xl
               leading-[1.08]
