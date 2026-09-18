@@ -111,7 +111,7 @@ export default function InvestmentStrategiesCarousel() {
             FEATURED INVESTMENT OPPORTUNITIES
           </p>
 
-          <h2 className="heading-2 text-light mt-6 max-w-4xl">
+          <h2 className="heading-3 text-light mt-6 max-w-4xl">
             Investment Strategies
             <br />
             Tailored To Different Objectives
