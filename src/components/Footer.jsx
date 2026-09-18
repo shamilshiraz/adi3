@@ -51,18 +51,8 @@ const Footer = () => {
 
           <div className="space-y-1 text-sm sm:text-base break-words">
             <p></p>
-            <p>Financial District</p>
+            <p>Business Bay, Dubai</p>
             <p>UAE</p>
-
-            <div className="flex gap-2 pt-2">
-              <span className="w-10 shrink-0">Ph:</span>
-              <span className="break-all">+971</span>
-            </div>
-
-            <div className="flex gap-2">
-              <span className="w-10 shrink-0">Ph:</span>
-              <span className="break-all">+971</span>
-            </div>
 
             <div className="flex gap-2">
               <span className="w-10 shrink-0">Mail:</span>
