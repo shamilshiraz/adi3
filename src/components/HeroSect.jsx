@@ -101,6 +101,7 @@ export default function Hero() {
               leading-[1.05]
               overflow-visible
               font-medium
+                            sm:font-normal
             "
           />
 
@@ -109,6 +110,7 @@ export default function Hero() {
             className="
               text-3xl
               font-medium
+              sm:font-normal
               sm:text-5xl
               lg:text-6xl
               leading-[1.08]
