@@ -83,7 +83,7 @@ export default function RoadshowsEvents() {
                 ROADSHOWS & EVENTS
               </p>
 
-              <h2 className="heading-3 text-black mt-6">
+              <h2 className="heading-2 sm:heading-3 text-black mt-6">
                 Meet Us
                 <br />
                 Around The World

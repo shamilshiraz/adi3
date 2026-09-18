@@ -20,12 +20,12 @@ const row2 = [
 ];
 
 const row3 = [
+  "/clients/d&b.jpg",
+  "/clients/damac.webp",
+  "/clients/dubai-h.png",
   "/clients/fam.jpg",
   "/clients/haus.png",
   "/clients/sobha.png",
-  "/clients/aldar.png",
-  "/clients/better.png",
-  "/clients/binghatti.webp",
 ];
 
 function LogoRow({ logos, reverse = false }) {

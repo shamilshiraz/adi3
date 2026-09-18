@@ -68,11 +68,11 @@ export default function Hero() {
         py-20
       "
       style={{
-        backgroundImage: "url('/land.png')",
+        backgroundImage: "url('/land.jpg')",
       }}
     >
       {/* Luxury Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/35 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/55 to-transparent" />
 
       {/* Burgundy Tint */}
       {/* <div className="absolute inset-0 bg-[#3E0029]/10" /> */}
@@ -147,9 +147,9 @@ export default function Hero() {
   Book your consultation
 </button>
 
-<button className="w-64 bg-black text-white py-2 rounded-xl font-medium transition hover:opacity-90">
+{/* <button className="w-64 bg-black text-white py-2 rounded-xl font-medium transition hover:opacity-90">
   Talk to agents
-</button>
+</button> */}
 
           </div>
         </div>
