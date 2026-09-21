@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import {
   Search,
   Languages,
@@ -23,13 +22,8 @@ export default function Agents() {
       return (
         advisor.name.toLowerCase().includes(query) ||
         advisor.role.toLowerCase().includes(query) ||
-        advisor.specialization
-          .toLowerCase()
-          .includes(query) ||
-        advisor.languages
-          .join(" ")
-          .toLowerCase()
-          .includes(query)
+        advisor.specialization.toLowerCase().includes(query) ||
+        advisor.languages.join(" ").toLowerCase().includes(query)
       );
     });
   }, [search]);
@@ -41,19 +35,25 @@ export default function Agents() {
         overflow-hidden
         bg-white
         page-padding
-        py-28
+        py-20
+        sm:py-24
+        lg:py-28
       "
     >
+      {/* BACKGROUND GLOW */}
       <div
         className="
           absolute
           top-0
           right-0
-          h-[500px]
-          w-[500px]
+          h-[300px]
+          w-[300px]
+          sm:h-[500px]
+          sm:w-[500px]
           rounded-full
           bg-[#EFBD78]/10
-          blur-[180px]
+          blur-[140px]
+          sm:blur-[180px]
           pointer-events-none
         "
       />
@@ -77,17 +77,15 @@ export default function Agents() {
           }}
           className="max-w-4xl"
         >
-          <p className="eyebrow">
-            OUR ADVISORS
-          </p>
+          <p className="eyebrow">OUR ADVISORS</p>
 
-          <h1 className="heading-3 text-black mt-6">
+          <h1 className="heading-3 text-black mt-5 sm:mt-6">
             Meet Our
             <br />
             Investment Advisors
           </h1>
 
-          <p className="sub text-black/70 mt-6 max-w-2xl">
+          <p className="sub text-black/70 mt-5 sm:mt-6 max-w-2xl">
             Work directly with experienced advisors who help
             investors identify opportunities, evaluate
             developments, and build long-term wealth through
@@ -109,45 +107,49 @@ export default function Agents() {
             delay: 0.15,
             duration: 0.8,
           }}
-          className="mt-14"
+          className="mt-10 sm:mt-14"
         >
           <div
             className="
               flex
               items-center
-              gap-4
+              gap-3
+              sm:gap-4
               rounded-2xl
               border
               border-black/10
               bg-white
-              px-5
-              py-4
+              px-4
+              sm:px-5
+              py-3.5
+              sm:py-4
               shadow-sm
             "
           >
             <Search
               size={20}
-              className="text-black/40"
+              className="shrink-0 text-black/40"
             />
 
             <input
               type="text"
               placeholder="Search advisors, languages or specializations..."
               value={search}
-              onChange={(e) =>
-                setSearch(e.target.value)
-              }
+              onChange={(e) => setSearch(e.target.value)}
               className="
+                min-w-0
                 w-full
                 bg-transparent
                 outline-none
+                text-sm
+                sm:text-base
                 text-black
                 placeholder:text-black/40
               "
             />
           </div>
 
-          <p className="mt-4 text-sm text-black/60">
+          <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-black/60">
             {filteredAgents.length} advisor
             {filteredAgents.length !== 1 && "s"} found
           </p>
@@ -156,19 +158,19 @@ export default function Agents() {
         {/* GRID */}
         {filteredAgents.length > 0 ? (
           <div
-  className="
-    mt-8
-    sm:mt-10
-    lg:mt-12
-    grid
-    grid-cols-2
-    gap-3
-    sm:gap-5
-    lg:gap-8
-    lg:grid-cols-3
-    xl:grid-cols-4
-  "
->
+            className="
+              mt-8
+              sm:mt-10
+              lg:mt-12
+              grid
+              grid-cols-2
+              gap-3
+              sm:gap-5
+              lg:grid-cols-3
+              lg:gap-8
+              xl:grid-cols-4
+            "
+          >
             {filteredAgents.map((advisor, index) => (
               <motion.div
                 key={advisor.id}
@@ -187,8 +189,10 @@ export default function Agents() {
                   duration: 0.7,
                 }}
                 className="
+                  min-w-0
                   overflow-hidden
-                  rounded-[28px]
+                  rounded-2xl
+                  sm:rounded-[28px]
                   border
                   border-black/8
                   bg-[#FAFAFA]
@@ -223,123 +227,217 @@ export default function Agents() {
                 </div>
 
                 {/* CONTENT */}
-                <div className="p-4 sm:p-5 lg:p-6 min-w-0">
-                  <h3 className="text-base sm:text-lg lg:text-xl font-medium leading-tight text-black">
+                <div className="min-w-0 p-3 sm:p-5 lg:p-6">
+                  {/* NAME */}
+                  <h3
+                    className="
+                      text-sm
+                      sm:text-lg
+                      lg:text-xl
+                      font-medium
+                      leading-tight
+                      text-black
+                    "
+                  >
                     {advisor.name}
                   </h3>
 
-                  <p className="small text-black/60 mt-2">
+                  {/* ROLE */}
+                  <p
+                    className="
+                      mt-1.5
+                      sm:mt-2
+                      text-[10px]
+                      sm:text-sm
+                      leading-snug
+                      text-black/60
+                    "
+                  >
                     {advisor.role}
                   </p>
 
-                  <div className="h-px bg-black/5 my-6" />
+                  {/* DIVIDER */}
+                  <div className="my-4 sm:my-6 h-px bg-black/5" />
 
-                  <div className="space-y-5">
-                    <div className="flex gap-3">
+                  {/* DETAILS */}
+                  <div className="space-y-3 sm:space-y-5">
+                    {/* LANGUAGES */}
+                    <div className="flex min-w-0 gap-2 sm:gap-3">
                       <Languages
-                        size={18}
-                        className="text-[#D4AF37] mt-1"
+                        size={16}
+                        className="
+                          mt-0.5
+                          shrink-0
+                          text-[#D4AF37]
+                          sm:h-[18px]
+                          sm:w-[18px]
+                        "
                       />
 
-                      <div>
-                        <p className="small text-[#D4AF37]">
+                      <div className="min-w-0">
+                        <p
+                          className="
+                            text-[9px]
+                            sm:text-sm
+                            text-[#D4AF37]
+                          "
+                        >
                           Languages
                         </p>
 
-                        <p className="small text-black/70">
-                          {advisor.languages.join(
-                            " • "
-                          )}
+                        <p
+                          className="
+                            break-words
+                            text-[9px]
+                            sm:text-sm
+                            leading-snug
+                            text-black/70
+                          "
+                        >
+                          {advisor.languages.join(" • ")}
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex gap-3">
+                    {/* SPECIALIZATION */}
+                    <div className="flex min-w-0 gap-2 sm:gap-3">
                       <BriefcaseBusiness
-                        size={18}
-                        className="text-[#D4AF37] mt-1"
+                        size={16}
+                        className="
+                          mt-0.5
+                          shrink-0
+                          text-[#D4AF37]
+                          sm:h-[18px]
+                          sm:w-[18px]
+                        "
                       />
 
-                      <div>
-                        <p className="small text-[#D4AF37]">
+                      <div className="min-w-0">
+                        <p
+                          className="
+                            text-[9px]
+                            sm:text-sm
+                            text-[#D4AF37]
+                          "
+                        >
                           Specialization
                         </p>
 
-                        <p className="small text-black/70">
+                        <p
+                          className="
+                            break-words
+                            text-[9px]
+                            sm:text-sm
+                            leading-snug
+                            text-black/70
+                          "
+                        >
                           {advisor.specialization}
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex gap-3">
+                    {/* EXPERIENCE */}
+                    <div className="flex min-w-0 gap-2 sm:gap-3">
                       <Clock3
-                        size={18}
-                        className="text-[#D4AF37] mt-1"
+                        size={16}
+                        className="
+                          mt-0.5
+                          shrink-0
+                          text-[#D4AF37]
+                          sm:h-[18px]
+                          sm:w-[18px]
+                        "
                       />
 
-                      <div>
-                        <p className="small text-[#D4AF37]">
+                      <div className="min-w-0">
+                        <p
+                          className="
+                            text-[9px]
+                            sm:text-sm
+                            text-[#D4AF37]
+                          "
+                        >
                           Experience
                         </p>
 
-                        <p className="small text-black/70">
+                        <p
+                          className="
+                            break-words
+                            text-[9px]
+                            sm:text-sm
+                            leading-snug
+                            text-black/70
+                          "
+                        >
                           {advisor.experience}
                         </p>
                       </div>
                     </div>
                   </div>
 
-                 <a
-  href={`https://wa.me/${advisor.whatsapp}?text=${encodeURIComponent(
-    `Hi ${advisor.name}, I would like to discuss a Dubai real estate investment opportunity.`
-  )}`}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="
-  mt-6
-  sm:mt-8
-  w-full
-  inline-flex
-  items-center
-  justify-center
-  gap-2
-  rounded-full
-  bg-black
-  px-3
-  py-2.5
-  sm:px-6
-  sm:py-3
-  text-xs
-  sm:text-sm
-  font-medium
-  text-white
-  no-underline
-  transition-all
-  duration-300
-  hover:bg-[#D4AF37]
-  hover:text-black
-"
-  <span className="text-white">
-    Consult
-  </span>
+                  {/* WHATSAPP BUTTON */}
+                  <a
+                    href={`https://wa.me/${advisor.whatsapp}?text=${encodeURIComponent(
+                      `Hi ${advisor.name}, I would like to discuss a Dubai real estate investment opportunity.`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+                      mt-5
+                      sm:mt-8
+                      w-full
+                      inline-flex
+                      items-center
+                      justify-center
+                      gap-1.5
+                      sm:gap-2
+                      rounded-full
+                      bg-black
+                      px-2
+                      sm:px-6
+                      py-2
+                      sm:py-3
+                      text-[10px]
+                      sm:text-sm
+                      font-medium
+                      text-white
+                      no-underline
+                      transition-all
+                      duration-300
+                      hover:bg-[#D4AF37]
+                      hover:text-black
+                    "
+                  >
+                    <span className="text-white">
+                      Consult
+                    </span>
 
-  <ArrowUpRight
-    size={16}
-    className="text-white"
-  />
-</a>
+                    <ArrowUpRight
+                      size={14}
+                      className="
+                        shrink-0
+                        text-white
+                        sm:h-4
+                        sm:w-4
+                      "
+                    />
+                  </a>
                 </div>
               </motion.div>
             ))}
           </div>
         ) : (
+          /* NO RESULTS */
           <div
             className="
-              mt-16
+              mt-12
+              sm:mt-16
               rounded-3xl
               border
               border-black/10
-              p-12
+              p-8
+              sm:p-12
               text-center
             "
           >
@@ -347,9 +445,8 @@ export default function Agents() {
               No advisors found
             </h3>
 
-            <p className="text-black/60 mt-3">
-              Try searching by name,
-              specialization or language.
+            <p className="mt-3 text-sm text-black/60">
+              Try searching by name, specialization or language.
             </p>
           </div>
         )}
