@@ -96,7 +96,7 @@ export default function InvestmentStrategiesCarousel() {
         bg-black
         py-20
         sm:py-24
-        lg:py-32
+        lg:py-28
       "
     >
       {/* SUBTLE GOLD ATMOSPHERE */}
@@ -120,7 +120,7 @@ export default function InvestmentStrategiesCarousel() {
         <motion.div
           initial={{
             opacity: 0,
-            y: 35,
+            y: 30,
           }}
           whileInView={{
             opacity: 1,
@@ -128,7 +128,7 @@ export default function InvestmentStrategiesCarousel() {
           }}
           viewport={{ once: true }}
           transition={{
-            duration: 0.9,
+            duration: 0.8,
             ease: [0.16, 1, 0.3, 1],
           }}
           className="
@@ -139,72 +139,52 @@ export default function InvestmentStrategiesCarousel() {
             lg:px-20
           "
         >
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between lg:gap-20">
+          <div className="max-w-4xl">
 
-            <div className="max-w-4xl">
-
-              <div className="flex items-center gap-4">
-                <span className="h-px w-10 bg-[#D4AF37]" />
-
-                <p
-                  className="
-                    text-[10px]
-                    font-medium
-                    uppercase
-                    tracking-[0.3em]
-                    text-[#D4AF37]
-                    sm:text-xs
-                  "
-                >
-                  Investment Opportunities
-                </p>
-              </div>
-
-              <h2
-                className="
-                  mt-6
-                  max-w-4xl
-                  text-4xl
-                  font-medium
-                  leading-[0.98]
-                  tracking-[-0.035em]
-                  text-white
-                  sm:text-5xl
-                  lg:text-7xl
-                "
-              >
-                Different strategies.
-                <br />
-                <span className="text-white/35">
-                  One informed decision.
-                </span>
-              </h2>
-
-            </div>
-
-            <p
+            {/* HEADING */}
+            <h2
               className="
-                mt-7
-                max-w-md
-                text-sm
-                leading-7
-                text-white/50
-                lg:mb-2
-                lg:mt-0
-                lg:text-base
+                mt-2
+                max-w-4xl
+                text-3xl
+                font-medium
+                leading-tight
+                tracking-tight
+                text-white
+                sm:text-4xl
+                lg:text-5xl
               "
             >
-              Explore investment approaches built around
-              different objectives — from capital growth and
-              rental income to wealth preservation and
-              residency planning.
+              Different strategies.
+              <br />
+              <span className="text-white/35">
+                One informed decision.
+              </span>
+            </h2>
+
+            {/* DESCRIPTION */}
+            <p
+              className="
+                mt-6
+                max-w-2xl
+                text-sm
+                leading-7
+                text-white/55
+                sm:text-base
+                sm:leading-8
+              "
+            >
+              Every investor has different priorities.
+              Explore opportunities aligned with growth,
+              income generation, wealth preservation and
+              residency objectives.
             </p>
 
           </div>
         </motion.div>
 
-        {/* STRATEGY RAIL */}
-        <div className="mt-14 sm:mt-18 lg:mt-20">
+        {/* STRATEGY CARDS */}
+        <div className="mt-12 sm:mt-16 lg:mt-20">
 
           <div
             className="
@@ -223,7 +203,6 @@ export default function InvestmentStrategiesCarousel() {
               lg:px-20
             "
           >
-
             {opportunities.map((item, index) => {
               const Icon = item.icon;
               const isFirst = index === 0;
@@ -233,7 +212,7 @@ export default function InvestmentStrategiesCarousel() {
                   key={item.title}
                   initial={{
                     opacity: 0,
-                    y: 40,
+                    y: 30,
                   }}
                   whileInView={{
                     opacity: 1,
@@ -244,14 +223,14 @@ export default function InvestmentStrategiesCarousel() {
                     amount: 0.15,
                   }}
                   transition={{
-                    duration: 0.8,
+                    duration: 0.7,
                     delay: index * 0.06,
                     ease: [0.16, 1, 0.3, 1],
                   }}
                   className={`
                     group
                     relative
-                    h-[520px]
+                    h-[500px]
                     shrink-0
                     snap-start
                     overflow-hidden
@@ -265,7 +244,6 @@ export default function InvestmentStrategiesCarousel() {
                     }
                   `}
                 >
-
                   {/* IMAGE */}
                   <img
                     src={item.image}
@@ -283,19 +261,19 @@ export default function InvestmentStrategiesCarousel() {
                     "
                   />
 
-                  {/* DARK CINEMATIC GRADIENT */}
+                  {/* CINEMATIC OVERLAY */}
                   <div
                     className="
                       absolute
                       inset-0
                       bg-gradient-to-b
                       from-black/10
-                      via-black/15
+                      via-black/20
                       to-black/95
                     "
                   />
 
-                  {/* LEFT EDGE GOLD */}
+                  {/* GOLD EDGE */}
                   <div
                     className="
                       absolute
@@ -370,7 +348,6 @@ export default function InvestmentStrategiesCarousel() {
                       sm:p-8
                     "
                   >
-
                     {/* SUBTITLE */}
                     <p
                       className="
@@ -389,10 +366,9 @@ export default function InvestmentStrategiesCarousel() {
                     <h3
                       className={`
                         mt-3
-                        max-w-xl
                         font-medium
-                        leading-[1]
-                        tracking-[-0.025em]
+                        leading-[1.05]
+                        tracking-[-0.02em]
                         text-white
                         ${
                           isFirst
@@ -471,25 +447,21 @@ export default function InvestmentStrategiesCarousel() {
                       />
 
                     </div>
-
                   </div>
-
                 </motion.article>
               );
             })}
 
-            {/* END SPACING */}
             <div className="w-1 shrink-0 sm:w-4 lg:w-12" />
-
           </div>
 
         </div>
 
-        {/* BOTTOM NOTE */}
+        {/* SWIPE INDICATOR */}
         <div
           className="
             mx-auto
-            mt-2
+            mt-1
             flex
             max-w-[1440px]
             items-center
