@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import {
   CalendarDays,
   MapPin,
   ArrowUpRight,
+  ChevronDown,
 } from "lucide-react";
 
 const events = [
@@ -34,6 +35,13 @@ const events = [
 ];
 
 export default function RoadshowsEvents() {
+  const [selectedEvent, setSelectedEvent] = useState("all");
+
+  const filteredEvents =
+    selectedEvent === "all"
+      ? events
+      : events.filter((event) => event.city === selectedEvent);
+
   return (
     <section
       className="
@@ -242,13 +250,97 @@ export default function RoadshowsEvents() {
 
               </div>
 
+              {/* EVENT DROPDOWN */}
+              <div className="mt-10">
+
+                <label
+                  htmlFor="event-select"
+                  className="
+                    mb-3
+                    block
+                    text-[10px]
+                    font-medium
+                    uppercase
+                    tracking-[0.25em]
+                    text-black/45
+                  "
+                >
+                  Explore Events
+                </label>
+
+                <div className="relative">
+
+                  <select
+                    id="event-select"
+                    value={selectedEvent}
+                    onChange={(e) =>
+                      setSelectedEvent(e.target.value)
+                    }
+                    className="
+                      w-full
+                      appearance-none
+                      rounded-full
+                      border
+                      border-black/10
+                      bg-white
+                      px-5
+                      py-4
+                      pr-12
+                      text-sm
+                      font-medium
+                      text-black
+                      outline-none
+                      transition-all
+                      duration-300
+                      hover:border-[#D4AF37]/60
+                      focus:border-[#D4AF37]
+                      focus:ring-1
+                      focus:ring-[#D4AF37]/20
+                    "
+                  >
+
+                    {/* ALL EVENTS */}
+                    <option value="all">
+                      All Events
+                    </option>
+
+                    {/* LOOP THROUGH EVENTS */}
+                    {events.map((event) => (
+                      <option
+                        key={event.city}
+                        value={event.city}
+                      >
+                        {event.city} — {event.title}
+                      </option>
+                    ))}
+
+                  </select>
+
+                  <ChevronDown
+                    size={18}
+                    strokeWidth={1.5}
+                    className="
+                      pointer-events-none
+                      absolute
+                      right-5
+                      top-1/2
+                      -translate-y-1/2
+                      text-[#D4AF37]
+                    "
+                  />
+
+                </div>
+
+              </div>
+
             </motion.div>
           </div>
 
           {/* RIGHT EVENTS */}
           <div className="space-y-5 sm:space-y-7">
 
-            {events.map((event, index) => (
+            {filteredEvents.map((event, index) => (
+
               <motion.article
                 key={event.city}
                 initial={{
@@ -340,7 +432,7 @@ export default function RoadshowsEvents() {
                       text-[#D4AF37]
                     "
                   >
-                    0{index + 1}
+                    {String(index + 1).padStart(2, "0")}
                   </span>
 
                   <span className="h-px w-7 bg-[#D4AF37]/50" />
@@ -361,6 +453,7 @@ export default function RoadshowsEvents() {
 
                   {/* LOCATION */}
                   <div className="flex items-center gap-2">
+
                     <MapPin
                       size={15}
                       strokeWidth={1.5}
@@ -378,6 +471,7 @@ export default function RoadshowsEvents() {
                     >
                       {event.city}
                     </span>
+
                   </div>
 
                   {/* TITLE */}
@@ -409,7 +503,9 @@ export default function RoadshowsEvents() {
                       pt-5
                     "
                   >
+
                     <div className="flex items-center gap-2">
+
                       <CalendarDays
                         size={15}
                         strokeWidth={1.5}
@@ -427,6 +523,7 @@ export default function RoadshowsEvents() {
                       >
                         Upcoming Event
                       </span>
+
                     </div>
 
                     <ArrowUpRight
@@ -440,16 +537,40 @@ export default function RoadshowsEvents() {
                         group-hover:translate-x-1
                       "
                     />
+
                   </div>
 
                 </div>
+
               </motion.article>
+
             ))}
+
+            {/* NO EVENTS */}
+            {filteredEvents.length === 0 && (
+              <div
+                className="
+                  flex
+                  min-h-[300px]
+                  items-center
+                  justify-center
+                  border
+                  border-black/10
+                  text-center
+                "
+              >
+                <p className="text-black/50">
+                  No events found.
+                </p>
+              </div>
+            )}
 
           </div>
 
         </div>
+
       </div>
+
     </section>
   );
 }
