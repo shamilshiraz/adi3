@@ -156,15 +156,19 @@ export default function Agents() {
         {/* GRID */}
         {filteredAgents.length > 0 ? (
           <div
-            className="
-              mt-12
-              grid
-              gap-8
-              sm:grid-cols-2
-              lg:grid-cols-3
-              xl:grid-cols-4
-            "
-          >
+  className="
+    mt-8
+    sm:mt-10
+    lg:mt-12
+    grid
+    grid-cols-2
+    gap-3
+    sm:gap-5
+    lg:gap-8
+    lg:grid-cols-3
+    xl:grid-cols-4
+  "
+>
             {filteredAgents.map((advisor, index) => (
               <motion.div
                 key={advisor.id}
@@ -219,8 +223,8 @@ export default function Agents() {
                 </div>
 
                 {/* CONTENT */}
-                <div className="p-6">
-                  <h3 className="heading-4 text-black">
+                <div className="p-4 sm:p-5 lg:p-6 min-w-0">
+                  <h3 className="text-base sm:text-lg lg:text-xl font-medium leading-tight text-black">
                     {advisor.name}
                   </h3>
 
@@ -292,25 +296,29 @@ export default function Agents() {
   target="_blank"
   rel="noopener noreferrer"
   className="
-    mt-8
-    inline-flex
-    items-center
-    justify-center
-    gap-2
-    rounded-full
-    bg-black
-    px-6
-    py-3
-    text-sm
-    font-medium
-    text-white
-    no-underline
-    transition-all
-    duration-300
-    hover:bg-[#D4AF37]
-    hover:text-black
-  "
->
+  mt-6
+  sm:mt-8
+  w-full
+  inline-flex
+  items-center
+  justify-center
+  gap-2
+  rounded-full
+  bg-black
+  px-3
+  py-2.5
+  sm:px-6
+  sm:py-3
+  text-xs
+  sm:text-sm
+  font-medium
+  text-white
+  no-underline
+  transition-all
+  duration-300
+  hover:bg-[#D4AF37]
+  hover:text-black
+"
   <span className="text-white">
     Consult
   </span>
