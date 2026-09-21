@@ -30,19 +30,19 @@ const HeroSect = () => {
         className="
           absolute
           inset-0
-          bg-black/55
-          sm:bg-black/45
+          bg-black/60
+          sm:bg-black/50
         "
       />
 
-      {/* LEFT GRADIENT */}
+      {/* LEFT DARK GRADIENT */}
       <div
         className="
           absolute
           inset-0
           bg-gradient-to-r
-          from-black/85
-          via-black/50
+          from-black/90
+          via-black/55
           to-black/10
         "
       />
@@ -53,7 +53,7 @@ const HeroSect = () => {
           absolute
           inset-x-0
           bottom-0
-          h-[50%]
+          h-[45%]
           bg-gradient-to-t
           from-black/75
           to-transparent
@@ -95,8 +95,9 @@ const HeroSect = () => {
             duration: 1,
             ease: [0.16, 1, 0.3, 1],
           }}
-          className="max-w-[950px]"
+          className="w-full max-w-[1300px]"
         >
+
           {/* EYEBROW */}
           <p
             className="
@@ -104,8 +105,8 @@ const HeroSect = () => {
               text-[10px]
               font-medium
               uppercase
-              tracking-[0.25em]
-              text-[#D4AF37]
+              tracking-[0.28em]
+              text-[#EFBD78]
 
               sm:mb-6
               sm:text-xs
@@ -117,18 +118,18 @@ const HeroSect = () => {
           {/* HEADING */}
           <h1
             className="
-              max-w-[950px]
+              w-full
               font-medium
-              tracking-[-0.035em]
-              text-[#D4AF37]
+              tracking-[-0.04em]
+              text-[#EFBD78]
 
-              text-[clamp(2.6rem,9vw,4.5rem)]
+              text-[clamp(2.7rem,9vw,4.5rem)]
               leading-[1.02]
 
               sm:text-[clamp(3.5rem,7vw,6rem)]
               sm:leading-[1]
 
-              lg:text-[clamp(4rem,6vw,6.5rem)]
+              lg:text-[clamp(4rem,5.8vw,6.5rem)]
               lg:leading-[0.98]
             "
           >
@@ -136,7 +137,12 @@ const HeroSect = () => {
               Building Reliability.
             </span>
 
-            <span className="block">
+            <span
+              className="
+                block
+                lg:whitespace-nowrap
+              "
+            >
               Delivering Excellence.
             </span>
           </h1>
@@ -145,7 +151,7 @@ const HeroSect = () => {
           <p
             className="
               mt-6
-              max-w-[620px]
+              max-w-[680px]
               text-base
               leading-7
               text-white/85
@@ -162,6 +168,7 @@ const HeroSect = () => {
             investment opportunities, and strategic property
             advisory.
           </p>
+
         </motion.div>
       </div>
     </section>
