@@ -286,21 +286,21 @@ export default function Agents() {
                   </div>
 
                   <a
-                    to={`/agents/${advisor.slug}`}
-                    className="
-                      mt-8
-                      inline-flex
-                      items-center
-                      gap-2
-                      btn-violet
-                    "
-                  >
-                    Contact
+  to={`/agents/${advisor.slug}`}
+  className="
+    mt-8
+    inline-flex
+    items-center
+    gap-2
+    btn-violet
+  "
+>
+  Consult
 
-                    <ArrowUpRight
-                      size={16}
-                    />
-                  </a>
+  <ArrowUpRight
+    size={16}
+  />
+</a>
                 </div>
               </motion.div>
             ))}
