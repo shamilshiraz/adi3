@@ -342,7 +342,11 @@ export default function InvestmentAdvisors() {
                     CONSULT BUTTON
                 ================================= */}
                 <a
-                  href={advisor.contact}
+  href={`https://wa.me/${advisor.whatsapp}?text=${encodeURIComponent(
+    `Hi ${advisor.name}, I would like to discuss a Dubai real estate investment opportunity.`
+  )}`}
+  target="_blank"
+  rel="noopener noreferrer"
                   className="
                     mt-4
                     sm:mt-5
