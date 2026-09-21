@@ -8,6 +8,8 @@ import {
   CalendarClock,
 } from "lucide-react";
 
+const GOLD = "#D4AF37";
+
 const steps = [
   {
     title: "Select",
@@ -42,7 +44,7 @@ const steps = [
 ];
 
 // ============================================================
-// MOBILE / TABLET VERTICAL TIMELINE
+// MOBILE / TABLET
 // ============================================================
 
 function TimelineStepVertical({ step, index }) {
@@ -57,13 +59,13 @@ function TimelineStepVertical({ step, index }) {
   const nodeBg = useTransform(
     scrollYProgress,
     [0, 1],
-    ["rgba(255,255,255,0.05)", "#D4AF37"]
+    ["rgba(255,255,255,0.04)", GOLD]
   );
 
   const nodeBorder = useTransform(
     scrollYProgress,
     [0, 1],
-    ["rgba(255,255,255,0.1)", "#D4AF37"]
+    ["rgba(255,255,255,0.12)", GOLD]
   );
 
   const frontRotateY = useTransform(
@@ -83,18 +85,19 @@ function TimelineStepVertical({ step, index }) {
       ref={stepRef}
       initial={{
         opacity: 0,
-        y: 40,
-        filter: "blur(10px)",
+        y: 30,
       }}
       whileInView={{
         opacity: 1,
         y: 0,
-        filter: "blur(0px)",
       }}
-      viewport={{ once: true }}
+      viewport={{
+        once: true,
+        amount: 0.2,
+      }}
       transition={{
-        delay: (index % 4) * 0.05,
-        duration: 0.8,
+        delay: index * 0.05,
+        duration: 0.7,
         ease: [0.16, 1, 0.3, 1],
       }}
       className="relative flex gap-x-5 sm:gap-x-6"
@@ -131,7 +134,6 @@ function TimelineStepVertical({ step, index }) {
               transformStyle: "preserve-3d",
             }}
           >
-            {/* FRONT */}
             <motion.div
               style={{
                 position: "absolute",
@@ -139,7 +141,7 @@ function TimelineStepVertical({ step, index }) {
                 rotateY: frontRotateY,
                 transformPerspective: 1000,
                 backfaceVisibility: "hidden",
-                color: "#D4AF37",
+                color: GOLD,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -148,7 +150,6 @@ function TimelineStepVertical({ step, index }) {
               <Icon size={22} strokeWidth={1.5} />
             </motion.div>
 
-            {/* BACK */}
             <motion.div
               style={{
                 position: "absolute",
@@ -156,7 +157,7 @@ function TimelineStepVertical({ step, index }) {
                 rotateY: backRotateY,
                 transformPerspective: 1000,
                 backfaceVisibility: "hidden",
-                color: "#000000",
+                color: "#000",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -202,7 +203,7 @@ function InvestorJourneyVertical() {
         ref={timelineRef}
         className="relative mt-16 sm:mt-20"
       >
-        {/* TIMELINE SPINE */}
+        {/* SPINE */}
         <div className="absolute left-6 top-0 h-full -translate-x-1/2 sm:left-7">
           <svg
             width="2"
@@ -210,7 +211,6 @@ function InvestorJourneyVertical() {
             preserveAspectRatio="none"
             className="h-full overflow-visible"
           >
-            {/* BASE */}
             <line
               x1="1"
               y1="0"
@@ -220,29 +220,27 @@ function InvestorJourneyVertical() {
               strokeWidth="1"
             />
 
-            {/* GLOW */}
             <motion.line
               x1="1"
               y1="0"
               x2="1"
               y2="100%"
-              stroke="#D4AF37"
+              stroke={GOLD}
               strokeWidth="8"
               strokeLinecap="round"
               style={{
                 pathLength,
-                opacity: 0.18,
+                opacity: 0.15,
                 filter: "blur(8px)",
               }}
             />
 
-            {/* PROGRESS */}
             <motion.line
               x1="1"
               y1="0"
               x2="1"
               y2="100%"
-              stroke="#D4AF37"
+              stroke={GOLD}
               strokeWidth="2"
               strokeLinecap="round"
               style={{
@@ -251,27 +249,6 @@ function InvestorJourneyVertical() {
             />
           </svg>
         </div>
-
-        {/* DECORATIVE GLOW */}
-        <motion.div
-          style={{
-            scaleY: pathLength,
-            transformOrigin: "top",
-          }}
-          className="
-            pointer-events-none
-            absolute
-            left-6
-            top-0
-            h-full
-            w-20
-            -translate-x-1/2
-            bg-[#D4AF37]/10
-            blur-3xl
-            sm:left-7
-            sm:w-24
-          "
-        />
 
         {/* STEPS */}
         <div className="relative flex flex-col gap-y-12 sm:gap-y-14">
@@ -289,15 +266,124 @@ function InvestorJourneyVertical() {
 }
 
 // ============================================================
-// DESKTOP HORIZONTAL TIMELINE
+// DESKTOP
 // ============================================================
+
+function TimelineStepHorizontal({
+  step,
+  index,
+  total,
+  progress,
+}) {
+  const Icon = step.icon;
+
+  const segment = (0.88 - 0.12) / total;
+  const start = 0.12 + index * segment;
+  const end = start + segment * 0.65;
+
+  const fill = useTransform(
+    progress,
+    [start, end],
+    [0, 1],
+    { clamp: true }
+  );
+
+  const opacity = useTransform(
+    progress,
+    [start, end],
+    [0.45, 1],
+    { clamp: true }
+  );
+
+  const y = useTransform(
+    progress,
+    [start, end],
+    [15, 0],
+    { clamp: true }
+  );
+
+  const nodeBackground = useTransform(
+    fill,
+    [0, 1],
+    [
+      "rgba(212,175,55,0)",
+      "rgba(212,175,55,1)",
+    ]
+  );
+
+  return (
+    <motion.div
+      style={{
+        opacity,
+        y,
+      }}
+      className="
+        relative
+        flex
+        w-[300px]
+        flex-col
+        xl:w-[340px]
+      "
+    >
+      {/* NODE */}
+      <motion.div
+        style={{
+          backgroundColor: nodeBackground,
+        }}
+        className="
+          relative
+          z-10
+          -mt-[7px]
+          mb-8
+          flex
+          h-3.5
+          w-3.5
+          items-center
+          justify-center
+          rounded-full
+          border
+          border-[#D4AF37]
+        "
+      />
+
+      {/* CONTENT */}
+      <div className="flex flex-col gap-3">
+
+        <div className="flex items-center gap-3">
+          <span
+            className="
+              text-[10px]
+              uppercase
+              tracking-[0.2em]
+              text-[#D4AF37]
+            "
+          >
+            {String(index + 1).padStart(2, "0")}
+          </span>
+
+          <Icon
+            size={17}
+            strokeWidth={1.4}
+            className="text-[#D4AF37]"
+          />
+        </div>
+
+        <h3 className="heading-4 text-light">
+          {step.title}
+        </h3>
+
+        <p className="small max-w-[290px] text-muted">
+          {step.description}
+        </p>
+      </div>
+    </motion.div>
+  );
+}
 
 function InvestorJourneyHorizontal() {
   const targetRef = useRef(null);
   const rowRef = useRef(null);
   const [distance, setDistance] = useState(0);
-
-  const END_PADDING = 96;
 
   useEffect(() => {
     const measure = () => {
@@ -307,10 +393,7 @@ function InvestorJourneyHorizontal() {
       const viewportWidth = window.innerWidth;
 
       setDistance(
-        Math.max(
-          rowWidth - viewportWidth + END_PADDING,
-          0
-        )
+        Math.max(rowWidth - viewportWidth + 100, 0)
       );
     };
 
@@ -330,49 +413,69 @@ function InvestorJourneyHorizontal() {
 
   const x = useTransform(
     scrollYProgress,
-    [0, 0.08, 0.92, 1],
+    [0, 0.12, 0.88, 1],
     [0, 0, -distance, -distance]
   );
 
   const pathLength = useTransform(
     scrollYProgress,
-    [0.08, 0.92],
+    [0.12, 0.88],
     [0, 1],
-    { clamp: true }
+    {
+      clamp: true,
+    }
   );
 
   return (
-    <section
+    <div
       ref={targetRef}
-      className="relative h-[300vh]"
+      className="
+        relative
+        h-[250vh]
+      "
     >
-      <div className="sticky top-0 flex h-screen flex-col overflow-hidden">
+      <div
+        className="
+          sticky
+          top-0
+          flex
+          h-screen
+          flex-col
+          overflow-hidden
+        "
+      >
 
-        {/* HEADER */}
-        <div className="container-custom pt-24">
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 30,
-              filter: "blur(10px)",
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-              filter: "blur(0px)",
-            }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.8,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            className="max-w-4xl"
-          >
-            <p className="eyebrow">
+        {/* HEADER
+            IMPORTANT:
+            No whileInView here.
+            This guarantees the header is always visible.
+        */}
+        <div
+          className="
+            container-custom
+            shrink-0
+            px-5
+            pt-20
+            sm:px-8
+            lg:px-20
+            lg:pt-24
+          "
+        >
+          <div className="max-w-4xl">
+
+            <p
+              className="
+                text-[10px]
+                font-medium
+                uppercase
+                tracking-[0.3em]
+                text-[#D4AF37]
+                sm:text-xs
+              "
+            >
               INVESTOR JOURNEY
             </p>
 
-            {/* EDITORIAL HEADING */}
             <h2
               className="
                 mt-6
@@ -393,17 +496,35 @@ function InvestorJourneyHorizontal() {
               </span>
             </h2>
 
-            <p className="sub mt-6 max-w-2xl text-muted">
+            <p
+              className="
+                mt-6
+                max-w-2xl
+                text-sm
+                leading-7
+                text-white/55
+                sm:text-base
+                sm:leading-8
+              "
+            >
               Every investment follows a clear framework,
               ensuring confidence, transparency and informed
               decision-making from the first conversation to
               long-term portfolio support.
             </p>
-          </motion.div>
+          </div>
         </div>
 
-        {/* TIMELINE */}
-        <div className="flex flex-1 flex-col justify-center overflow-hidden">
+        {/* HORIZONTAL TIMELINE */}
+        <div
+          className="
+            flex
+            min-h-0
+            flex-1
+            items-center
+            overflow-hidden
+          "
+        >
           <motion.div
             ref={rowRef}
             style={{ x }}
@@ -411,11 +532,20 @@ function InvestorJourneyHorizontal() {
           >
             {/* SPINE */}
             <div className="relative h-px w-full">
+
               <svg
-                className="absolute left-0 top-0 h-px w-full"
+                className="
+                  absolute
+                  left-0
+                  top-0
+                  h-px
+                  w-full
+                  overflow-visible
+                "
                 height="2"
                 preserveAspectRatio="none"
               >
+                {/* TRACK */}
                 <line
                   x1="0"
                   y1="1"
@@ -425,22 +555,33 @@ function InvestorJourneyHorizontal() {
                   strokeWidth="1"
                 />
 
+                {/* GOLD PROGRESS */}
                 <motion.line
                   x1="0"
                   y1="1"
                   x2="100%"
                   y2="1"
-                  stroke="#D4AF37"
-                  strokeWidth="1"
+                  stroke={GOLD}
+                  strokeWidth="1.5"
                   style={{
                     pathLength,
                   }}
                 />
               </svg>
+
             </div>
 
             {/* STEPS */}
-            <div className="flex gap-x-20 px-4 pt-16">
+            <div
+              className="
+                flex
+                gap-x-16
+                px-5
+                pt-14
+                lg:gap-x-20
+                lg:px-20
+              "
+            >
               {steps.map((step, index) => (
                 <TimelineStepHorizontal
                   key={step.title}
@@ -453,94 +594,9 @@ function InvestorJourneyHorizontal() {
             </div>
           </motion.div>
         </div>
+
       </div>
-    </section>
-  );
-}
-
-function TimelineStepHorizontal({
-  step,
-  index,
-  total,
-  progress,
-}) {
-  const segment = (0.92 - 0.08) / total;
-  const start = 0.08 + index * segment;
-  const end = start + segment * 0.6;
-
-  const fill = useTransform(
-    progress,
-    [start, end],
-    [0, 1],
-    { clamp: true }
-  );
-
-  const opacity = useTransform(
-    progress,
-    [start, end],
-    [0.4, 1],
-    { clamp: true }
-  );
-
-  const y = useTransform(
-    progress,
-    [start, end],
-    [16, 0],
-    { clamp: true }
-  );
-
-  const nodeBackground = useTransform(
-    fill,
-    [0, 1],
-    [
-      "rgba(212,175,55,0)",
-      "rgba(212,175,55,1)",
-    ]
-  );
-
-  return (
-    <motion.div
-      style={{ opacity, y }}
-      className="relative flex w-[340px] flex-col"
-    >
-      {/* NODE */}
-      <motion.div
-        className="
-          -mt-[7px]
-          mb-10
-          h-3.5
-          w-3.5
-          rounded-full
-          border
-          border-[#D4AF37]
-        "
-        style={{
-          backgroundColor: nodeBackground,
-        }}
-      />
-
-      {/* CONTENT */}
-      <div className="flex flex-col gap-3">
-        <span
-          className="
-            small
-            uppercase
-            tracking-wide
-            text-[#D4AF37]/70
-          "
-        >
-          {String(index + 1).padStart(2, "0")}
-        </span>
-
-        <h3 className="heading-4 text-light">
-          {step.title}
-        </h3>
-
-        <p className="small mt-1 max-w-md text-muted">
-          {step.description}
-        </p>
-      </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -553,11 +609,13 @@ export default function InvestorJourney() {
     <section
       className="
         relative
+        overflow-hidden
         bg-black
         page-padding
         section-spacing
       "
     >
+
       {/* MOBILE / TABLET */}
       <div className="container-custom relative lg:hidden">
 
@@ -565,25 +623,33 @@ export default function InvestorJourney() {
           initial={{
             opacity: 0,
             y: 30,
-            filter: "blur(10px)",
           }}
           whileInView={{
             opacity: 1,
             y: 0,
-            filter: "blur(0px)",
           }}
-          viewport={{ once: true }}
+          viewport={{
+            once: true,
+          }}
           transition={{
             duration: 0.8,
             ease: [0.16, 1, 0.3, 1],
           }}
-          className="max-w-4xl"
         >
-          <p className="eyebrow">
+
+          <p
+            className="
+              text-[10px]
+              font-medium
+              uppercase
+              tracking-[0.3em]
+              text-[#D4AF37]
+              sm:text-xs
+            "
+          >
             INVESTOR JOURNEY
           </p>
 
-          {/* EDITORIAL HEADING */}
           <h2
             className="
               mt-6
@@ -603,12 +669,23 @@ export default function InvestorJourney() {
             </span>
           </h2>
 
-          <p className="sub mt-6 max-w-2xl text-muted">
+          <p
+            className="
+              mt-6
+              max-w-2xl
+              text-sm
+              leading-7
+              text-white/55
+              sm:text-base
+              sm:leading-8
+            "
+          >
             Every investment follows a clear framework,
             ensuring confidence, transparency and informed
             decision-making from the first conversation to
             long-term portfolio support.
           </p>
+
         </motion.div>
 
         <InvestorJourneyVertical />
@@ -619,35 +696,37 @@ export default function InvestorJourney() {
         <InvestorJourneyHorizontal />
       </div>
 
-      {/* BOTTOM CTA */}
+      {/* CTA */}
       <div className="container-custom relative">
+
         <motion.div
           initial={{
             opacity: 0,
-            y: 30,
+            y: 20,
           }}
           whileInView={{
             opacity: 1,
             y: 0,
           }}
-          viewport={{ once: true }}
+          viewport={{
+            once: true,
+          }}
           transition={{
-            delay: 0.2,
-            duration: 0.8,
+            duration: 0.7,
           }}
           className="
-            mt-20
+            mt-16
             flex
-            flex-wrap
-            gap-4
-            sm:mt-24
+            sm:mt-20
           "
         >
           <button className="btn-gold">
             Book Consultation
           </button>
         </motion.div>
+
       </div>
+
     </section>
   );
 }
