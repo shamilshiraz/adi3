@@ -134,6 +134,7 @@ function TimelineStepVertical({ step, index }) {
               transformStyle: "preserve-3d",
             }}
           >
+            {/* FRONT ICON */}
             <motion.div
               style={{
                 position: "absolute",
@@ -150,6 +151,7 @@ function TimelineStepVertical({ step, index }) {
               <Icon size={22} strokeWidth={1.5} />
             </motion.div>
 
+            {/* BACK ICON */}
             <motion.div
               style={{
                 position: "absolute",
@@ -157,7 +159,7 @@ function TimelineStepVertical({ step, index }) {
                 rotateY: backRotateY,
                 transformPerspective: 1000,
                 backfaceVisibility: "hidden",
-                color: "#000",
+                color: "#000000",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -203,7 +205,7 @@ function InvestorJourneyVertical() {
         ref={timelineRef}
         className="relative mt-16 sm:mt-20"
       >
-        {/* SPINE */}
+        {/* VERTICAL SPINE */}
         <div className="absolute left-6 top-0 h-full -translate-x-1/2 sm:left-7">
           <svg
             width="2"
@@ -211,6 +213,7 @@ function InvestorJourneyVertical() {
             preserveAspectRatio="none"
             className="h-full overflow-visible"
           >
+            {/* BASE */}
             <line
               x1="1"
               y1="0"
@@ -220,6 +223,7 @@ function InvestorJourneyVertical() {
               strokeWidth="1"
             />
 
+            {/* GOLD GLOW */}
             <motion.line
               x1="1"
               y1="0"
@@ -235,6 +239,7 @@ function InvestorJourneyVertical() {
               }}
             />
 
+            {/* GOLD PROGRESS */}
             <motion.line
               x1="1"
               y1="0"
@@ -266,7 +271,7 @@ function InvestorJourneyVertical() {
 }
 
 // ============================================================
-// DESKTOP
+// DESKTOP HORIZONTAL TIMELINE
 // ============================================================
 
 function TimelineStepHorizontal({
@@ -335,11 +340,8 @@ function TimelineStepHorizontal({
           z-10
           -mt-[7px]
           mb-8
-          flex
           h-3.5
           w-3.5
-          items-center
-          justify-center
           rounded-full
           border
           border-[#D4AF37]
@@ -393,7 +395,10 @@ function InvestorJourneyHorizontal() {
       const viewportWidth = window.innerWidth;
 
       setDistance(
-        Math.max(rowWidth - viewportWidth + 100, 0)
+        Math.max(
+          rowWidth - viewportWidth + 40,
+          0
+        )
       );
     };
 
@@ -411,6 +416,10 @@ function InvestorJourneyHorizontal() {
     offset: ["start start", "end end"],
   });
 
+  /*
+    The timeline now uses a shorter scroll range.
+    This prevents the huge empty black area.
+  */
   const x = useTransform(
     scrollYProgress,
     [0, 0.12, 0.88, 1],
@@ -431,7 +440,7 @@ function InvestorJourneyHorizontal() {
       ref={targetRef}
       className="
         relative
-        h-[250vh]
+        h-[160vh]
       "
     >
       <div
@@ -445,11 +454,10 @@ function InvestorJourneyHorizontal() {
         "
       >
 
-        {/* HEADER
-            IMPORTANT:
-            No whileInView here.
-            This guarantees the header is always visible.
-        */}
+        {/* ==================================================
+            DESKTOP HEADER
+        ================================================== */}
+
         <div
           className="
             container-custom
@@ -491,6 +499,7 @@ function InvestorJourneyHorizontal() {
             >
               A Structured Process
               <br />
+
               <span className="text-white/35">
                 Designed Around Investors
               </span>
@@ -512,10 +521,14 @@ function InvestorJourneyHorizontal() {
               decision-making from the first conversation to
               long-term portfolio support.
             </p>
+
           </div>
         </div>
 
-        {/* HORIZONTAL TIMELINE */}
+        {/* ==================================================
+            HORIZONTAL TIMELINE
+        ================================================== */}
+
         <div
           className="
             flex
@@ -527,9 +540,12 @@ function InvestorJourneyHorizontal() {
         >
           <motion.div
             ref={rowRef}
-            style={{ x }}
+            style={{
+              x,
+            }}
             className="relative w-max"
           >
+
             {/* SPINE */}
             <div className="relative h-px w-full">
 
@@ -545,7 +561,8 @@ function InvestorJourneyHorizontal() {
                 height="2"
                 preserveAspectRatio="none"
               >
-                {/* TRACK */}
+
+                {/* BASE LINE */}
                 <line
                   x1="0"
                   y1="1"
@@ -567,18 +584,20 @@ function InvestorJourneyHorizontal() {
                     pathLength,
                   }}
                 />
+
               </svg>
 
             </div>
 
-            {/* STEPS */}
+            {/* TIMELINE CARDS */}
+
             <div
               className="
                 flex
-                gap-x-16
-                px-5
+                gap-x-12
+                px-8
                 pt-14
-                lg:gap-x-20
+                lg:gap-x-16
                 lg:px-20
               "
             >
@@ -591,7 +610,11 @@ function InvestorJourneyHorizontal() {
                   progress={scrollYProgress}
                 />
               ))}
+
+              {/* END BREATHING ROOM */}
+              <div className="w-8 shrink-0 lg:w-16" />
             </div>
+
           </motion.div>
         </div>
 
@@ -601,7 +624,7 @@ function InvestorJourneyHorizontal() {
 }
 
 // ============================================================
-// MAIN
+// MAIN COMPONENT
 // ============================================================
 
 export default function InvestorJourney() {
@@ -609,14 +632,16 @@ export default function InvestorJourney() {
     <section
       className="
         relative
-        overflow-hidden
         bg-black
         page-padding
         section-spacing
       "
     >
 
-      {/* MOBILE / TABLET */}
+      {/* ==================================================
+          MOBILE / TABLET
+      ================================================== */}
+
       <div className="container-custom relative lg:hidden">
 
         <motion.div
@@ -664,6 +689,7 @@ export default function InvestorJourney() {
           >
             A Structured Process
             <br />
+
             <span className="text-white/35">
               Designed Around Investors
             </span>
@@ -689,14 +715,21 @@ export default function InvestorJourney() {
         </motion.div>
 
         <InvestorJourneyVertical />
+
       </div>
 
-      {/* DESKTOP */}
+      {/* ==================================================
+          DESKTOP
+      ================================================== */}
+
       <div className="hidden lg:block">
         <InvestorJourneyHorizontal />
       </div>
 
-      {/* CTA */}
+      {/* ==================================================
+          CTA
+      ================================================== */}
+
       <div className="container-custom relative">
 
         <motion.div
