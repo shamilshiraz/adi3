@@ -337,214 +337,225 @@ export default function RoadshowsEvents() {
           </div>
 
           {/* RIGHT EVENTS */}
-          <div className="space-y-5 sm:space-y-7">
+         {/* RIGHT VERTICAL EVENT CAROUSEL */}
+<div
+  className="
+    h-[520px]
+    overflow-y-auto
+    snap-y
+    snap-mandatory
+    scroll-smooth
+    space-y-6
+    pr-1
+    [scrollbar-width:none]
+    [&::-webkit-scrollbar]:hidden
+    sm:h-[600px]
+    lg:h-[680px]
+  "
+>
+  {filteredEvents.map((event, index) => (
+    <motion.article
+      key={event.city}
+      initial={{
+        opacity: 0,
+        y: 30,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.2,
+      }}
+      transition={{
+        delay: index * 0.08,
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      className="
+        group
+        relative
+        h-[500px]
+        snap-start
+        overflow-hidden
+        bg-black
+        sm:h-[580px]
+        lg:h-[640px]
+      "
+    >
+      {/* IMAGE */}
+      <img
+        src={event.image}
+        alt={event.title}
+        className="
+          absolute
+          inset-0
+          h-full
+          w-full
+          object-cover
+          transition-transform
+          duration-[1200ms]
+          ease-out
+          group-hover:scale-105
+        "
+      />
 
-            {filteredEvents.map((event, index) => (
+      {/* DARK GRADIENT */}
+      <div
+        className="
+          absolute
+          inset-0
+          bg-gradient-to-t
+          from-black
+          via-black/35
+          to-transparent
+        "
+      />
 
-              <motion.article
-                key={event.city}
-                initial={{
-                  opacity: 0,
-                  y: 40,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                  amount: 0.15,
-                }}
-                transition={{
-                  delay: index * 0.08,
-                  duration: 0.8,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className="
-                  group
-                  relative
-                  h-[360px]
-                  overflow-hidden
-                  bg-black
-                  sm:h-[430px]
-                  lg:h-[460px]
-                "
-              >
+      {/* GOLD EDGE */}
+      <div
+        className="
+          absolute
+          left-0
+          top-0
+          h-full
+          w-px
+          bg-[#D4AF37]/70
+        "
+      />
 
-                {/* IMAGE */}
-                <img
-                  src={event.image}
-                  alt={event.title}
-                  className="
-                    absolute
-                    inset-0
-                    h-full
-                    w-full
-                    object-cover
-                    transition-transform
-                    duration-[1200ms]
-                    ease-out
-                    group-hover:scale-105
-                  "
-                />
+      {/* EVENT NUMBER */}
+      <div
+        className="
+          absolute
+          left-6
+          top-6
+          flex
+          items-center
+          gap-3
+          sm:left-8
+          sm:top-8
+        "
+      >
+        <span
+          className="
+            text-[10px]
+            tracking-[0.3em]
+            text-[#D4AF37]
+            sm:text-xs
+          "
+        >
+          {String(index + 1).padStart(2, "0")}
+        </span>
 
-                {/* DARK OVERLAY */}
-                <div
-                  className="
-                    absolute
-                    inset-0
-                    bg-gradient-to-t
-                    from-black
-                    via-black/35
-                    to-black/5
-                  "
-                />
+        <span
+          className="
+            h-px
+            w-8
+            bg-[#D4AF37]/60
+          "
+        />
+      </div>
 
-                {/* GOLD EDGE */}
-                <div
-                  className="
-                    absolute
-                    bottom-0
-                    left-0
-                    top-0
-                    w-px
-                    bg-[#D4AF37]/60
-                  "
-                />
+      {/* EVENT CONTENT */}
+      <div
+        className="
+          absolute
+          bottom-0
+          left-0
+          right-0
+          p-6
+          sm:p-8
+          lg:p-10
+        "
+      >
+        {/* LOCATION */}
+        <div className="flex items-center gap-2">
+          <MapPin
+            size={16}
+            strokeWidth={1.5}
+            className="text-[#D4AF37]"
+          />
 
-                {/* EVENT NUMBER */}
-                <div
-                  className="
-                    absolute
-                    left-5
-                    top-5
-                    flex
-                    items-center
-                    gap-3
-                    sm:left-7
-                    sm:top-7
-                  "
-                >
-                  <span
-                    className="
-                      text-[10px]
-                      tracking-[0.25em]
-                      text-[#D4AF37]
-                    "
-                  >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+          <span
+            className="
+              text-[10px]
+              uppercase
+              tracking-[0.25em]
+              text-[#D4AF37]
+              sm:text-xs
+            "
+          >
+            {event.city}
+          </span>
+        </div>
 
-                  <span className="h-px w-7 bg-[#D4AF37]/50" />
-                </div>
+        {/* TITLE */}
+        <h3
+          className="
+            mt-4
+            max-w-3xl
+            text-3xl
+            font-light
+            leading-[1.05]
+            tracking-[-0.03em]
+            text-white
+            sm:text-4xl
+            lg:text-5xl
+          "
+        >
+          {event.title}
+        </h3>
 
-                {/* CONTENT */}
-                <div
-                  className="
-                    absolute
-                    bottom-0
-                    left-0
-                    right-0
-                    p-5
-                    sm:p-7
-                    lg:p-9
-                  "
-                >
+        {/* BOTTOM LINE */}
+        <div
+          className="
+            mt-8
+            flex
+            items-center
+            justify-between
+            border-t
+            border-white/20
+            pt-5
+          "
+        >
+          <div className="flex items-center gap-2">
+            <CalendarDays
+              size={16}
+              strokeWidth={1.5}
+              className="text-white/60"
+            />
 
-                  {/* LOCATION */}
-                  <div className="flex items-center gap-2">
+            <span
+              className="
+                text-[10px]
+                uppercase
+                tracking-[0.15em]
+                text-white/60
+                sm:text-xs
+              "
+            >
+              Upcoming Event
+            </span>
+          </div>
 
-                    <MapPin
-                      size={15}
-                      strokeWidth={1.5}
-                      className="text-[#D4AF37]"
-                    />
-
-                    <span
-                      className="
-                        text-[10px]
-                        uppercase
-                        tracking-[0.2em]
-                        text-[#D4AF37]
-                        sm:text-xs
-                      "
-                    >
-                      {event.city}
-                    </span>
-
-                  </div>
-
-                  {/* TITLE */}
-                  <h3
-                    className="
-                      mt-3
-                      max-w-2xl
-                      text-2xl
-                      font-light
-                      leading-tight
-                      tracking-[-0.02em]
-                      text-white
-                      sm:text-3xl
-                      lg:text-4xl
-                    "
-                  >
-                    {event.title}
-                  </h3>
-
-                  {/* BOTTOM ROW */}
-                  <div
-                    className="
-                      mt-6
-                      flex
-                      items-center
-                      justify-between
-                      border-t
-                      border-white/15
-                      pt-5
-                    "
-                  >
-
-                    <div className="flex items-center gap-2">
-
-                      <CalendarDays
-                        size={15}
-                        strokeWidth={1.5}
-                        className="text-white/60"
-                      />
-
-                      <span
-                        className="
-                          text-[10px]
-                          uppercase
-                          tracking-[0.12em]
-                          text-white/60
-                          sm:text-xs
-                        "
-                      >
-                        Upcoming Event
-                      </span>
-
-                    </div>
-
-                    <ArrowUpRight
-                      size={20}
-                      strokeWidth={1.5}
-                      className="
-                        text-[#D4AF37]
-                        transition-transform
-                        duration-300
-                        group-hover:-translate-y-1
-                        group-hover:translate-x-1
-                      "
-                    />
-
-                  </div>
-
-                </div>
-
-              </motion.article>
-
-            ))}
+          <ArrowUpRight
+            size={22}
+            strokeWidth={1.5}
+            className="
+              text-[#D4AF37]
+              transition-all
+              duration-300
+              group-hover:-translate-y-1
+              group-hover:translate-x-1
+            "
+          />
+        </div>
+      </div>
+    </motion.article>
+  ))}
+</div>
 
             {/* NO EVENTS */}
             {filteredEvents.length === 0 && (
