@@ -63,7 +63,7 @@ export default function RoadshowsEvents() {
 
               {/* Gold accent */}
               <div className="mb-7 flex items-center gap-4">
-                <span className="h-px w-12 bg-[#EFBD78]" />
+                
 
                 <span className="text-xs uppercase tracking-[0.3em] text-[#C48A3A]">
                   ROADSHOWS
