@@ -129,11 +129,19 @@ const Footer = () => {
               </p>
 
               <a
-                href="mailto:info@adhihaven.com"
-                className="break-all text-[11px] text-white/80 transition-colors hover:text-[#D4AF37] sm:text-sm lg:text-base"
-              >
-                info@adhihaven.com
-              </a>
+  href="mailto:info@adhihaven.com"
+  className="
+    whitespace-nowrap
+    text-[10px]
+    text-white/80
+    transition-colors
+    hover:text-[#D4AF37]
+    sm:text-sm
+    lg:text-base
+  "
+>
+  info@adhihaven.com
+</a>
             </div>
           </div>
 
