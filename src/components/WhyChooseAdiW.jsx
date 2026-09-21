@@ -41,30 +41,97 @@ export default function WhyChooseAdhiWhite() {
         relative
         overflow-hidden
         bg-white
-        px-4
-        sm:px-20
-        py-28
+        page-padding
+        section-spacing
       "
     >
       {/* Ambient Glow */}
-      <div className="absolute top-0 left-0 h-[600px] w-[600px] rounded-full bg-[#EFBD78]/10 blur-[180px]" />
+      <div
+        className="
+          pointer-events-none
+          absolute
+          left-0
+          top-0
+          h-[500px]
+          w-[500px]
+          rounded-full
+          bg-[#D4AF37]/[0.06]
+          blur-[180px]
+        "
+      />
 
-      <div className="relative mx-auto">
-        <div className="max-w-4xl">
-          <h2 className="heading-2 text-black">
-            Why People Choose Dubai for Investment
+      <div className="container-custom relative">
+
+        {/* HEADER */}
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+          }}
+          transition={{
+            duration: 0.8,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+          className="max-w-5xl"
+        >
+          <h2
+            className="
+              text-[2.8rem]
+              font-light
+              leading-[1.02]
+              tracking-[-0.04em]
+              text-black
+              sm:text-[4rem]
+              lg:text-[4.5rem]
+            "
+          >
+            Why People Choose
+            <br />
+
+            <span className="text-black/40">
+              Dubai for Investment
+            </span>
           </h2>
 
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-black/60">
-            Dubai continues to attract investors from around the world thanks to
-            its stable economy, tax advantages, exceptional infrastructure, and
-            globally recognized real estate market. Whether you're looking for
-            rental income, long-term appreciation, or a secure investment,
+          <p
+            className="
+              mt-6
+              max-w-3xl
+              text-sm
+              leading-7
+              text-black/55
+              sm:text-base
+              sm:leading-8
+            "
+          >
+            Dubai continues to attract investors from around the world thanks
+            to its stable economy, tax advantages, exceptional infrastructure,
+            and globally recognized real estate market. Whether you're looking
+            for rental income, long-term appreciation, or a secure investment,
             Dubai offers opportunities for every type of investor.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="mt-20 grid gap-10 md:grid-cols-2 xl:grid-cols-4">
+        {/* CONTENT */}
+        <div
+          className="
+            mt-16
+            grid
+            gap-x-10
+            gap-y-14
+            sm:mt-20
+            md:grid-cols-2
+            xl:grid-cols-4
+            xl:gap-x-8
+          "
+        >
           {sections.map((item, index) => {
             const Icon = item.icon;
 
@@ -81,26 +148,71 @@ export default function WhyChooseAdhiWhite() {
                   y: 0,
                   filter: "blur(0px)",
                 }}
-                viewport={{ once: true }}
+                viewport={{
+                  once: true,
+                  amount: 0.2,
+                }}
                 transition={{
                   delay: index * 0.08,
                   duration: 0.8,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="flex items-start gap-5"
+                className="
+                  flex
+                  items-start
+                  gap-4
+                  sm:gap-5
+                "
               >
-                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg border border-[#EFBD78]/30 bg-[#EFBD78]/10">
+                {/* ICON */}
+                <div
+                  className="
+                    flex
+                    h-14
+                    w-14
+                    shrink-0
+                    items-center
+                    justify-center
+                    rounded-xl
+                    border
+                    border-[#D4AF37]/25
+                    bg-[#D4AF37]/[0.06]
+                    sm:h-16
+                    sm:w-16
+                  "
+                >
                   <Icon
-                    size={40}
+                    size={34}
                     className="text-[#C48A3A]"
-                    strokeWidth={1.5}
+                    strokeWidth={1.4}
                   />
                 </div>
 
-                <div>
-                  <h3 className="text-2xl text-black">{item.title}</h3>
+                {/* TEXT */}
+                <div className="min-w-0">
+                  <h3
+                    className="
+                      text-xl
+                      font-normal
+                      leading-tight
+                      tracking-[-0.02em]
+                      text-black
+                      sm:text-2xl
+                    "
+                  >
+                    {item.title}
+                  </h3>
 
-                  <p className="mt-3 leading-relaxed text-black/60">
+                  <p
+                    className="
+                      mt-3
+                      text-sm
+                      leading-6
+                      text-black/55
+                      sm:text-[15px]
+                      sm:leading-7
+                    "
+                  >
                     {item.description}
                   </p>
                 </div>
@@ -108,6 +220,7 @@ export default function WhyChooseAdhiWhite() {
             );
           })}
         </div>
+
       </div>
     </section>
   );
