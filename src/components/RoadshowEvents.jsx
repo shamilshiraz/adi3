@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import {
@@ -12,25 +11,25 @@ const events = [
     city: "Dubai",
     title: "Dubai Investor Roadshow",
     image:
-      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=1600&auto=format&fit=crop",
   },
   {
     city: "London",
     title: "London Investment Briefing",
     image:
-      "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=1600&auto=format&fit=crop",
   },
   {
     city: "Mumbai",
     title: "Mumbai Investor Forum",
     image:
-      "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?q=80&w=1600&auto=format&fit=crop",
   },
   {
     city: "Riyadh",
     title: "Private Investor Event",
     image:
-      "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?q=80&w=1200&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?q=80&w=1600&auto=format&fit=crop",
   },
 ];
 
@@ -39,39 +38,61 @@ export default function RoadshowsEvents() {
     <section
       className="
         relative
-        bg-[#fff]
-        page-padding
-        py-32
+        overflow-hidden
+        bg-white
+        px-5
+        py-20
+        sm:px-8
+        sm:py-24
+        lg:px-20
+        lg:py-32
       "
     >
-      <div className="container-custom relative">
+      {/* SUBTLE GOLD GLOW */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -right-40
+          top-20
+          h-[450px]
+          w-[450px]
+          rounded-full
+          bg-[#D4AF37]/5
+          blur-[160px]
+        "
+      />
+
+      <div className="relative mx-auto max-w-[1440px]">
+
         <div
           className="
             grid
-            lg:grid-cols-[480px_1fr]
-            gap-16
-            lg:gap-24
             items-start
+            gap-12
+            lg:grid-cols-[420px_1fr]
+            lg:gap-20
+            xl:grid-cols-[480px_1fr]
+            xl:gap-24
           "
         >
-          {/* LEFT STICKY */}
+
+          {/* LEFT CONTENT */}
           <div
             className="
               lg:sticky
-              lg:top-32
-              h-fit
+              lg:top-28
+              lg:h-fit
             "
           >
             <motion.div
               initial={{
                 opacity: 0,
-                y: 40,
-                filter: "blur(10px)",
+                y: 30,
               }}
               whileInView={{
                 opacity: 1,
                 y: 0,
-                filter: "blur(0px)",
               }}
               viewport={{ once: true }}
               transition={{
@@ -79,94 +100,189 @@ export default function RoadshowsEvents() {
                 ease: [0.16, 1, 0.3, 1],
               }}
             >
-              <p className="eyebrow">
+
+              {/* EYEBROW */}
+              <p
+                className="
+                  text-[10px]
+                  font-medium
+                  uppercase
+                  tracking-[0.3em]
+                  text-[#D4AF37]
+                  sm:text-xs
+                "
+              >
                 ROADSHOWS & EVENTS
               </p>
 
-              <h2 className="heading-2 sm:heading-3 text-black mt-6">
+              {/* HEADING */}
+              <h2
+                className="
+                  mt-5
+                  max-w-xl
+                  text-[2.8rem]
+                  font-light
+                  leading-[1.02]
+                  tracking-[-0.04em]
+                  text-black
+                  sm:text-[4rem]
+                  lg:text-[4.5rem]
+                "
+              >
                 Meet Us
                 <br />
-                Around The World
+                <span className="text-black/35">
+                  Around The World
+                </span>
               </h2>
 
-              <p className="sub text-black mt-6">
+              {/* DESCRIPTION */}
+              <p
+                className="
+                  mt-6
+                  max-w-md
+                  text-sm
+                  leading-7
+                  text-black/60
+                  sm:text-base
+                  sm:leading-8
+                "
+              >
                 Join exclusive investor roadshows,
                 private briefings and curated events
                 hosted across major global markets.
               </p>
 
-              <div className="divider-light my-10" />
+              {/* DIVIDER */}
+              <div className="my-8 h-px w-full bg-black/10 sm:my-10" />
 
-              <div className="grid grid-cols-3 gap-6">
+              {/* STATS */}
+              <div className="grid grid-cols-3 gap-4 sm:gap-6">
+
                 <div>
-                  <div className="heading-3 text-">
+                  <div
+                    className="
+                      text-2xl
+                      font-light
+                      tracking-tight
+                      text-black
+                      sm:text-3xl
+                    "
+                  >
                     25+
                   </div>
 
-                  <div className="small text- mt-2">
+                  <div
+                    className="
+                      mt-2
+                      text-[9px]
+                      uppercase
+                      tracking-[0.12em]
+                      text-black/45
+                      sm:text-[10px]
+                    "
+                  >
                     Investor Events
                   </div>
                 </div>
 
                 <div>
-                  <div className="heading-3 text-">
+                  <div
+                    className="
+                      text-2xl
+                      font-light
+                      tracking-tight
+                      text-black
+                      sm:text-3xl
+                    "
+                  >
                     1000+
                   </div>
 
-                  <div className="small text- mt-2">
+                  <div
+                    className="
+                      mt-2
+                      text-[9px]
+                      uppercase
+                      tracking-[0.12em]
+                      text-black/45
+                      sm:text-[10px]
+                    "
+                  >
                     Attendees
                   </div>
                 </div>
 
                 <div>
-                  <div className="heading-3 text-">
+                  <div
+                    className="
+                      text-2xl
+                      font-light
+                      tracking-tight
+                      text-black
+                      sm:text-3xl
+                    "
+                  >
                     4+
                   </div>
 
-                  <div className="small text- mt-2">
+                  <div
+                    className="
+                      mt-2
+                      text-[9px]
+                      uppercase
+                      tracking-[0.12em]
+                      text-black/45
+                      sm:text-[10px]
+                    "
+                  >
                     Countries
                   </div>
                 </div>
+
               </div>
 
-              <button className="btn-violet mt-10">
-                View Events
-              </button>
             </motion.div>
           </div>
 
-          {/* RIGHT SCROLLING CARDS */}
-          <div className="space-y-10">
+          {/* RIGHT EVENTS */}
+          <div className="space-y-5 sm:space-y-7">
+
             {events.map((event, index) => (
-              <motion.div
+              <motion.article
                 key={event.city}
                 initial={{
                   opacity: 0,
-                  y: 50,
-                  filter: "blur(10px)",
+                  y: 40,
                 }}
                 whileInView={{
                   opacity: 1,
                   y: 0,
-                  filter: "blur(0px)",
                 }}
-                viewport={{ once: true }}
+                viewport={{
+                  once: true,
+                  amount: 0.15,
+                }}
                 transition={{
                   delay: index * 0.08,
                   duration: 0.8,
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 className="
-                  relative
-                  overflow-hidden
-                  rounded-[32px]
-                  h-[460px]
                   group
+                  relative
+                  h-[360px]
+                  overflow-hidden
+                  bg-black
+                  sm:h-[430px]
+                  lg:h-[460px]
                 "
               >
+
+                {/* IMAGE */}
                 <img
                   src={event.image}
-                  alt={event.city}
+                  alt={event.title}
                   className="
                     absolute
                     inset-0
@@ -174,66 +290,164 @@ export default function RoadshowsEvents() {
                     w-full
                     object-cover
                     transition-transform
-                    duration-700
+                    duration-[1200ms]
+                    ease-out
                     group-hover:scale-105
                   "
                 />
 
+                {/* DARK OVERLAY */}
                 <div
                   className="
                     absolute
                     inset-0
                     bg-gradient-to-t
                     from-black
-                    via-black/30
-                    to-transparent
+                    via-black/35
+                    to-black/5
                   "
                 />
 
+                {/* GOLD EDGE */}
                 <div
                   className="
                     absolute
-                    inset-x-0
                     bottom-0
-                    p-10
+                    left-0
+                    top-0
+                    w-px
+                    bg-[#D4AF37]/60
+                  "
+                />
+
+                {/* EVENT NUMBER */}
+                <div
+                  className="
+                    absolute
+                    left-5
+                    top-5
+                    flex
+                    items-center
+                    gap-3
+                    sm:left-7
+                    sm:top-7
                   "
                 >
-                  <div className="flex items-center gap-2 text-[#EFBD78]">
-                    <MapPin size={16} />
+                  <span
+                    className="
+                      text-[10px]
+                      tracking-[0.25em]
+                      text-[#D4AF37]
+                    "
+                  >
+                    0{index + 1}
+                  </span>
 
-                    <span className="small">
+                  <span className="h-px w-7 bg-[#D4AF37]/50" />
+                </div>
+
+                {/* CONTENT */}
+                <div
+                  className="
+                    absolute
+                    bottom-0
+                    left-0
+                    right-0
+                    p-5
+                    sm:p-7
+                    lg:p-9
+                  "
+                >
+
+                  {/* LOCATION */}
+                  <div className="flex items-center gap-2">
+                    <MapPin
+                      size={15}
+                      strokeWidth={1.5}
+                      className="text-[#D4AF37]"
+                    />
+
+                    <span
+                      className="
+                        text-[10px]
+                        uppercase
+                        tracking-[0.2em]
+                        text-[#D4AF37]
+                        sm:text-xs
+                      "
+                    >
                       {event.city}
                     </span>
                   </div>
 
-                  <h3 className="heading-4 text-light mt-5">
+                  {/* TITLE */}
+                  <h3
+                    className="
+                      mt-3
+                      max-w-2xl
+                      text-2xl
+                      font-light
+                      leading-tight
+                      tracking-[-0.02em]
+                      text-white
+                      sm:text-3xl
+                      lg:text-4xl
+                    "
+                  >
                     {event.title}
                   </h3>
 
-                  <div className="mt-8 flex items-center justify-between">
-                    <div className="flex items-center gap-2 text-white/70">
-                      <CalendarDays size={16} />
+                  {/* BOTTOM ROW */}
+                  <div
+                    className="
+                      mt-6
+                      flex
+                      items-center
+                      justify-between
+                      border-t
+                      border-white/15
+                      pt-5
+                    "
+                  >
+                    <div className="flex items-center gap-2">
+                      <CalendarDays
+                        size={15}
+                        strokeWidth={1.5}
+                        className="text-white/60"
+                      />
 
-                      <span className="small">
+                      <span
+                        className="
+                          text-[10px]
+                          uppercase
+                          tracking-[0.12em]
+                          text-white/60
+                          sm:text-xs
+                        "
+                      >
                         Upcoming Event
                       </span>
                     </div>
 
                     <ArrowUpRight
                       size={20}
+                      strokeWidth={1.5}
                       className="
-                        text-[#EFBD78]
+                        text-[#D4AF37]
                         transition-transform
                         duration-300
-                        group-hover:translate-x-1
                         group-hover:-translate-y-1
+                        group-hover:translate-x-1
                       "
                     />
                   </div>
+
                 </div>
-              </motion.div>
+              </motion.article>
             ))}
+
           </div>
+
         </div>
       </div>
     </section>
