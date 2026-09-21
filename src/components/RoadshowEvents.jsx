@@ -70,10 +70,25 @@ export default function RoadshowsEvents() {
                 </span>
               </div>
 
-             <h2 className="heading-2 text-black mt-6">
-  Meet Us
-  <br />
-  Around The World
+           <h2
+  className="
+    mt-6
+    max-w-[900px]
+    text-[3.25rem]
+    leading-[0.92]
+    tracking-[-0.055em]
+    font-normal
+    text-black
+    sm:text-6xl
+    sm:leading-[0.92]
+    lg:text-7xl
+    xl:text-[5.5rem]
+  "
+>
+  <span className="block">Meet Us</span>
+  <span className="block text-black/30">
+    Around The World
+  </span>
 </h2>
               <p className="sub mt-6 max-w-md text-black/60">
                 Join exclusive investor roadshows, private briefings
