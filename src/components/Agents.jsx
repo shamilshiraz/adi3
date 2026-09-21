@@ -117,7 +117,6 @@ export default function Agents() {
               flex
               items-center
               gap-3
-              sm:gap-4
               rounded-2xl
               border
               border-black/10
@@ -158,7 +157,7 @@ export default function Agents() {
           </p>
         </motion.div>
 
-        {/* GRID */}
+        {/* ADVISOR GRID */}
         {filteredAgents.length > 0 ? (
           <div
             className="
@@ -175,39 +174,45 @@ export default function Agents() {
             "
           >
             {filteredAgents.map((advisor, index) => (
-              <motion.div
+              <motion.article
                 key={advisor.id}
                 initial={{
                   opacity: 0,
-                  y: 40,
-                  filter: "blur(10px)",
+                  y: 30,
                 }}
                 animate={{
                   opacity: 1,
                   y: 0,
-                  filter: "blur(0px)",
                 }}
                 transition={{
                   delay: index * 0.05,
-                  duration: 0.7,
+                  duration: 0.6,
                 }}
                 className="
-                  min-w-0
-                  h-full
-                  overflow-hidden
-                  rounded-2xl
-                  sm:rounded-[28px]
-                  border
-                  border-black/8
-                  bg-[#FAFAFA]
                   group
                   flex
+                  min-w-0
+                  h-full
                   flex-col
+                  overflow-hidden
+                  rounded-[20px]
+                  sm:rounded-[28px]
+                  border
+                  border-black/10
+                  bg-[#FAFAFA]
+                  shadow-[0_8px_30px_rgba(0,0,0,0.04)]
                 "
               >
 
                 {/* IMAGE */}
-                <div className="relative aspect-[4/5] overflow-hidden">
+                <div
+                  className="
+                    relative
+                    aspect-[1/1]
+                    sm:aspect-[4/5]
+                    overflow-hidden
+                  "
+                >
                   <img
                     src={advisor.image}
                     alt={advisor.name}
@@ -226,7 +231,7 @@ export default function Agents() {
                       absolute
                       inset-0
                       bg-gradient-to-t
-                      from-black/30
+                      from-black/20
                       via-transparent
                       to-transparent
                     "
@@ -236,7 +241,6 @@ export default function Agents() {
                 {/* CONTENT */}
                 <div
                   className="
-                    min-w-0
                     flex
                     flex-1
                     flex-col
@@ -249,11 +253,11 @@ export default function Agents() {
                   {/* NAME */}
                   <h3
                     className="
-                      text-sm
+                      text-[14px]
                       sm:text-lg
                       lg:text-xl
                       font-medium
-                      leading-tight
+                      leading-[1.15]
                       text-black
                     "
                   >
@@ -264,18 +268,25 @@ export default function Agents() {
                   <p
                     className="
                       mt-1.5
-                      sm:mt-2
-                      text-[10px]
+                      text-[9px]
                       sm:text-sm
-                      leading-snug
-                      text-black/60
+                      lg:text-base
+                      leading-tight
+                      text-black/55
                     "
                   >
                     {advisor.role}
                   </p>
 
                   {/* DIVIDER */}
-                  <div className="my-4 sm:my-6 h-px bg-black/5" />
+                  <div
+                    className="
+                      my-3
+                      sm:my-5
+                      h-px
+                      bg-black/8
+                    "
+                  />
 
                   {/* DETAILS */}
                   <div className="space-y-3 sm:space-y-5">
@@ -298,6 +309,7 @@ export default function Agents() {
                           className="
                             text-[9px]
                             sm:text-sm
+                            leading-none
                             text-[#D4AF37]
                           "
                         >
@@ -306,11 +318,12 @@ export default function Agents() {
 
                         <p
                           className="
+                            mt-1
                             break-words
                             text-[9px]
                             sm:text-sm
-                            leading-snug
-                            text-black/70
+                            leading-tight
+                            text-black/65
                           "
                         >
                           {advisor.languages.join(" • ")}
@@ -336,6 +349,7 @@ export default function Agents() {
                           className="
                             text-[9px]
                             sm:text-sm
+                            leading-none
                             text-[#D4AF37]
                           "
                         >
@@ -344,11 +358,12 @@ export default function Agents() {
 
                         <p
                           className="
+                            mt-1
                             break-words
                             text-[9px]
                             sm:text-sm
-                            leading-snug
-                            text-black/70
+                            leading-tight
+                            text-black/65
                           "
                         >
                           {advisor.specialization}
@@ -374,6 +389,7 @@ export default function Agents() {
                           className="
                             text-[9px]
                             sm:text-sm
+                            leading-none
                             text-[#D4AF37]
                           "
                         >
@@ -382,11 +398,11 @@ export default function Agents() {
 
                         <p
                           className="
-                            break-words
+                            mt-1
                             text-[9px]
                             sm:text-sm
-                            leading-snug
-                            text-black/70
+                            leading-tight
+                            text-black/65
                           "
                         >
                           {advisor.experience}
@@ -396,7 +412,7 @@ export default function Agents() {
 
                   </div>
 
-                  {/* WHATSAPP BUTTON */}
+                  {/* CONSULT */}
                   <a
                     href={`https://wa.me/${advisor.whatsapp}?text=${encodeURIComponent(
                       `Hi ${advisor.name}, I would like to discuss a Dubai real estate investment opportunity.`
@@ -404,20 +420,18 @@ export default function Agents() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="
-                      mt-auto
-                      pt-5
-                      sm:pt-8
+                      mt-4
+                      sm:mt-7
+                      flex
                       w-full
-                      inline-flex
                       items-center
                       justify-center
                       gap-1.5
-                      sm:gap-2
                       rounded-full
                       bg-black
-                      px-2
+                      px-3
+                      py-2.5
                       sm:px-6
-                      py-2
                       sm:py-3
                       text-[10px]
                       sm:text-sm
@@ -430,28 +444,21 @@ export default function Agents() {
                       hover:text-black
                     "
                   >
-                    <span className="text-white">
+                    <span>
                       Consult
                     </span>
 
                     <ArrowUpRight
                       size={14}
-                      className="
-                        shrink-0
-                        text-white
-                        sm:h-4
-                        sm:w-4
-                      "
+                      className="shrink-0 sm:h-4 sm:w-4"
                     />
                   </a>
 
                 </div>
-              </motion.div>
+              </motion.article>
             ))}
           </div>
         ) : (
-
-          /* NO RESULTS */
           <div
             className="
               mt-12
@@ -472,7 +479,6 @@ export default function Agents() {
               Try searching by name, specialization or language.
             </p>
           </div>
-
         )}
       </div>
     </section>
