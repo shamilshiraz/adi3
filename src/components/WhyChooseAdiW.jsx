@@ -5,29 +5,34 @@ import {
   ArrowRightLeft,
   Hammer,
   KeyRound,
+  ArrowUpRight,
 } from "lucide-react";
 
 const sections = [
   {
     icon: Building2,
+    number: "01",
     title: "Buy a Property",
     description:
       "Dubai attracts investors worldwide with its strong market growth, tax-friendly environment, world-class lifestyle, and high-quality real estate opportunities. It offers potential for long-term wealth creation, rental income, and a secure investment future.",
   },
   {
     icon: ArrowRightLeft,
+    number: "02",
     title: "Rent or Sell",
     description:
       "After purchasing a property, you have the flexibility to choose your investment strategy. Generate regular rental income or sell the property later to benefit from capital appreciation and maximize your returns.",
   },
   {
     icon: Hammer,
+    number: "03",
     title: "Off-Plan Properties",
     description:
       "Invest in properties under construction without paying the full amount upfront. Build ownership through flexible payment plans, then earn rental income or benefit from long-term value appreciation after completion.",
   },
   {
     icon: KeyRound,
+    number: "04",
     title: "Ready Properties",
     description:
       "Ready properties give you immediate ownership and access. Complete the purchase, receive your keys, move in, or start earning rental income right away without waiting for construction.",
@@ -45,24 +50,25 @@ export default function WhyChooseAdhiWhite() {
         section-spacing
       "
     >
-      {/* Ambient Glow */}
+      {/* Very subtle gold atmosphere */}
       <div
         className="
           pointer-events-none
           absolute
-          left-0
+          -right-40
           top-0
           h-[500px]
           w-[500px]
           rounded-full
-          bg-[#D4AF37]/[0.06]
-          blur-[180px]
+          bg-[#D4AF37]/[0.035]
+          blur-[150px]
         "
       />
 
       <div className="container-custom relative">
 
-        {/* HEADER */}
+        {/* ================= HEADER ================= */}
+
         <motion.div
           initial={{
             opacity: 0,
@@ -72,9 +78,7 @@ export default function WhyChooseAdhiWhite() {
             opacity: 1,
             y: 0,
           }}
-          viewport={{
-            once: true,
-          }}
+          viewport={{ once: true }}
           transition={{
             duration: 0.8,
             ease: [0.16, 1, 0.3, 1],
@@ -83,27 +87,41 @@ export default function WhyChooseAdhiWhite() {
         >
           <h2
             className="
-              text-[2.8rem]
+              text-[3rem]
               font-light
-              leading-[1.02]
-              tracking-[-0.04em]
+              leading-[0.98]
+              tracking-[-0.045em]
               text-black
-              sm:text-[4rem]
-              lg:text-[4.5rem]
+              sm:text-[4.5rem]
+              lg:text-[5.5rem]
             "
           >
             Why People Choose
             <br />
-
-            <span className="text-black/40">
+            <span className="text-black/35">
               Dubai for Investment
             </span>
           </h2>
 
+          <div className="mt-8 flex items-center gap-4">
+            <span className="h-px w-16 bg-[#D4AF37]" />
+
+            <span
+              className="
+                text-[10px]
+                uppercase
+                tracking-[0.3em]
+                text-[#B8862C]
+              "
+            >
+              THE DUBAI ADVANTAGE
+            </span>
+          </div>
+
           <p
             className="
-              mt-6
-              max-w-3xl
+              mt-7
+              max-w-2xl
               text-sm
               leading-7
               text-black/55
@@ -113,25 +131,14 @@ export default function WhyChooseAdhiWhite() {
           >
             Dubai continues to attract investors from around the world thanks
             to its stable economy, tax advantages, exceptional infrastructure,
-            and globally recognized real estate market. Whether you're looking
-            for rental income, long-term appreciation, or a secure investment,
-            Dubai offers opportunities for every type of investor.
+            and globally recognized real estate market.
           </p>
         </motion.div>
 
-        {/* CONTENT */}
-        <div
-          className="
-            mt-16
-            grid
-            gap-x-10
-            gap-y-14
-            sm:mt-20
-            md:grid-cols-2
-            xl:grid-cols-4
-            xl:gap-x-8
-          "
-        >
+        {/* ================= LIST ================= */}
+
+        <div className="mt-20 sm:mt-28">
+
           {sections.map((item, index) => {
             const Icon = item.icon;
 
@@ -141,12 +148,10 @@ export default function WhyChooseAdhiWhite() {
                 initial={{
                   opacity: 0,
                   y: 40,
-                  filter: "blur(10px)",
                 }}
                 whileInView={{
                   opacity: 1,
                   y: 0,
-                  filter: "blur(0px)",
                 }}
                 viewport={{
                   once: true,
@@ -158,67 +163,147 @@ export default function WhyChooseAdhiWhite() {
                   ease: [0.16, 1, 0.3, 1],
                 }}
                 className="
-                  flex
-                  items-start
-                  gap-4
-                  sm:gap-5
+                  group
+                  relative
+                  border-t
+                  border-black/10
+                  py-10
+                  sm:py-14
+                  lg:py-16
                 "
               >
-                {/* ICON */}
+                {/* Gold progress line */}
+                <motion.div
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    delay: index * 0.08 + 0.2,
+                    duration: 0.8,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className="
+                    absolute
+                    left-0
+                    top-0
+                    h-px
+                    w-20
+                    origin-left
+                    bg-[#D4AF37]
+                  "
+                />
+
                 <div
                   className="
-                    flex
-                    h-14
-                    w-14
-                    shrink-0
-                    items-center
-                    justify-center
-                    rounded-xl
-                    border
-                    border-[#D4AF37]/25
-                    bg-[#D4AF37]/[0.06]
-                    sm:h-16
-                    sm:w-16
+                    grid
+                    gap-8
+                    lg:grid-cols-[100px_1fr_1.2fr_80px]
+                    lg:items-start
                   "
                 >
-                  <Icon
-                    size={34}
-                    className="text-[#C48A3A]"
-                    strokeWidth={1.4}
-                  />
-                </div>
 
-                {/* TEXT */}
-                <div className="min-w-0">
-                  <h3
+                  {/* NUMBER */}
+                  <div
                     className="
-                      text-xl
-                      font-normal
-                      leading-tight
-                      tracking-[-0.02em]
-                      text-black
-                      sm:text-2xl
+                      flex
+                      items-center
+                      gap-3
                     "
                   >
-                    {item.title}
-                  </h3>
+                    <span
+                      className="
+                        text-xs
+                        font-medium
+                        tracking-[0.2em]
+                        text-[#B8862C]
+                      "
+                    >
+                      {item.number}
+                    </span>
 
+                    <div className="h-px w-8 bg-[#D4AF37]/40 lg:hidden" />
+                  </div>
+
+                  {/* TITLE + ICON */}
+                  <div className="flex items-start gap-5">
+
+                    <div
+                      className="
+                        mt-1
+                        shrink-0
+                        text-[#C48A3A]
+                        transition-transform
+                        duration-500
+                        group-hover:translate-x-1
+                      "
+                    >
+                      <Icon
+                        size={32}
+                        strokeWidth={1.25}
+                      />
+                    </div>
+
+                    <h3
+                      className="
+                        max-w-md
+                        text-2xl
+                        font-light
+                        leading-tight
+                        tracking-[-0.025em]
+                        text-black
+                        sm:text-3xl
+                        lg:text-4xl
+                      "
+                    >
+                      {item.title}
+                    </h3>
+
+                  </div>
+
+                  {/* DESCRIPTION */}
                   <p
                     className="
-                      mt-3
+                      max-w-xl
                       text-sm
-                      leading-6
-                      text-black/55
-                      sm:text-[15px]
-                      sm:leading-7
+                      leading-7
+                      text-black/50
+                      sm:text-base
+                      sm:leading-8
                     "
                   >
                     {item.description}
                   </p>
+
+                  {/* ARROW */}
+                  <div
+                    className="
+                      hidden
+                      justify-end
+                      lg:flex
+                    "
+                  >
+                    <ArrowUpRight
+                      size={24}
+                      strokeWidth={1.2}
+                      className="
+                        text-black/20
+                        transition-all
+                        duration-500
+                        group-hover:-translate-y-1
+                        group-hover:translate-x-1
+                        group-hover:text-[#C48A3A]
+                      "
+                    />
+                  </div>
+
                 </div>
               </motion.div>
             );
           })}
+
+          {/* Bottom border */}
+          <div className="border-t border-black/10" />
+
         </div>
 
       </div>
