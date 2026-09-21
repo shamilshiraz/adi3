@@ -70,13 +70,11 @@ export default function RoadshowsEvents() {
                 </span>
               </div>
 
-              <h2 className="heading-2 text-black">
-                Meet Us
-                <br />
-                <span className="text-black/40">
-                  Around The World
-                </span>
-              </h2>
+             <h2 className="heading-2 text-black mt-6">
+  Meet Us
+  <br />
+  Around The World
+</h2>
 
               <p className="sub mt-6 max-w-md text-black/60">
                 Join exclusive investor roadshows, private briefings
