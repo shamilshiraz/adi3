@@ -106,7 +106,7 @@ const HeroSect = () => {
               font-medium
               uppercase
               tracking-[0.28em]
-              text-[#EFBD78]
+              text-[#D4AF37]
 
               sm:mb-7
               sm:text-xs
@@ -121,7 +121,7 @@ const HeroSect = () => {
               w-full
               font-medium
               tracking-[-0.035em]
-              text-[#EFBD78]
+              text-[#D4AF37]
 
               /* MOBILE */
               text-[clamp(2.6rem,9vw,4rem)]
