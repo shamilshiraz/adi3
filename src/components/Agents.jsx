@@ -285,7 +285,7 @@ export default function Agents() {
                     </div>
                   </div>
 
-                  <a
+                 <a
   href={`https://wa.me/${advisor.whatsapp}?text=${encodeURIComponent(
     `Hi ${advisor.name}, I would like to discuss a Dubai real estate investment opportunity.`
   )}`}
@@ -297,12 +297,28 @@ export default function Agents() {
     items-center
     justify-center
     gap-2
-    btn-violet
+    rounded-full
+    bg-black
+    px-6
+    py-3
+    text-sm
+    font-medium
+    text-white
+    no-underline
+    transition-all
+    duration-300
+    hover:bg-[#D4AF37]
+    hover:text-black
   "
 >
-  Consult
+  <span className="text-white">
+    Consult
+  </span>
 
-  <ArrowUpRight size={16} />
+  <ArrowUpRight
+    size={16}
+    className="text-white"
+  />
 </a>
                 </div>
               </motion.div>
