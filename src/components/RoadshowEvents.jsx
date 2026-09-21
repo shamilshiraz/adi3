@@ -380,21 +380,28 @@ export default function RoadshowsEvents() {
 
             {/* CAROUSEL */}
             <div
-              className="
-                h-[520px]
-                overflow-y-auto
-                snap-y
-                snap-mandatory
-                scroll-smooth
-                space-y-6
-                pr-1
-                [scrollbar-width:none]
-                [&::-webkit-scrollbar]:hidden
+  className="
+    h-[590px]
+    overflow-y-auto
+    snap-y
+    snap-mandatory
+    scroll-smooth
+    space-y-6
+    pr-1
+    pt-10
+    pb-10
+    [scrollbar-width:none]
+    [&::-webkit-scrollbar]:hidden
 
-                sm:h-[600px]
-                lg:h-[680px]
-              "
-            >
+    sm:h-[670px]
+    sm:pt-12
+    sm:pb-12
+
+    lg:h-[730px]
+    lg:pt-14
+    lg:pb-14
+  "
+>
 
               {filteredEvents.map((event, index) => (
 
