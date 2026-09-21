@@ -35,7 +35,7 @@ const HeroSect = () => {
         "
       />
 
-      {/* LEFT DARK GRADIENT */}
+      {/* LEFT GRADIENT */}
       <div
         className="
           absolute
@@ -43,7 +43,7 @@ const HeroSect = () => {
           bg-gradient-to-r
           from-black/90
           via-black/55
-          to-black/10
+          to-black/15
         "
       />
 
@@ -55,7 +55,7 @@ const HeroSect = () => {
           bottom-0
           h-[45%]
           bg-gradient-to-t
-          from-black/75
+          from-black/80
           to-transparent
         "
       />
@@ -95,54 +95,52 @@ const HeroSect = () => {
             duration: 1,
             ease: [0.16, 1, 0.3, 1],
           }}
-          className="w-full max-w-[1300px]"
+          className="w-full max-w-[1250px]"
         >
 
           {/* EYEBROW */}
           <p
             className="
-              mb-4
+              mb-5
               text-[10px]
               font-medium
               uppercase
               tracking-[0.28em]
               text-[#EFBD78]
 
-              sm:mb-6
+              sm:mb-7
               sm:text-xs
             "
           >
             DUBAI REAL ESTATE
           </p>
 
-          {/* HEADING */}
+          {/* MAIN HEADING */}
           <h1
             className="
               w-full
               font-medium
-              tracking-[-0.04em]
+              tracking-[-0.035em]
               text-[#EFBD78]
 
-              text-[clamp(2.7rem,9vw,4.5rem)]
-              leading-[1.02]
+              /* MOBILE */
+              text-[clamp(2.6rem,9vw,4rem)]
+              leading-[1.08]
 
-              sm:text-[clamp(3.5rem,7vw,6rem)]
-              sm:leading-[1]
+              /* TABLET */
+              sm:text-[clamp(3.5rem,7vw,5rem)]
+              sm:leading-[1.05]
 
-              lg:text-[clamp(4rem,5.8vw,6.5rem)]
-              lg:leading-[0.98]
+              /* DESKTOP */
+              lg:text-[clamp(3.8rem,5vw,5.4rem)]
+              lg:leading-[1.05]
             "
           >
             <span className="block">
               Building Reliability.
             </span>
 
-            <span
-              className="
-                block
-                lg:whitespace-nowrap
-              "
-            >
+            <span className="block">
               Delivering Excellence.
             </span>
           </h1>
@@ -150,8 +148,8 @@ const HeroSect = () => {
           {/* DESCRIPTION */}
           <p
             className="
-              mt-6
-              max-w-[680px]
+              mt-7
+              max-w-[650px]
               text-base
               leading-7
               text-white/85
@@ -160,6 +158,7 @@ const HeroSect = () => {
               sm:text-lg
               sm:leading-8
 
+              lg:mt-9
               lg:text-xl
               lg:leading-8
             "
