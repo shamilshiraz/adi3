@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import {
   CalendarDays,
   MapPin,
   ArrowUpRight,
-  ChevronDown,
 } from "lucide-react";
 
 const events = [
@@ -35,75 +34,25 @@ const events = [
 ];
 
 export default function RoadshowsEvents() {
-  const [selectedEvent, setSelectedEvent] = useState("all");
-
-  const filteredEvents =
-    selectedEvent === "all"
-      ? events
-      : events.filter((event) => event.city === selectedEvent);
-
   return (
-    <section
-      className="
-        relative
-        overflow-hidden
-        bg-white
-        px-5
-        py-20
-        sm:px-8
-        sm:py-24
-        lg:px-20
-        lg:py-32
-      "
-    >
-      {/* SUBTLE GOLD GLOW */}
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -right-40
-          top-20
-          h-[450px]
-          w-[450px]
-          rounded-full
-          bg-[#D4AF37]/5
-          blur-[160px]
-        "
-      />
+    <section className="relative bg-white page-padding py-24 sm:py-28 lg:py-32">
+      <div className="container-custom relative">
 
-      <div className="relative mx-auto max-w-[1440px]">
+        {/* HEADER + CAROUSEL */}
+        <div className="grid items-start gap-14 lg:grid-cols-[400px_1fr] lg:gap-20 xl:grid-cols-[440px_1fr]">
 
-        <div
-          className="
-            grid
-            items-start
-            gap-12
-            lg:grid-cols-[420px_1fr]
-            lg:gap-20
-            xl:grid-cols-[480px_1fr]
-            xl:gap-24
-          "
-        >
-
-          {/* =========================================================
-              LEFT SIDE
-          ========================================================= */}
-
-          <div
-            className="
-              lg:sticky
-              lg:top-28
-              lg:h-fit
-            "
-          >
+          {/* LEFT CONTENT */}
+          <div className="lg:sticky lg:top-28">
             <motion.div
               initial={{
                 opacity: 0,
                 y: 30,
+                filter: "blur(8px)",
               }}
               whileInView={{
                 opacity: 1,
                 y: 0,
+                filter: "blur(0px)",
               }}
               viewport={{ once: true }}
               transition={{
@@ -112,335 +61,180 @@ export default function RoadshowsEvents() {
               }}
             >
 
-              {/* EYEBROW */}
-              <p
-                className="
-                  text-[10px]
-                  font-medium
-                  uppercase
-                  tracking-[0.3em]
-                  text-[#D4AF37]
-                  sm:text-xs
-                "
-              >
-                ROADSHOWS & EVENTS
-              </p>
+              {/* Gold accent */}
+              <div className="mb-7 flex items-center gap-4">
+                <span className="h-px w-12 bg-[#EFBD78]" />
 
-              {/* HEADING */}
-              <h2
-                className="
-                  mt-5
-                  max-w-xl
-                  text-[2.8rem]
-                  font-light
-                  leading-[1.02]
-                  tracking-[-0.04em]
-                  text-black
-                  sm:text-[4rem]
-                  lg:text-[4.5rem]
-                "
-              >
+                <span className="text-xs uppercase tracking-[0.3em] text-[#C48A3A]">
+                  ROADSHOWS
+                </span>
+              </div>
+
+              <h2 className="heading-2 text-black">
                 Meet Us
                 <br />
-                <span className="text-black/35">
+                <span className="text-black/40">
                   Around The World
                 </span>
               </h2>
 
-              {/* DESCRIPTION */}
-              <p
-                className="
-                  mt-6
-                  max-w-md
-                  text-sm
-                  leading-7
-                  text-black/60
-                  sm:text-base
-                  sm:leading-8
-                "
-              >
-                Join exclusive investor roadshows,
-                private briefings and curated events
-                hosted across major global markets.
+              <p className="sub mt-6 max-w-md text-black/60">
+                Join exclusive investor roadshows, private briefings
+                and curated events across major global markets.
               </p>
 
-              {/* DIVIDER */}
-              <div className="my-8 h-px w-full bg-black/10 sm:my-10" />
+              {/* Divider */}
+              <div className="my-10 h-px w-full bg-black/10" />
 
-              {/* STATS */}
-              <div className="grid grid-cols-3 gap-4 sm:gap-6">
+              {/* Stats */}
+              <div className="grid grid-cols-3 gap-5">
 
                 <div>
-                  <div
-                    className="
-                      text-2xl
-                      font-light
-                      tracking-tight
-                      text-black
-                      sm:text-3xl
-                    "
-                  >
+                  <div className="text-2xl font-medium text-black sm:text-3xl">
                     25+
                   </div>
 
-                  <div
-                    className="
-                      mt-2
-                      text-[9px]
-                      uppercase
-                      tracking-[0.12em]
-                      text-black/45
-                      sm:text-[10px]
-                    "
-                  >
-                    Investor Events
+                  <div className="mt-2 text-xs uppercase tracking-[0.12em] text-black/45">
+                    Events
                   </div>
                 </div>
 
                 <div>
-                  <div
-                    className="
-                      text-2xl
-                      font-light
-                      tracking-tight
-                      text-black
-                      sm:text-3xl
-                    "
-                  >
+                  <div className="text-2xl font-medium text-black sm:text-3xl">
                     1000+
                   </div>
 
-                  <div
-                    className="
-                      mt-2
-                      text-[9px]
-                      uppercase
-                      tracking-[0.12em]
-                      text-black/45
-                      sm:text-[10px]
-                    "
-                  >
-                    Attendees
+                  <div className="mt-2 text-xs uppercase tracking-[0.12em] text-black/45">
+                    Investors
                   </div>
                 </div>
 
                 <div>
-                  <div
-                    className="
-                      text-2xl
-                      font-light
-                      tracking-tight
-                      text-black
-                      sm:text-3xl
-                    "
-                  >
+                  <div className="text-2xl font-medium text-black sm:text-3xl">
                     4+
                   </div>
 
-                  <div
-                    className="
-                      mt-2
-                      text-[9px]
-                      uppercase
-                      tracking-[0.12em]
-                      text-black/45
-                      sm:text-[10px]
-                    "
-                  >
+                  <div className="mt-2 text-xs uppercase tracking-[0.12em] text-black/45">
                     Countries
                   </div>
                 </div>
 
               </div>
 
-              {/* =====================================================
-                  EVENT DROPDOWN
-              ===================================================== */}
-
-              <div className="mt-10">
-
-                <label
-                  htmlFor="event-select"
-                  className="
-                    mb-3
-                    block
-                    text-[10px]
-                    font-medium
-                    uppercase
-                    tracking-[0.25em]
-                    text-black/45
-                  "
-                >
-                  Explore Events
-                </label>
-
-                <div className="relative">
-
-                  <select
-                    id="event-select"
-                    value={selectedEvent}
-                    onChange={(e) =>
-                      setSelectedEvent(e.target.value)
-                    }
-                    className="
-                      w-full
-                      appearance-none
-                      rounded-full
-                      border
-                      border-black/10
-                      bg-white
-                      px-5
-                      py-4
-                      pr-12
-                      text-sm
-                      font-medium
-                      text-black
-                      outline-none
-                      transition-all
-                      duration-300
-                      hover:border-[#D4AF37]/60
-                      focus:border-[#D4AF37]
-                      focus:ring-1
-                      focus:ring-[#D4AF37]/20
-                    "
-                  >
-
-                    <option value="all">
-                      All Events
-                    </option>
-
-                    {/* DROPDOWN LOOPS FROM EVENTS */}
-                    {events.map((event) => (
-                      <option
-                        key={event.city}
-                        value={event.city}
-                      >
-                        {event.city} — {event.title}
-                      </option>
-                    ))}
-
-                  </select>
-
-                  <ChevronDown
-                    size={18}
-                    strokeWidth={1.5}
-                    className="
-                      pointer-events-none
-                      absolute
-                      right-5
-                      top-1/2
-                      -translate-y-1/2
-                      text-[#D4AF37]
-                    "
-                  />
-
+              {/* Scroll indicator */}
+              <div className="mt-12 hidden items-center gap-3 lg:flex">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full border border-black/15">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#C48A3A]" />
                 </div>
+
+                <span className="text-xs uppercase tracking-[0.2em] text-black/45">
+                  Scroll to explore
+                </span>
               </div>
 
             </motion.div>
           </div>
 
-
-          {/* =========================================================
-              RIGHT SIDE — VERTICAL EVENT CAROUSEL
-          ========================================================= */}
-
+          {/* RIGHT VERTICAL CAROUSEL */}
           <div className="relative">
 
-            {/* TOP / BOTTOM FADE */}
+            {/* Top fade */}
             <div
               className="
                 pointer-events-none
                 absolute
-                left-0
-                right-0
+                inset-x-0
                 top-0
                 z-20
-                h-12
+                h-28
                 bg-gradient-to-b
                 from-white
+                via-white/80
                 to-transparent
               "
             />
 
+            {/* Bottom fade */}
             <div
               className="
                 pointer-events-none
                 absolute
+                inset-x-0
                 bottom-0
-                left-0
-                right-0
                 z-20
-                h-16
+                h-32
                 bg-gradient-to-t
                 from-white
+                via-white/80
                 to-transparent
               "
             />
 
-            {/* CAROUSEL */}
+            {/* Scroll area */}
             <div
-  className="
-    h-[590px]
-    overflow-y-auto
-    snap-y
-    snap-mandatory
-    scroll-smooth
-    space-y-6
-    pr-1
-    pt-10
-    pb-10
-    [scrollbar-width:none]
-    [&::-webkit-scrollbar]:hidden
+              className="
+                h-[620px]
+                overflow-y-auto
+                snap-y
+                snap-mandatory
+                scroll-smooth
+                px-1
+                py-20
+                space-y-5
+                [scrollbar-width:none]
+                [&::-webkit-scrollbar]:hidden
 
-    sm:h-[670px]
-    sm:pt-12
-    sm:pb-12
+                sm:h-[700px]
+                sm:py-24
 
-    lg:h-[730px]
-    lg:pt-14
-    lg:pb-14
-  "
->
+                lg:h-[760px]
+                lg:py-28
+              "
+            >
 
-              {filteredEvents.map((event, index) => (
-
+              {events.map((event, index) => (
                 <motion.article
                   key={event.city}
                   initial={{
                     opacity: 0,
+                    scale: 0.94,
                     y: 30,
                   }}
                   whileInView={{
                     opacity: 1,
+                    scale: 1,
                     y: 0,
                   }}
                   viewport={{
                     once: true,
-                    amount: 0.2,
+                    amount: 0.4,
                   }}
                   transition={{
-                    delay: index * 0.08,
-                    duration: 0.8,
+                    duration: 0.7,
                     ease: [0.16, 1, 0.3, 1],
                   }}
                   className="
                     group
                     relative
+                    mx-auto
                     h-[500px]
-                    snap-start
+                    w-full
+                    max-w-[900px]
+                    shrink-0
+                    snap-center
                     overflow-hidden
-                    bg-black
+                    rounded-[24px]
 
-                    sm:h-[580px]
-                    lg:h-[640px]
+                    sm:h-[560px]
+
+                    lg:h-[620px]
                   "
                 >
 
                   {/* IMAGE */}
                   <img
                     src={event.image}
-                    alt={event.title}
+                    alt={event.city}
                     className="
                       absolute
                       inset-0
@@ -450,11 +244,11 @@ export default function RoadshowsEvents() {
                       transition-transform
                       duration-[1200ms]
                       ease-out
-                      group-hover:scale-105
+                      group-hover:scale-[1.03]
                     "
                   />
 
-                  {/* DARK OVERLAY */}
+                  {/* DARK CINEMATIC GRADIENT */}
                   <div
                     className="
                       absolute
@@ -462,31 +256,19 @@ export default function RoadshowsEvents() {
                       bg-gradient-to-t
                       from-black
                       via-black/35
-                      to-transparent
+                      to-black/5
                     "
                   />
 
-                  {/* SUBTLE GOLD OVERLAY */}
+                  {/* GOLD ATMOSPHERE */}
                   <div
                     className="
                       absolute
                       inset-0
                       bg-gradient-to-br
-                      from-[#D4AF37]/10
+                      from-[#EFBD78]/15
                       via-transparent
-                      to-transparent
-                    "
-                  />
-
-                  {/* GOLD LEFT EDGE */}
-                  <div
-                    className="
-                      absolute
-                      left-0
-                      top-0
-                      h-full
-                      w-px
-                      bg-[#D4AF37]/70
+                      to-black/20
                     "
                   />
 
@@ -498,70 +280,52 @@ export default function RoadshowsEvents() {
                       top-6
                       flex
                       items-center
-                      gap-3
+                      gap-4
+
                       sm:left-8
                       sm:top-8
                     "
                   >
-
-                    <span
-                      className="
-                        text-[10px]
-                        tracking-[0.3em]
-                        text-[#D4AF37]
-                        sm:text-xs
-                      "
-                    >
+                    <span className="text-xs tracking-[0.35em] text-[#EFBD78]">
                       {String(index + 1).padStart(2, "0")}
                     </span>
 
-                    <span
-                      className="
-                        h-px
-                        w-8
-                        bg-[#D4AF37]/60
-                      "
-                    />
-
+                    <span className="h-px w-10 bg-[#EFBD78]/70" />
                   </div>
 
-
-                  {/* EVENT CONTENT */}
+                  {/* CONTENT */}
                   <div
                     className="
                       absolute
+                      inset-x-0
                       bottom-0
-                      left-0
-                      right-0
                       p-6
+
                       sm:p-8
+
                       lg:p-10
                     "
                   >
 
                     {/* LOCATION */}
                     <div className="flex items-center gap-2">
-
                       <MapPin
-                        size={16}
+                        size={17}
                         strokeWidth={1.5}
-                        className="text-[#D4AF37]"
+                        className="text-[#EFBD78]"
                       />
 
                       <span
                         className="
-                          text-[10px]
+                          text-xs
                           uppercase
                           tracking-[0.25em]
-                          text-[#D4AF37]
-                          sm:text-xs
+                          text-[#EFBD78]
                         "
                       >
                         {event.city}
                       </span>
-
                     </div>
-
 
                     {/* TITLE */}
                     <h3
@@ -569,23 +333,23 @@ export default function RoadshowsEvents() {
                         mt-4
                         max-w-3xl
                         text-3xl
-                        font-light
-                        leading-[1.05]
-                        tracking-[-0.03em]
+                        font-normal
+                        leading-tight
+                        tracking-tight
                         text-white
 
                         sm:text-4xl
+
                         lg:text-5xl
                       "
                     >
                       {event.title}
                     </h3>
 
-
-                    {/* BOTTOM ROW */}
+                    {/* BOTTOM META */}
                     <div
                       className="
-                        mt-8
+                        mt-7
                         flex
                         items-center
                         justify-between
@@ -595,74 +359,39 @@ export default function RoadshowsEvents() {
                       "
                     >
 
-                      <div className="flex items-center gap-2">
-
+                      <div className="flex items-center gap-2 text-white/65">
                         <CalendarDays
                           size={16}
                           strokeWidth={1.5}
-                          className="text-white/60"
                         />
 
-                        <span
-                          className="
-                            text-[10px]
-                            uppercase
-                            tracking-[0.15em]
-                            text-white/60
-                            sm:text-xs
-                          "
-                        >
+                        <span className="text-xs uppercase tracking-[0.18em]">
                           Upcoming Event
                         </span>
-
                       </div>
 
                       <ArrowUpRight
                         size={22}
                         strokeWidth={1.5}
                         className="
-                          text-[#D4AF37]
-                          transition-all
+                          text-[#EFBD78]
+                          transition-transform
                           duration-300
-                          group-hover:-translate-y-1
                           group-hover:translate-x-1
+                          group-hover:-translate-y-1
                         "
                       />
 
                     </div>
-
                   </div>
 
                 </motion.article>
-
               ))}
 
-
-              {/* NO EVENTS */}
-              {filteredEvents.length === 0 && (
-                <div
-                  className="
-                    flex
-                    min-h-[300px]
-                    items-center
-                    justify-center
-                    border
-                    border-black/10
-                    text-center
-                  "
-                >
-                  <p className="text-black/50">
-                    No events found.
-                  </p>
-                </div>
-              )}
-
             </div>
-
           </div>
 
         </div>
-
       </div>
     </section>
   );
