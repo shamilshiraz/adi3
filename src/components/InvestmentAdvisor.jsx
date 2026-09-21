@@ -30,11 +30,26 @@ export default function InvestmentAdvisors() {
         >
           <p className="eyebrow">MEET THE ADVISORS</p>
 
-          <h2 className="heading-2 text-dark mt-5 sm:mt-6">
-            Meet The Advisors
-            <br />
-            Behind The Decisions
-          </h2>
+          <h2
+  className="
+    mt-5
+    max-w-4xl
+    text-[2.8rem]
+    font-light
+    leading-[1.02]
+    tracking-[-0.04em]
+    text-black
+    sm:mt-6
+    sm:text-[4rem]
+    lg:text-[4.5rem]
+  "
+>
+  Meet The Advisors
+  <br />
+  <span className="text-black/35">
+    Behind The Decisions
+  </span>
+</h2>
 
           <p className="sub text-dark-muted mt-5 sm:mt-6 max-w-2xl">
             Connect with experienced investment advisors who help investors
