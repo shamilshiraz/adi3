@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 3000); // Adjust duration here
+    }, 1500); // Adjust duration here
 
     return () => clearTimeout(timer);
   }, []);
@@ -31,8 +31,8 @@ function App() {
         {loading && <LoadingScreen />}
       </AnimatePresence>
 
-      {!loading && (
-        <div>
+     {!loading && (
+  <div className="min-h-screen w-full overflow-x-clip">
           <ScrollToTop/>
           <InvestorPopup />
           <Navbar />
