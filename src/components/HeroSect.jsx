@@ -57,15 +57,22 @@ export default function Hero() {
       className="
         relative
         w-full
-        min-h-screen
+        min-h-[calc(100svh-72px)]
+        sm:min-h-[calc(100svh-80px)]
         overflow-hidden
         bg-cover
         bg-center
         flex
         items-end
         px-4
-        sm:px-20
-        py-20
+        sm:px-8
+        lg:px-20
+        pt-28
+        pb-12
+        sm:pt-32
+        sm:pb-16
+        lg:pt-20
+        lg:pb-20
       "
       style={{
         backgroundImage: "url('/land.jpg')",
@@ -74,47 +81,53 @@ export default function Hero() {
       {/* Luxury Overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/55 to-transparent" />
 
-      {/* Burgundy Tint */}
-      {/* <div className="absolute inset-0 bg-[#3E0029]/10" /> */}
-
-      {/* Main Glow */}
-      {/* <div className="absolute top-[-200px] right-[-250px] h-[900px] w-[900px] rounded-full bg-[#3E0029]/20 blur-[180px]" /> */}
-
-      {/* Secondary Glow */}
-      {/* <div className="absolute bottom-[-250px] left-[-250px] h-[700px] w-[700px] rounded-full bg-[#7A1F42]/20 blur-[180px]" /> */}
-
-      {/* Extra Ambient Light */}
-      {/* <div className="absolute top-1/2 right-1/4 h-[500px] w-[500px] rounded-full bg-[#b54f6c]/10 blur-[140px]" /> */}
-
-      {/* Bottom Fade */}
-      {/* <div className="absolute bottom-0 left-0 h-40 w-full bg-gradient-to-t from-black to-transparent" /> */}
-
-      <div className="relative z-10 mx-auto flex w-full flex-col items-center justify-between gap-12 lg:flex-row">
+      {/* Main Content */}
+      <div
+        className="
+          relative
+          z-10
+          mx-auto
+          flex
+          w-full
+          max-w-[1440px]
+          flex-col
+          items-start
+          justify-end
+          gap-8
+          lg:flex-row
+          lg:items-end
+          lg:justify-between
+          lg:gap-12
+        "
+      >
         {/* Left Content */}
-        <div className="max-w-4xl text-[#EFBD78]">
+        <div className="w-full max-w-4xl text-[#EFBD78]">
+          
           <AnimatedText
             text="Building Reliability."
             className="
-              text-3xl
+              max-w-full
+              text-[clamp(2.4rem,10vw,3.5rem)]
               sm:text-5xl
               lg:text-6xl
-              leading-[1.05]
+              leading-[1.02]
               overflow-visible
               font-medium
-                            sm:font-normal
+              sm:font-normal
             "
           />
 
           <AnimatedText
             text="Delivering Excellence."
             className="
-              text-3xl
-              font-medium
-              sm:font-normal
+              max-w-full
+              text-[clamp(2.4rem,10vw,3.5rem)]
               sm:text-5xl
               lg:text-6xl
-              leading-[1.08]
+              leading-[1.05]
               overflow-visible
+              font-medium
+              sm:font-normal
             "
           />
 
@@ -134,10 +147,13 @@ export default function Hero() {
               duration: 0.8,
             }}
             className="
-              mt-6
+              mt-5
+              sm:mt-6
               max-w-2xl
-              text-base
+              text-[15px]
+              leading-7
               sm:text-lg
+              sm:leading-8
               lg:text-xl
               text-white/80
             "
@@ -146,116 +162,29 @@ export default function Hero() {
             solutions—delivered with precision, innovation, and uncompromising
             safety.
           </motion.p>
-          <div className="flex flex-col gap-4 sm:flex-row py-8">
-<button className="w-64 bg-[#fff] text-black py-2 font-medium  rounded-xl transition hover:opacity-90">
-  Book your consultation
-</button>
 
-{/* <button className="w-64 bg-black text-white py-2 rounded-xl font-medium transition hover:opacity-90">
-  Talk to agents
-</button> */}
-
-          </div>
-        </div>
-
-        {/* Event Form */}
-        {/* <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{
-            delay: 1.3,
-            duration: 0.8,
-          }}
-          className="
-            w-full
-            max-w-md
-            rounded-3xl
-            border
-            border-white/10
-            bg-white/5
-            backdrop-blur-xl
-            p-8
-            shadow-2xl
-          "
-        >
-          <h3 className="text-3xl  text-white">
-            Sign Up for Events
-          </h3>
-
-          <p className="mt-2 text-white/60">
-            Register your interest and we'll contact you with upcoming event
-            details.
-          </p>
-
-          <form className="mt-8 space-y-4">
-            <input
-              type="text"
-              placeholder="Full Name"
-              className="
-                w-full
-                rounded-xl
-                border
-                border-white/10
-                bg-white/5
-                px-4
-                py-3
-                text-white
-                placeholder:text-white/40
-                outline-none
-                transition-all
-                focus:border-[#FFC473]
-              "
-            />
-
-            <input
-              type="email"
-              placeholder="Email Address"
-              className="
-                w-full
-                rounded-xl
-                border
-                border-white/10
-                bg-white/5
-                px-4
-                py-3
-                text-white
-                placeholder:text-white/40
-                outline-none
-                transition-all
-                focus:border-[#FFC473]
-              "
-            />
-
-            <input
-              type="tel"
-              placeholder="Phone Number"
-              className="
-                w-full
-                rounded-xl
-                border
-                border-white/10
-                bg-white/5
-                px-4
-                py-3
-                text-white
-                placeholder:text-white/40
-                outline-none
-                transition-all
-                focus:border-[#FFC473]
-              "
-            />
-
+          {/* CTA */}
+          <div className="flex w-full flex-col gap-3 py-6 sm:w-auto sm:flex-row sm:gap-4 sm:py-8">
             <button
-              type="submit"
+              type="button"
               className="
                 w-full
-                btn-violet
+                sm:w-64
+                rounded-xl
+                bg-white
+                px-6
+                py-3
+                font-medium
+                text-black
+                transition
+                hover:opacity-90
+                active:scale-[0.98]
               "
             >
-              Register Now
+              Book your consultation
             </button>
-          </form>
-        </motion.div> */}
+          </div>
+        </div>
       </div>
     </section>
   );
