@@ -59,6 +59,7 @@ export default function Agents() {
       />
 
       <div className="container-custom relative">
+
         {/* HEADER */}
         <motion.div
           initial={{
@@ -77,7 +78,9 @@ export default function Agents() {
           }}
           className="max-w-4xl"
         >
-          <p className="eyebrow">OUR ADVISORS</p>
+          <p className="eyebrow">
+            OUR ADVISORS
+          </p>
 
           <h1 className="heading-3 text-black mt-5 sm:mt-6">
             Meet Our
@@ -190,6 +193,7 @@ export default function Agents() {
                 }}
                 className="
                   min-w-0
+                  h-full
                   overflow-hidden
                   rounded-2xl
                   sm:rounded-[28px]
@@ -197,8 +201,11 @@ export default function Agents() {
                   border-black/8
                   bg-[#FAFAFA]
                   group
+                  flex
+                  flex-col
                 "
               >
+
                 {/* IMAGE */}
                 <div className="relative aspect-[4/5] overflow-hidden">
                   <img
@@ -227,7 +234,18 @@ export default function Agents() {
                 </div>
 
                 {/* CONTENT */}
-                <div className="min-w-0 p-3 sm:p-5 lg:p-6">
+                <div
+                  className="
+                    min-w-0
+                    flex
+                    flex-1
+                    flex-col
+                    p-3
+                    sm:p-5
+                    lg:p-6
+                  "
+                >
+
                   {/* NAME */}
                   <h3
                     className="
@@ -261,6 +279,7 @@ export default function Agents() {
 
                   {/* DETAILS */}
                   <div className="space-y-3 sm:space-y-5">
+
                     {/* LANGUAGES */}
                     <div className="flex min-w-0 gap-2 sm:gap-3">
                       <Languages
@@ -374,6 +393,7 @@ export default function Agents() {
                         </p>
                       </div>
                     </div>
+
                   </div>
 
                   {/* WHATSAPP BUTTON */}
@@ -384,8 +404,9 @@ export default function Agents() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="
-                      mt-5
-                      sm:mt-8
+                      mt-auto
+                      pt-5
+                      sm:pt-8
                       w-full
                       inline-flex
                       items-center
@@ -423,11 +444,13 @@ export default function Agents() {
                       "
                     />
                   </a>
+
                 </div>
               </motion.div>
             ))}
           </div>
         ) : (
+
           /* NO RESULTS */
           <div
             className="
@@ -449,6 +472,7 @@ export default function Agents() {
               Try searching by name, specialization or language.
             </p>
           </div>
+
         )}
       </div>
     </section>
