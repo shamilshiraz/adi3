@@ -1,191 +1,157 @@
-import React from "react";
 import { motion } from "framer-motion";
 
-const sentence = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.04,
-    },
-  },
-};
-
-const letter = {
-  hidden: {
-    opacity: 0,
-    y: 40,
-    filter: "blur(12px)",
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: {
-      duration: 0.8,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-};
-
-function AnimatedText({ text, className }) {
-  return (
-    <motion.div
-      className={className}
-      variants={sentence}
-      initial="hidden"
-      animate="visible"
-    >
-      {text.split("").map((char, index) => (
-        <motion.span
-          key={index}
-          variants={letter}
-          style={{
-            display: "inline-block",
-            whiteSpace: char === " " ? "pre" : "normal",
-          }}
-        >
-          {char}
-        </motion.span>
-      ))}
-    </motion.div>
-  );
-}
-
-export default function Hero() {
+const HeroSect = () => {
   return (
     <section
       className="
         relative
-        w-full
         min-h-[calc(100svh-72px)]
         sm:min-h-[calc(100svh-80px)]
         overflow-hidden
-        bg-cover
-        bg-center
-        flex
-        items-end
-        px-4
-        sm:px-8
-        lg:px-20
-        pt-28
-        pb-12
-        sm:pt-32
-        sm:pb-16
-        lg:pt-20
-        lg:pb-20
+        bg-black
       "
-      style={{
-        backgroundImage: "url('/land.jpg')",
-      }}
     >
-      {/* Luxury Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/55 to-transparent" />
+      {/* BACKGROUND IMAGE */}
+      <div
+        className="
+          absolute
+          inset-0
+          bg-cover
+          bg-center
+          bg-no-repeat
+        "
+        style={{
+          backgroundImage: "url('/land.jpg')",
+        }}
+      />
 
-      {/* Main Content */}
+      {/* DARK OVERLAY */}
+      <div
+        className="
+          absolute
+          inset-0
+          bg-black/55
+          sm:bg-black/45
+        "
+      />
+
+      {/* EXTRA LEFT-TO-RIGHT GRADIENT */}
+      <div
+        className="
+          absolute
+          inset-0
+          bg-gradient-to-r
+          from-black/80
+          via-black/45
+          to-black/10
+        "
+      />
+
+      {/* EXTRA BOTTOM GRADIENT */}
+      <div
+        className="
+          absolute
+          inset-x-0
+          bottom-0
+          h-[45%]
+          bg-gradient-to-t
+          from-black/70
+          to-transparent
+        "
+      />
+
+      {/* CONTENT */}
       <div
         className="
           relative
           z-10
           mx-auto
           flex
-          w-full
+          min-h-[calc(100svh-72px)]
           max-w-[1440px]
-          flex-col
-          items-start
-          justify-end
-          gap-8
-          lg:flex-row
-          lg:items-end
-          lg:justify-between
-          lg:gap-12
+          items-end
+          px-5
+          pb-16
+          sm:min-h-[calc(100svh-80px)]
+          sm:px-8
+          sm:pb-20
+          lg:items-center
+          lg:px-20
+          lg:pb-0
         "
       >
-        {/* Left Content */}
-        <div className="w-full max-w-4xl text-[#EFBD78]">
-          
-          <AnimatedText
-            text="Building Reliability."
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 1,
+            ease: [0.16, 1, 0.3, 1],
+          }}
+          className="
+            max-w-[900px]
+          "
+        >
+          {/* EYEBROW */}
+          <p
             className="
-              max-w-full
-              text-[clamp(2.4rem,10vw,3.5rem)]
-              sm:text-5xl
-              lg:text-6xl
-              leading-[1.02]
-              overflow-visible
+              mb-4
+              text-[10px]
               font-medium
-              sm:font-normal
+              uppercase
+              tracking-[0.25em]
+              text-[#D4AF37]
+              sm:mb-6
+              sm:text-xs
             "
-          />
+          >
+            DUBAI REAL ESTATE
+          </p>
 
-          <AnimatedText
-            text="Delivering Excellence."
+          {/* HEADING */}
+          <h1
             className="
-              max-w-full
-              text-[clamp(2.4rem,10vw,3.5rem)]
-              sm:text-5xl
-              lg:text-6xl
-              leading-[1.05]
-              overflow-visible
+              max-w-[900px]
               font-medium
-              sm:font-normal
+              leading-[0.95]
+              tracking-[-0.04em]
+              text-[#D4AF37]
+              text-[clamp(2.8rem,10vw,5.5rem)]
+              sm:text-[clamp(4rem,7vw,6.5rem)]
             "
-          />
+          >
+            Building Reliability.
+            <br />
+            Delivering Excellence.
+          </h1>
 
-          <motion.p
-            initial={{
-              opacity: 0,
-              y: 20,
-              filter: "blur(10px)",
-            }}
-            animate={{
-              opacity: 1,
-              y: 0,
-              filter: "blur(0px)",
-            }}
-            transition={{
-              delay: 1,
-              duration: 0.8,
-            }}
+          {/* DESCRIPTION */}
+          <p
             className="
-              mt-5
-              sm:mt-6
-              max-w-2xl
-              text-[15px]
+              mt-6
+              max-w-[620px]
+              text-base
               leading-7
+              text-white/85
+              sm:mt-8
               sm:text-lg
               sm:leading-8
               lg:text-xl
-              text-white/80
             "
           >
-            High-quality infrastructure, construction support, and industrial
-            solutions—delivered with precision, innovation, and uncompromising
-            safety.
-          </motion.p>
-
-          {/* CTA */}
-          <div className="flex w-full flex-col gap-3 py-6 sm:w-auto sm:flex-row sm:gap-4 sm:py-8">
-            <button
-              type="button"
-              className="
-                w-full
-                sm:w-64
-                rounded-xl
-                bg-white
-                px-6
-                py-3
-                font-medium
-                text-black
-                transition
-                hover:opacity-90
-                active:scale-[0.98]
-              "
-            >
-              Book your consultation
-            </button>
-          </div>
-        </div>
+            Your trusted partner for Dubai real estate,
+            investment opportunities, and strategic property
+            advisory.
+          </p>
+        </motion.div>
       </div>
     </section>
   );
-}
+};
+
+export default HeroSect;
