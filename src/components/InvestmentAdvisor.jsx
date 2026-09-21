@@ -404,40 +404,40 @@ export default function InvestmentAdvisors() {
             BOTTOM CTA
         ================================= */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{
-            delay: 0.2,
-            duration: 0.8,
-          }}
-          className="
-            mt-8
-            sm:mt-10
-            lg:mt-16
-            flex
-            justify-center
-          "
-        >
-          <Link
-            to="/agents"
-            className="
-              btn-violet
-              w-full
-              sm:w-auto
-              justify-center
-              rounded-full
-              px-6
-              sm:px-8
-            "
-          >
-            View All Advisors
-            <ArrowUpRight
-              size={16}
-              className="ml-2"
-            />
-          </Link>
-        </motion.div>
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{
+    delay: 0.2,
+    duration: 0.8,
+  }}
+  className="
+    mt-8
+    sm:mt-10
+    lg:mt-16
+    flex
+    justify-center
+  "
+>
+  <Link
+    to="/agents"
+    className="
+      btn-violet
+      w-full
+      sm:w-auto
+      rounded-full
+      px-6
+      sm:px-8
+    "
+  >
+    <span>View All Advisors</span>
+
+    <ArrowUpRight
+      size={16}
+      strokeWidth={1.8}
+    />
+  </Link>
+</motion.div>
       </div>
     </section>
   );
