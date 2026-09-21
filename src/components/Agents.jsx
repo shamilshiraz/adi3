@@ -286,20 +286,23 @@ export default function Agents() {
                   </div>
 
                   <a
-  to={`/agents/${advisor.slug}`}
+  href={`https://wa.me/${advisor.whatsapp}?text=${encodeURIComponent(
+    `Hi ${advisor.name}, I would like to discuss a Dubai real estate investment opportunity.`
+  )}`}
+  target="_blank"
+  rel="noopener noreferrer"
   className="
     mt-8
     inline-flex
     items-center
+    justify-center
     gap-2
     btn-violet
   "
 >
-  Consult
+  
 
-  <ArrowUpRight
-    size={16}
-  />
+  <ArrowUpRight size={16} />
 </a>
                 </div>
               </motion.div>
