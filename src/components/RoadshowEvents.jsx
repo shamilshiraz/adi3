@@ -75,7 +75,6 @@ export default function RoadshowsEvents() {
   <br />
   Around The World
 </h2>
-
               <p className="sub mt-6 max-w-md text-black/60">
                 Join exclusive investor roadshows, private briefings
                 and curated events across major global markets.
