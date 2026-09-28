@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   TrendingUp,
   Building2,
@@ -13,32 +14,32 @@ import {
 const benefits = [
   {
     icon: TrendingUp,
-    title: "Market Insights",
+    title: "Market Intelligence",
     text: "Understand current market trends, pricing movements and investment opportunities across Dubai.",
   },
   {
     icon: Building2,
-    title: "Investment Options",
+    title: "Investment Opportunities",
     text: "Discover projects that align with your budget, timeline and long-term financial objectives.",
   },
   {
     icon: MapPinned,
-    title: "Area Recommendations",
+    title: "Location Intelligence",
     text: "Compare communities based on rental demand, capital growth and future infrastructure.",
   },
   {
     icon: Landmark,
-    title: "Developer Recommendations",
+    title: "Developer Selection",
     text: "Gain access to trusted developers with proven delivery records and premium projects.",
   },
   {
     icon: PieChart,
-    title: "ROI Guidance",
+    title: "Return Analysis",
     text: "Estimate rental yields, appreciation potential and exit strategies for every opportunity.",
   },
   {
     icon: ShieldCheck,
-    title: "Risk Considerations",
+    title: "Risk Assessment",
     text: "Identify potential risks and receive practical guidance before making any investment decision.",
   },
 ];
@@ -58,6 +59,7 @@ export default function StrategySession() {
 
       <div className="container-custom relative">
         <div className="grid lg:grid-cols-[480px_1fr] gap-16 items-start">
+          
           {/* LEFT */}
           <motion.div
             initial={{
@@ -78,29 +80,31 @@ export default function StrategySession() {
             className="lg:sticky lg:top-28"
           >
             <p className="eyebrow">
-              STRATEGY SESSION
+              PRIVATE STRATEGY SESSION
             </p>
 
             <h2 className="heading-3 text-light mt-6">
-              Your Dubai
+              A Clearer Path
               <br />
-              Investment
+              to Dubai
               <br />
-              Strategy Session
+              Property Investment
             </h2>
 
             <p className="sub text-white/70 mt-6 max-w-md">
-              A personalized consultation designed to
-              help you evaluate opportunities, understand
-              the market, and avoid costly investment
-              mistakes.
+              A personalized consultation designed to help
+              you evaluate opportunities, understand the
+              market, and avoid costly investment mistakes.
             </p>
 
-            <button className="btn-gold mt-10 inline-flex items-center gap-2">
+            <Link
+              to="/contact"
+              className="btn-gold mt-10 inline-flex items-center gap-2"
+            >
               Book Your Session
 
               <ArrowUpRight size={18} />
-            </button>
+            </Link>
           </motion.div>
 
           {/* RIGHT */}
