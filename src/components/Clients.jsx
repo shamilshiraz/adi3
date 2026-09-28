@@ -5,7 +5,7 @@ const row1 = [
   "/clients/meraas.svg",
   "/clients/ellington.png",
   "/clients/emaar.png",
-  "/clients/sobha.png",
+  "/clients/sobha1.png",
   "/clients/dubai-h.png",
 ];
 
@@ -21,7 +21,7 @@ const row2 = [
 
 const row3 = [
   "/clients/meraki.png",
-  "/clients/omniyat.webp",
+  "/clients/omniyat.tiff",
   "/clients/samana.png",
   "/clients/Union.png",
   "/clients/nakheel.png",
