@@ -247,18 +247,7 @@ function EventsHero() {
           <div className="mb-5 flex items-center gap-3 sm:mb-7">
             <span className="h-px w-8 bg-[#D4AF37]" />
 
-            <p
-              className="
-                text-[10px]
-                font-medium
-                uppercase
-                tracking-[0.32em]
-                text-[#D4AF37]
-                sm:text-xs
-              "
-            >
-              DISCOVER • CONNECT • INVEST
-            </p>
+            
           </div>
 
           {/* TITLE */}
@@ -276,7 +265,7 @@ function EventsHero() {
               xl:text-[8rem]
             "
           >
-            Events
+            Roadshows
           </h1>
 
           {/* DESCRIPTION */}
