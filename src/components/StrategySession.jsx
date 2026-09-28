@@ -80,16 +80,21 @@ export default function StrategySession() {
             className="lg:sticky lg:top-28"
           >
         
-
-            <h2
+<h2
   className="
-    text-[3rem]
+    max-w-[360px]
+    text-[2.6rem]
     font-light
-    leading-[0.98]
-    tracking-[-0.045em]
+    leading-[1]
+    tracking-[-0.04em]
     text-white
-    sm:text-[4.5rem]
-    lg:text-[5.5 rem]
+
+    sm:max-w-[500px]
+    sm:text-[4rem]
+    sm:leading-[0.98]
+
+    lg:max-w-[560px]
+    lg:text-[5rem]
   "
 >
            Your Dubai
@@ -99,7 +104,20 @@ export default function StrategySession() {
               Strategy Session
             </h2>
 
-            <p className="sub text-white/70 mt-6 max-w-md">
+            <p
+  className="
+    mt-6
+    max-w-md
+    text-[15px]
+    leading-7
+    text-white/70
+
+    sm:text-base
+    sm:leading-8
+
+    lg:text-lg
+  "
+>
               A personalized consultation designed to help
               you evaluate opportunities, understand the
               market, and avoid costly investment mistakes.
