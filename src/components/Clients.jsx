@@ -27,65 +27,44 @@ const row3 = [
   "/clients/nakheel.png",
 ];
 
-function LogoRow({ logos }) {
+function Logo({ logo }) {
   return (
-    <div className="flex w-full items-center justify-center">
-      <div
+    <div
+      className="
+        flex
+        h-20
+        w-[120px]
+        items-center
+        justify-center
+
+        sm:h-24
+        sm:w-[160px]
+
+        lg:h-28
+        lg:w-[180px]
+      "
+    >
+      <img
+        src={logo}
+        alt="Trusted developer"
         className="
-          grid
-          w-full
-          max-w-[1400px]
-          grid-cols-2
-          items-center
-          justify-items-center
-          gap-x-6
-          gap-y-10
+          max-h-12
+          max-w-[130px]
+          object-contain
+          grayscale
+          opacity-55
+          transition-all
+          duration-500
+          hover:opacity-100
+          hover:grayscale-0
 
-          sm:grid-cols-4
-          sm:gap-x-10
-          sm:gap-y-12
+          sm:max-h-14
+          sm:max-w-[150px]
 
-          lg:grid-cols-5
-          lg:gap-x-14
-          lg:gap-y-14
+          lg:max-h-16
+          lg:max-w-[170px]
         "
-      >
-        {logos.map((logo, i) => (
-          <div
-            key={i}
-            className="
-              flex
-              h-20
-              w-full
-              max-w-[180px]
-              items-center
-              justify-center
-            "
-          >
-            <img
-              src={logo}
-              alt="Trusted developer"
-              className="
-                max-h-10
-                max-w-[120px]
-                object-contain
-                grayscale
-                opacity-60
-                transition-all
-                duration-500
-                hover:grayscale-0
-                hover:opacity-100
-
-                sm:max-h-12
-                sm:max-w-[145px]
-
-                lg:max-h-14
-                lg:max-w-[170px]
-              "
-            />
-          </div>
-        ))}
-      </div>
+      />
     </div>
   );
 }
@@ -139,17 +118,30 @@ export default function Clients() {
       </div>
 
       {/* LOGO MARQUEE */}
-      <div
-  className="
-    mt-14
-    sm:mt-18
-    lg:mt-20
-  "
->
-        <LogoRow logos={row1} />
-        <LogoRow logos={row2} reverse />
-        <LogoRow logos={row3} />
-      </div>
+     <div className="mt-14 sm:mt-18 lg:mt-20 space-y-8 sm:space-y-10 lg:space-y-12">
+
+  {/* ROW 1 */}
+  <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-8 sm:gap-x-14 lg:gap-x-20">
+    {row1.map((logo, i) => (
+      <Logo logo={logo} key={i} />
+    ))}
+  </div>
+
+  {/* ROW 2 */}
+  <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-8 sm:gap-x-14 lg:gap-x-20">
+    {row2.map((logo, i) => (
+      <Logo logo={logo} key={i} />
+    ))}
+  </div>
+
+  {/* ROW 3 */}
+  <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-8 sm:gap-x-14 lg:gap-x-20">
+    {row3.map((logo, i) => (
+      <Logo logo={logo} key={i} />
+    ))}
+  </div>
+
+</div>
     </section>
   );
 }
