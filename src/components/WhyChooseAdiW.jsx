@@ -103,20 +103,7 @@ export default function WhyChooseAdhiWhite() {
             </span>
           </h3>
 
-          <div className="mt-8 flex items-center gap-4">
-            <span className="h-px w-16 bg-[#D4AF37]" />
-
-            <span
-              className="
-                text-[10px]
-                uppercase
-                tracking-[0.3em]
-                text-[#B8862C]
-              "
-            >
-              THE DUBAI ADVANTAGE
-            </span>
-          </div>
+      
 
           <p
             className="
