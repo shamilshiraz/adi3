@@ -146,7 +146,7 @@ export default function InvestmentStrategiesCarousel() {
   className="
     text-[3rem]
     font-light
-    leading-[0.98]
+    leading-[1]
     tracking-[-0.045em]
     text-white
     sm:text-[4.5rem]
