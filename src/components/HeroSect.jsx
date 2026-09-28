@@ -11,54 +11,54 @@ const HeroSect = () => {
         bg-black
       "
     >
-      {/* BACKGROUND IMAGE */}
-      <div
-        className="
-          absolute
-          inset-0
-          bg-cover
-          bg-center
-          bg-no-repeat
-        "
-        style={{
-          backgroundImage: "url('/land.jpg')",
-        }}
-      />
+    {/* BACKGROUND IMAGE */}
+<div
+  className="
+    absolute
+    inset-0
+    bg-cover
+    bg-center
+    bg-no-repeat
+  "
+  style={{
+    backgroundImage: "url('/land.jpg')",
+  }}
+/>
 
-      {/* DARK OVERLAY */}
-      <div
-        className="
-          absolute
-          inset-0
-          bg-black/60
-          sm:bg-black/50
-        "
-      />
+{/* LIGHT DARK OVERLAY */}
+<div
+  className="
+    absolute
+    inset-0
+    bg-black/25
+    sm:bg-black/20
+  "
+/>
 
-      {/* LEFT GRADIENT */}
-      <div
-        className="
-          absolute
-          inset-0
-          bg-gradient-to-r
-          from-black/90
-          via-black/55
-          to-black/15
-        "
-      />
+{/* LEFT GRADIENT — keeps text readable without hiding the building */}
+<div
+  className="
+    absolute
+    inset-0
+    bg-gradient-to-r
+    from-black/65
+    via-black/25
+    to-transparent
+  "
+/>
 
-      {/* BOTTOM GRADIENT */}
-      <div
-        className="
-          absolute
-          inset-x-0
-          bottom-0
-          h-[45%]
-          bg-gradient-to-t
-          from-black/80
-          to-transparent
-        "
-      />
+{/* BOTTOM GRADIENT */}
+<div
+  className="
+    absolute
+    inset-x-0
+    bottom-0
+    h-[35%]
+    bg-gradient-to-t
+    from-black/65
+    to-transparent
+  "
+/>
 
       {/* CONTENT */}
       <div
