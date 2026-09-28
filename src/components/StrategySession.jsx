@@ -79,11 +79,19 @@ export default function StrategySession() {
             }}
             className="lg:sticky lg:top-28"
           >
-            <p className="eyebrow">
-              PRIVATE STRATEGY SESSION
-            </p>
+        
 
-            <h2 className="heading-3 text-light mt-6">
+            <h2
+  className="
+    text-[3rem]
+    font-light
+    leading-[0.98]
+    tracking-[-0.045em]
+    text-white
+    sm:text-[4.5rem]
+    lg:text-[5.5 rem]
+  "
+>
            Your Dubai
               <br />
               Investment
