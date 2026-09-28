@@ -84,11 +84,11 @@ export default function StrategySession() {
             </p>
 
             <h2 className="heading-3 text-light mt-6">
-              A Clearer Path
+           Your Dubai
               <br />
-              to Dubai
+              Investment
               <br />
-              Property Investment
+              Strategy Session
             </h2>
 
             <p className="sub text-white/70 mt-6 max-w-md">
