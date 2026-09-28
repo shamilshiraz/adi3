@@ -144,22 +144,31 @@ export default function InvestmentStrategiesCarousel() {
             {/* HEADING */}
            <h2
   className="
-    text-[3rem]
+    text-[2.8rem]
     font-light
-    leading-[1]
-    tracking-[-0.045em]
+    leading-[1.05]
+    tracking-[-0.04em]
     text-white
-    sm:text-[4.5rem]
-    lg:text-[5.5 rem]
+
+    sm:text-[3.8rem]
+    lg:text-[4.8rem]
   "
 >
-            
-  Different strategies.
-  <br />
-  <span className="text-white/35">
+  <span className="block">
+    Different strategies.
+  </span>
+
+  <span
+    className="
+      mt-5
+      block
+      text-white/35
+    "
+  >
     One informed decision.
   </span>
 </h2>
+            
 
             {/* DESCRIPTION */}
             <p
