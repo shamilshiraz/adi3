@@ -75,7 +75,7 @@ export default function InvestmentAdvisors() {
             items-stretch
           "
         >
-          {advisors.slice(0, 4).map((advisor, index) => (
+          {advisors.slice(0, 6).map((advisor, index) => (
             <motion.div
               key={advisor.id}
               initial={{
