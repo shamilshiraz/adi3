@@ -33,38 +33,78 @@ function Logo({ logo }) {
       className="
         flex
         h-20
-        w-[120px]
+        w-[140px]
+        shrink-0
         items-center
         justify-center
 
         sm:h-24
-        sm:w-[160px]
+        sm:w-[170px]
 
         lg:h-28
-        lg:w-[180px]
+        lg:w-[200px]
       "
     >
       <img
         src={logo}
         alt="Trusted developer"
         className="
-          max-h-12
-          max-w-[130px]
+          max-h-10
+          max-w-[120px]
           object-contain
           grayscale
           opacity-55
+
+          sm:max-h-12
+          sm:max-w-[150px]
+
+          lg:max-h-14
+          lg:max-w-[175px]
+
           transition-all
           duration-500
           hover:opacity-100
           hover:grayscale-0
-
-          sm:max-h-14
-          sm:max-w-[150px]
-
-          lg:max-h-16
-          lg:max-w-[170px]
         "
       />
+    </div>
+  );
+}
+
+function LogoRow({ logos, reverse = false }) {
+  return (
+    <div className="relative w-full overflow-hidden">
+      <motion.div
+        className="flex w-max"
+        animate={{
+          x: reverse ? ["-50%", "0%"] : ["0%", "-50%"],
+        }}
+        transition={{
+          duration: 30,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      >
+        {/* FIRST SET */}
+        <div className="flex items-center gap-8 sm:gap-12 lg:gap-16">
+          {logos.map((logo, index) => (
+            <Logo
+              key={`first-${index}`}
+              logo={logo}
+            />
+          ))}
+        </div>
+
+        {/* SECOND SET */}
+        <div className="flex items-center gap-8 sm:gap-12 lg:gap-16">
+          {logos.map((logo, index) => (
+            <Logo
+              key={`second-${index}`}
+              logo={logo}
+            />
+          ))}
+        </div>
+      </motion.div>
     </div>
   );
 }
@@ -76,16 +116,13 @@ export default function Clients() {
         w-full
         overflow-hidden
         bg-white
-        px-5
         py-20
-        sm:px-8
         sm:py-24
-        lg:px-20
         lg:py-28
       "
     >
       {/* HEADER */}
-      <div className="mx-auto max-w-[1440px] text-center">
+      <div className="mx-auto max-w-[1440px] px-5 text-center sm:px-8 lg:px-20">
         <p
           className="
             text-[10px]
@@ -117,31 +154,19 @@ export default function Clients() {
         <div className="mx-auto mt-5 h-px w-12 bg-[#D4AF37]" />
       </div>
 
-      {/* LOGO MARQUEE */}
-     <div className="mt-14 sm:mt-18 lg:mt-20 space-y-8 sm:space-y-10 lg:space-y-12">
+      {/* MARQUEE */}
+      <div className="mt-12 space-y-5 sm:mt-16 sm:space-y-6 lg:mt-20 lg:space-y-8">
 
-  {/* ROW 1 */}
-  <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-8 sm:gap-x-14 lg:gap-x-20">
-    {row1.map((logo, i) => (
-      <Logo logo={logo} key={i} />
-    ))}
-  </div>
+        {/* ROW 1 → */}
+        <LogoRow logos={row1} />
 
-  {/* ROW 2 */}
-  <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-8 sm:gap-x-14 lg:gap-x-20">
-    {row2.map((logo, i) => (
-      <Logo logo={logo} key={i} />
-    ))}
-  </div>
+        {/* ROW 2 ← */}
+        <LogoRow logos={row2} reverse />
 
-  {/* ROW 3 */}
-  <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-8 sm:gap-x-14 lg:gap-x-20">
-    {row3.map((logo, i) => (
-      <Logo logo={logo} key={i} />
-    ))}
-  </div>
+        {/* ROW 3 → */}
+        <LogoRow logos={row3} />
 
-</div>
+      </div>
     </section>
   );
 }
