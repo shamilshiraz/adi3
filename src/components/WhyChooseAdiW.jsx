@@ -85,7 +85,7 @@ export default function WhyChooseAdhiWhite() {
           }}
           className="max-w-5xl"
         >
-          <h2
+          <h3
             className="
               text-[3rem]
               font-light
@@ -101,7 +101,7 @@ export default function WhyChooseAdhiWhite() {
             <span className="text-black/35">
               Dubai for Investment
             </span>
-          </h2>
+          </h3>
 
           <div className="mt-8 flex items-center gap-4">
             <span className="h-px w-16 bg-[#D4AF37]" />
