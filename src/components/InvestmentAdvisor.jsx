@@ -28,7 +28,6 @@ export default function InvestmentAdvisors() {
           }}
           className="max-w-4xl"
         >
-          <p className="eyebrow">MEET THE ADVISORS</p>
 
           <h2
   className="
