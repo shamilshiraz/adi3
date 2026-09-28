@@ -5,26 +5,25 @@ const row1 = [
   "/clients/meraas.svg",
   "/clients/ellington.png",
   "/clients/emaar.png",
-  "/clients/fam.jpg",
-  "/clients/haus.png",
   "/clients/sobha.png",
-];
-
-const row2 = [
-  "/clients/aldar.png",
-  "/clients/better.png",
-  "/clients/binghatti.webp",
-  "/clients/d&b.jpg",
-  "/clients/damac.webp",
   "/clients/dubai-h.png",
 ];
 
+const row2 = [
+
+  "/clients/binghatti.webp",
+  "/clients/damac.webp",
+  "/clients/azizi.webp",
+  "/clients/danube.png",
+  
+  
+];
+
 const row3 = [
-  "/clients/select.jpg",
-  "/clients/hmb.webp",
-  "/clients/deyaar.png",
-  "/clients/grovy.png",
-  "/clients/mag.png",
+  "/clients/meraki.png",
+  "/clients/omniyat.webp",
+  "/clients/samana.png",
+  "/clients/Union.png",
   "/clients/nakheel.png",
 ];
 
