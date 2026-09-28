@@ -85,15 +85,15 @@ export default function WhyChooseAdhiWhite() {
           }}
           className="max-w-5xl"
         >
-          <h2
+         <h2
   className="
-    text-[2.2rem]
+    text-[3rem]
     font-light
-    leading-[1.05]
-    tracking-[-0.035em]
+    leading-[0.98]
+    tracking-[-0.045em]
     text-black
-    sm:text-[3rem]
-    lg:text-[3.8rem]
+    sm:text-[4.5rem]
+    lg:text-[5.5rem]
   "
 >
             Why People Choose
