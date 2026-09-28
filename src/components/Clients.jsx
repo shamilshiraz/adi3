@@ -21,7 +21,7 @@ const row2 = [
 
 const row3 = [
   "/clients/meraki.png",
-  "/clients/omniyat.tiff",
+  "/clients/omniyat.jpeg",
   "/clients/samana.png",
   "/clients/Union.png",
   "/clients/nakheel.png",
