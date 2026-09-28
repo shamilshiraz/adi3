@@ -82,11 +82,26 @@ export default function Agents() {
             OUR ADVISORS
           </p>
 
-          <h1 className="heading-3 text-black mt-5 sm:mt-6">
-            Meet Our
-            <br />
-            Investment Advisors
-          </h1>
+          <h2
+  className="
+    mt-5
+    max-w-4xl
+    text-[2.8rem]
+    font-light
+    leading-[1.02]
+    tracking-[-0.04em]
+    text-black
+    sm:mt-6
+    sm:text-[4rem]
+    lg:text-[4.5rem]
+  "
+>
+  Meet The Advisors
+  <br />
+  <span className="text-black/35">
+    Behind The Decisions
+  </span>
+</h2>
 
           <p className="sub text-black/70 mt-5 sm:mt-6 max-w-2xl">
             Work directly with experienced advisors who help
