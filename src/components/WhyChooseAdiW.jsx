@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import {
   Building2,
@@ -12,30 +11,30 @@ const sections = [
   {
     icon: Building2,
     number: "01",
-    title: "Buy a Property",
+     title: "Buy with a plan",
     description:
-      "Dubai attracts investors worldwide with its strong market growth, tax-friendly environment, world-class lifestyle, and high-quality real estate opportunities. It offers potential for long-term wealth creation, rental income, and a secure investment future.",
+       "Dubai offers a dynamic market for long-term ownership, rental income, and lifestyle-led decisions. We help you approach the purchase with a clear plan.",
   },
   {
     icon: ArrowRightLeft,
     number: "02",
-    title: "Rent or Sell",
+     title: "Rent or sell with flexibility",
     description:
-      "After purchasing a property, you have the flexibility to choose your investment strategy. Generate regular rental income or sell the property later to benefit from capital appreciation and maximize your returns.",
+       "Choose a path that fits your priorities—generate rental income, hold for the long term, or sell when the timing and opportunity are right.",
   },
   {
     icon: Hammer,
     number: "03",
-    title: "Off-Plan Properties",
+     title: "Explore off-plan opportunity",
     description:
-      "Invest in properties under construction without paying the full amount upfront. Build ownership through flexible payment plans, then earn rental income or benefit from long-term value appreciation after completion.",
+       "Consider new developments with staged payment plans and a longer ownership horizon, supported by a clear view of the project and its timeline.",
   },
   {
     icon: KeyRound,
     number: "04",
-    title: "Ready Properties",
+     title: "Move into ready property",
     description:
-      "Ready properties give you immediate ownership and access. Complete the purchase, receive your keys, move in, or start earning rental income right away without waiting for construction.",
+       "Ready homes offer immediate access—move in, begin leasing, or add an income-producing asset to your portfolio without waiting for construction.",
   },
 ];
 
@@ -83,23 +82,16 @@ export default function WhyChooseAdhiWhite() {
             duration: 0.8,
             ease: [0.16, 1, 0.3, 1],
           }}
-          className="max-w-5xl"
+         className="max-w-5xl"
         >
+          <p className="eyebrow">THE DUBAI MARKET</p>
          <h2
-  className="
-    text-[3rem]
-    font-light
-    leading-[0.98]
-    tracking-[-0.045em]
-    text-black
-    sm:text-[4.5rem]
-    lg:text-[5.5rem]
-  "
+   className="display-heading display-heading-lg text-black"
 >
-            Why People Choose
+             Why investors choose
             <br />
             <span className="text-black/35">
-              Dubai for Investment
+               Dubai
             </span>
           </h2>
 
@@ -116,15 +108,15 @@ export default function WhyChooseAdhiWhite() {
               sm:leading-8
             "
           >
-            Dubai continues to attract investors from around the world thanks
-            to its stable economy, tax advantages, exceptional infrastructure,
-            and globally recognized real estate market.
+             A globally connected market, strong infrastructure, and a
+             lifestyle people want to be part of make Dubai a compelling place
+             to consider for your next property decision.
           </p>
         </motion.div>
 
         {/* ================= LIST ================= */}
 
-        <div className="mt-20 sm:mt-28">
+        <div className="mt-12 sm:mt-20 lg:mt-24">
 
           {sections.map((item, index) => {
             const Icon = item.icon;

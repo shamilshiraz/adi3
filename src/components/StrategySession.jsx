@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -14,33 +13,33 @@ import {
 const benefits = [
   {
     icon: TrendingUp,
-    title: "Market Intelligence",
-    text: "Understand current market trends, pricing movements and investment opportunities across Dubai.",
+    title: "Market perspective",
+    text: "Understand the forces shaping Dubai property and how they may relate to your decision.",
   },
   {
     icon: Building2,
-    title: "Investment Opportunities",
-    text: "Discover projects that align with your budget, timeline and long-term financial objectives.",
+    title: "Relevant opportunities",
+    text: "Explore projects that fit your budget, timing, lifestyle, and longer-term objectives.",
   },
   {
     icon: MapPinned,
-    title: "Location Intelligence",
-    text: "Compare communities based on rental demand, capital growth and future infrastructure.",
+    title: "Location insight",
+    text: "Compare communities through connectivity, lifestyle, rental demand, and future potential.",
   },
   {
     icon: Landmark,
-    title: "Developer Selection",
-    text: "Gain access to trusted developers with proven delivery records and premium projects.",
+    title: "Developer context",
+    text: "Understand the project, the developer, the payment plan, and the details that matter.",
   },
   {
     icon: PieChart,
-    title: "Return Analysis",
-    text: "Estimate rental yields, appreciation potential and exit strategies for every opportunity.",
+    title: "Return thinking",
+    text: "Consider income, growth, holding periods, and possible exit paths before you decide.",
   },
   {
     icon: ShieldCheck,
-    title: "Risk Assessment",
-    text: "Identify potential risks and receive practical guidance before making any investment decision.",
+    title: "Risk awareness",
+    text: "Surface the questions and considerations worth understanding before you commit.",
   },
 ];
 
@@ -53,6 +52,7 @@ export default function StrategySession() {
         bg-black
         page-padding
         section-spacing
+        page-intro
       "
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(239,189,120,0.18),transparent_45%)]" />
@@ -81,27 +81,11 @@ export default function StrategySession() {
           >
         
 <h2
-  className="
-    max-w-[360px]
-    text-[2.6rem]
-    font-light
-    leading-[1]
-    tracking-[-0.04em]
-    text-white
-
-    sm:max-w-[500px]
-    sm:text-[4rem]
-    sm:leading-[0.98]
-
-    lg:max-w-[560px]
-    lg:text-[5rem]
-  "
+  className="display-heading display-heading-lg max-w-[560px] text-white"
 >
-           Your Dubai
+            A clearer strategy
               <br />
-              Investment
-              <br />
-              Strategy Session
+              for your Dubai property
             </h2>
 
             <p
@@ -118,16 +102,15 @@ export default function StrategySession() {
     lg:text-lg
   "
 >
-              A personalized consultation designed to help
-              you evaluate opportunities, understand the
-              market, and avoid costly investment mistakes.
+              A focused conversation to help you understand the market, compare
+              opportunities, and choose your next step with confidence.
             </p>
 
             <Link
               to="/contact"
               className="btn-gold mt-10 inline-flex items-center gap-2"
             >
-              Book Your Session
+              Start your strategy session
 
               <ArrowUpRight size={18} />
             </Link>

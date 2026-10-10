@@ -13,7 +13,7 @@ const LoadingScreen = () => {
     >
       <motion.img
         src="/logo.png"
-        alt="ADHI Realty"
+        alt="ADHIHAVEN"
         className="w-32 sm:w-36 md:w-40"
         initial={{
           opacity: 0,

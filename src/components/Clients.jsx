@@ -1,5 +1,4 @@
-import React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 const row1 = [
   "/clients/meraas.svg",
@@ -72,18 +71,22 @@ function Logo({ logo }) {
 }
 
 function LogoRow({ logos, reverse = false }) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <div className="relative w-full overflow-hidden">
       <motion.div
         className="flex w-max"
-        animate={{
-          x: reverse ? ["-50%", "0%"] : ["0%", "-50%"],
-        }}
-        transition={{
-          duration: 30,
-          repeat: Infinity,
-          ease: "linear",
-        }}
+        animate={
+          shouldReduceMotion
+            ? { x: 0 }
+            : { x: reverse ? ["-50%", "0%"] : ["0%", "-50%"] }
+        }
+        transition={
+          shouldReduceMotion
+            ? { duration: 0 }
+            : { duration: 30, repeat: Infinity, ease: "linear" }
+        }
       >
         {/* FIRST SET */}
         <div className="flex items-center gap-8 sm:gap-12 lg:gap-16">
@@ -116,9 +119,9 @@ export default function Clients() {
         w-full
         overflow-hidden
         bg-white
-        py-20
-        sm:py-24
-        lg:py-28
+        py-14
+        sm:py-16
+        lg:py-20
       "
     >
       {/* HEADER */}
@@ -133,29 +136,20 @@ export default function Clients() {
             sm:text-xs
           "
         >
-          OUR NETWORK
+           SELECTED DEVELOPER RELATIONSHIPS
         </p>
 
         <h2
-          className="
-            mt-4
-            text-2xl
-            font-medium
-            uppercase
-            tracking-tight
-            text-black
-            sm:text-3xl
-            lg:text-4xl
-          "
+             className="heading-3 mx-auto mt-4 max-w-2xl font-medium text-black"
         >
-          Trusted By Industry Leaders
+           The right opportunities start with the right relationships
         </h2>
 
         <div className="mx-auto mt-5 h-px w-12 bg-[#D4AF37]" />
       </div>
 
       {/* MARQUEE */}
-      <div className="mt-12 space-y-5 sm:mt-16 sm:space-y-6 lg:mt-20 lg:space-y-8">
+       <div className="mt-9 space-y-3 sm:mt-12 sm:space-y-4 lg:mt-14 lg:space-y-5">
 
         {/* ROW 1 → */}
         <LogoRow logos={row1} />

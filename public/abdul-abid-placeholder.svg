@@ -1,0 +1,40 @@
+<svg width="900" height="1125" viewBox="0 0 900 1125" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Mock portrait placeholder for Abdul Abid</title>
+  <desc id="desc">A refined monochrome portrait placeholder with the initials AB for Abdul Abid.</desc>
+  <defs>
+    <linearGradient id="background" x1="90" y1="0" x2="820" y2="1125" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#282019"/>
+      <stop offset="0.5" stop-color="#0C0C0C"/>
+      <stop offset="1" stop-color="#D4AF37"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(475 340) rotate(90) scale(365 325)">
+      <stop stop-color="#EFBD78" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#EFBD78" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="jacket" x1="450" y1="620" x2="450" y2="1125" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#242424"/>
+      <stop offset="1" stop-color="#070707"/>
+    </linearGradient>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="24"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="1125" fill="url(#background)"/>
+  <circle cx="475" cy="340" r="330" fill="url(#halo)" filter="url(#softGlow)"/>
+  <path d="M0 960C220 825 340 780 450 780C580 780 720 850 900 960V1125H0V960Z" fill="url(#jacket)"/>
+  <path d="M285 1125C303 909 340 777 450 777C560 777 597 909 615 1125H285Z" fill="#141414"/>
+  <path d="M350 772C360 713 379 665 450 665C521 665 540 713 550 772L500 846H400L350 772Z" fill="#C48A3A" fill-opacity="0.9"/>
+  <ellipse cx="450" cy="430" rx="145" ry="180" fill="#B97745"/>
+  <path d="M310 415C310 240 382 179 465 179C565 179 614 254 590 408C564 337 518 299 431 298C382 298 344 329 310 415Z" fill="#151515"/>
+  <path d="M335 462C345 559 389 630 450 630C511 630 555 559 565 462C538 501 503 518 450 518C397 518 362 501 335 462Z" fill="#B97745"/>
+  <path d="M366 444C389 454 411 454 431 444" stroke="#21130E" stroke-width="10" stroke-linecap="round"/>
+  <path d="M469 444C489 454 511 454 534 444" stroke="#21130E" stroke-width="10" stroke-linecap="round"/>
+  <path d="M426 541C441 550 459 550 474 541" stroke="#6D3825" stroke-width="8" stroke-linecap="round"/>
+  <path d="M380 673L450 754L520 673L550 772L450 846L350 772L380 673Z" fill="#ECE5D7"/>
+  <path d="M450 843L400 1125H285C303 909 340 777 450 777V843Z" fill="#1E1E1E"/>
+  <path d="M450 843L500 1125H615C597 909 560 777 450 777V843Z" fill="#0A0A0A"/>
+  <rect x="58" y="62" width="784" height="1001" rx="18" stroke="#EFBD78" stroke-opacity="0.28" stroke-width="2"/>
+  <text x="450" y="1000" text-anchor="middle" fill="#EFBD78" font-family="Arial, sans-serif" font-size="25" letter-spacing="8">ABDUL ABID</text>
+  <text x="450" y="1047" text-anchor="middle" fill="white" fill-opacity="0.6" font-family="Arial, sans-serif" font-size="14" letter-spacing="4">CEO &amp; FOUNDER</text>
+</svg>

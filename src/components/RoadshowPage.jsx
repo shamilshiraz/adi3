@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   motion,
   AnimatePresence,
@@ -11,7 +12,6 @@ import {
 import {
   Search,
   MapPin,
-  CalendarDays,
   ArrowUpRight,
   ArrowUpDown,
   ChevronDown,
@@ -85,14 +85,6 @@ function getLocalISODate() {
   const day = String(now.getDate()).padStart(2, "0");
 
   return `${year}-${month}-${day}`;
-}
-
-function formatDate(iso) {
-  return parseLocalDate(iso).toLocaleDateString("en-US", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-  });
 }
 
 function formatDateParts(iso) {
@@ -252,20 +244,9 @@ function EventsHero() {
 
           {/* TITLE */}
           <h1
-            className="
-              max-w-4xl
-              text-[3.8rem]
-              font-light
-              leading-[0.94]
-              tracking-[-0.055em]
-              text-white
-
-              sm:text-[5.5rem]
-              lg:text-[7.5rem]
-              xl:text-[8rem]
-            "
+             className="display-heading display-heading-lg max-w-4xl text-white"
           >
-            Roadshows
+             Meet ADHIHAVEN in person
           </h1>
 
           {/* DESCRIPTION */}
@@ -284,8 +265,8 @@ function EventsHero() {
               lg:text-lg
             "
           >
-            Private roadshows, property showcases and investment gatherings
-            across Dubai's most sought-after destinations.
+            Private briefings, property showcases, and investor conversations
+            across Dubai&apos;s most sought-after destinations.
           </p>
         </motion.div>
       </div>
@@ -915,63 +896,32 @@ function RoadshowCard({
         </p>
 
         {/* DISCOVER INTERACTION */}
-        <div
-          className="
-            mt-6
-            flex
-            items-center
-            justify-between
-            border-t
-            border-white/10
-            pt-4
-          "
-        >
+        <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4">
           <span
-            className={`
-              text-[9px]
-              font-medium
-              uppercase
-              tracking-[0.2em]
-              ${
-                past
-                  ? "text-white/25"
-                  : "text-white/45"
-              }
-            `}
+            className={`text-[9px] font-medium uppercase tracking-[0.2em] ${
+              past ? "text-white/25" : "text-white/45"
+            }`}
           >
-            {past ? "Event concluded" : "Discover event"}
+            {past ? "Event concluded" : "Register your interest"}
           </span>
 
-          <div
-            className={`
-              flex
-              h-9
-              w-9
-              items-center
-              justify-center
-              rounded-full
-              border
-              transition-all
-              duration-500
-
-              ${
-                past
-                  ? "border-white/10 text-white/25"
-                  : "border-white/15 text-white/55 group-hover:border-[#D4AF37]/60 group-hover:bg-[#D4AF37] group-hover:text-black"
-              }
-            `}
-          >
-            <ArrowUpRight
-              size={15}
-              strokeWidth={1.5}
-              className="
-                transition-transform
-                duration-500
-                group-hover:-translate-y-0.5
-                group-hover:translate-x-0.5
-              "
-            />
-          </div>
+          {past ? (
+            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/25">
+              <ArrowUpRight size={15} strokeWidth={1.5} />
+            </span>
+          ) : (
+            <Link
+              to="/contact"
+              aria-label={`Register interest for ${item.title}`}
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/55 transition-all duration-500 hover:border-[#D4AF37]/60 hover:bg-[#D4AF37] hover:text-black focus-visible:ring-2 focus-visible:ring-[#D4AF37]"
+            >
+              <ArrowUpRight
+                size={15}
+                strokeWidth={1.5}
+                className="transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
+            </Link>
+          )}
         </div>
       </div>
     </motion.article>

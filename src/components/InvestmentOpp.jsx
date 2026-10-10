@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { motion } from "framer-motion";
 import {
   TrendingUp,
@@ -17,11 +16,11 @@ const opportunities = [
     icon: Building2,
     number: "01",
     title: "Off-Plan Investments",
-    subtitle: "Early-stage developer launches",
+     subtitle: "Early access to selected launches",
     image:
       "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1600&q=85",
     thesis:
-      "Access pre-launch and off-plan developments with attractive payment plans and strong appreciation potential before completion.",
+       "Explore selected developments earlier in their lifecycle, with staged payment plans and a clear view of the project journey.",
     risk: "Moderate to High",
     investor: "Long-Term Investors",
   },
@@ -29,11 +28,11 @@ const opportunities = [
     icon: Globe,
     number: "02",
     title: "International Diversification",
-    subtitle: "Global property portfolio",
+     subtitle: "Build a broader property portfolio",
     image:
       "https://images.unsplash.com/photo-1448630360428-65456885c650?auto=format&fit=crop&w=1600&q=85",
     thesis:
-      "Diversify your real estate holdings across key global markets to balance risk and capture international growth opportunities.",
+       "Consider property across carefully chosen markets to broaden your portfolio and balance your long-term objectives.",
     risk: "Moderate",
     investor: "Global Investors",
   },
@@ -41,11 +40,11 @@ const opportunities = [
     icon: TrendingUp,
     number: "03",
     title: "Capital Appreciation",
-    subtitle: "Emerging growth districts",
+     subtitle: "Positioned for long-term growth",
     image:
       "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=85",
     thesis:
-      "Focused on communities positioned for long-term value growth through infrastructure expansion and increasing demand.",
+       "Focus on communities shaped by infrastructure, connectivity, and sustained demand over a longer investment horizon.",
     risk: "Moderate",
     investor: "Growth-Focused Investors",
   },
@@ -53,11 +52,11 @@ const opportunities = [
     icon: Coins,
     number: "04",
     title: "Rental Yield",
-    subtitle: "Income-focused investments",
+     subtitle: "Property designed around income",
     image:
       "https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=1600&q=85",
     thesis:
-      "Designed for investors seeking consistent rental income and strong occupancy potential.",
+       "Explore properties with rental demand and practical fundamentals for investors who value recurring income.",
     risk: "Low to Moderate",
     investor: "Income Investors",
   },
@@ -65,11 +64,11 @@ const opportunities = [
     icon: Crown,
     number: "05",
     title: "Luxury Wealth Preservation",
-    subtitle: "Ultra-prime assets",
+     subtitle: "Scarce assets for long-term value",
     image:
       "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1600&q=85",
     thesis:
-      "Premium residences offering scarcity, prestige and long-term capital preservation.",
+       "Consider distinctive residences where location, quality, and scarcity support a long-term wealth strategy.",
     risk: "Low",
     investor: "High-Net-Worth Individuals",
   },
@@ -77,11 +76,11 @@ const opportunities = [
     icon: Landmark,
     number: "06",
     title: "Golden Visa Opportunities",
-    subtitle: "Residency-linked investments",
+     subtitle: "Property aligned with relocation goals",
     image:
       "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1600&q=85",
     thesis:
-      "Strategic investment opportunities aligned with UAE residency and relocation planning.",
+       "Explore property options that support wider relocation planning and the UAE residency conversation.",
     risk: "Moderate",
     investor: "International Investors",
   },
@@ -141,21 +140,14 @@ export default function InvestmentStrategiesCarousel() {
         >
           <div className="max-w-4xl">
 
+            <p className="eyebrow">WAYS TO INVEST</p>
+
             {/* HEADING */}
            <h2
-  className="
-    text-[2.8rem]
-    font-light
-    leading-[1.05]
-    tracking-[-0.04em]
-    text-white
-
-    sm:text-[3.8rem]
-    lg:text-[4.8rem]
-  "
+  className="display-heading display-heading-lg text-white"
 >
   <span className="block">
-    Different strategies.
+     One clear strategy.
   </span>
 
   <span
@@ -165,7 +157,7 @@ export default function InvestmentStrategiesCarousel() {
       text-white/35
     "
   >
-    One informed decision.
+     Built around your goals.
   </span>
 </h2>
             
@@ -182,17 +174,16 @@ export default function InvestmentStrategiesCarousel() {
                 sm:leading-8
               "
             >
-              Every investor has different priorities.
-              Explore opportunities aligned with growth,
-              income generation, wealth preservation and
-              residency objectives.
+               Every investor has different priorities. Explore pathways built
+               around growth, income, lifestyle, wealth preservation, or
+               long-term relocation goals.
             </p>
 
           </div>
         </motion.div>
 
         {/* STRATEGY CARDS */}
-        <div className="mt-12 sm:mt-16 lg:mt-20">
+         <div id="strategies" className="mt-10 sm:mt-14 lg:mt-16">
 
           <div
             className="
@@ -256,6 +247,8 @@ export default function InvestmentStrategiesCarousel() {
                   <img
                     src={item.image}
                     alt={item.title}
+                    loading={index < 2 ? "eager" : "lazy"}
+                    decoding="async"
                     className="
                       absolute
                       inset-0

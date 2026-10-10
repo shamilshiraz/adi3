@@ -1,16 +1,37 @@
-# React + Vite
+# ADHIHAVEN
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ADHIHAVEN is a responsive Dubai real-estate advisory website built with React,
+Vite, Tailwind CSS v4, Framer Motion, and React Router.
 
-Currently, two official plugins are available:
+## Available scripts
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm run dev      # Start the Vite development server
+npm run lint     # Run ESLint
+npm run build    # Create a production build
+npm run preview  # Preview the production build locally
+```
 
-## React Compiler
+## Main routes
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- `/` — Homepage and investment overview
+- `/agents` — Advisor directory with search
+- `/about` — Abdul Abid, CEO & Founder
+- `/roadshows` — Roadshow search, location filtering, and date sorting
+- `/developer` — Consultation process and FAQs
+- `/contact` — Consultation form and office information
+- `/terms` — Terms & Conditions
 
-## Expanding the ESLint configuration
+## Lead forms
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The consultation form and investor roadshow popup submit through FormSubmit to
+`adhirealty.uae@gmail.com`. FormSubmit may send a one-time activation email to
+the inbox the first time the integration is used. The destination address is
+centralized in `src/utils/formSubmission.js`.
+
+## Project structure
+
+- `src/pages` contains route-level pages.
+- `src/components` contains reusable sections and shared layout components.
+- `src/assets/agents.json` contains the advisor directory data.
+- `public` contains local logos, hero imagery, and developer logos.

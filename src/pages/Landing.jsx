@@ -1,9 +1,9 @@
-import React from 'react'
 import Hero from '../components/HeroSect'
 import WhyChooseAdhi from '../components/WhyChooseAdhi'
 import Clients from '../components/Clients'
 import InvestmentOpportunities from '../components/InvestmentOpp'
 import InvestmentAdvisors from '../components/InvestmentAdvisor'
+import FounderSpotlight from '../components/FounderSpotlight'
 import InvestorJourney from '../components/InvestorJourney'
 import RoadshowsEvents from '../components/RoadshowEvents'
 import WhyChooseAdhiWhite from '../components/WhyChooseAdiW'
@@ -16,8 +16,9 @@ function Landing() {
         <WhyChooseAdhi/>
         <WhyChooseAdhiWhite/>
         <InvestmentOpportunities/>
-        <InvestmentAdvisors/>
         <InvestorJourney/>
+        <FounderSpotlight/>
+        <InvestmentAdvisors/>
         <RoadshowsEvents/>
     </div>
   )

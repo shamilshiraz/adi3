@@ -42,7 +42,21 @@ select {
 }
 
 ::-webkit-scrollbar {
-  display: none;
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(28, 13, 23, 0.22);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(28, 13, 23, 0.38);
 }
 
 
@@ -59,7 +73,7 @@ select {
   border-radius: 0.75rem;
 
   color: #000000;
-  background: white;
+  background: #efbd78;
 
   font-weight: 300;
 
@@ -70,7 +84,8 @@ select {
 
 .btn-gold:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 30px rgba(255, 196, 115, 0.6);
+  background: #d4af37;
+  box-shadow: 0 0 30px rgba(239, 189, 120, 0.45);
 }
 
 
@@ -115,21 +130,21 @@ select {
 }
 
 .heading-1 {
-  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-size: clamp(2.35rem, 10.5vw, 3.5rem);
   line-height: 0.95;
   letter-spacing: -0.05em;
   font-weight: 300;
 }
 
 .heading-2 {
-  font-size: clamp(2rem, 5vw, 4.5rem);
-  line-height: 1;
+  font-size: clamp(2rem, 9vw, 2.75rem);
+  line-height: 1.02;
   letter-spacing: -0.04em;
 }
 
 .heading-3 {
-  font-size: clamp(1.75rem, 4vw, 3rem);
-  line-height: 1.05;
+  font-size: clamp(1.75rem, 7.5vw, 2.4rem);
+  line-height: 1.08;
   letter-spacing: -0.03em;
 }
 
@@ -151,20 +166,20 @@ select {
 }
 
 .sub-lg {
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
-  line-height: 1.8;
+  font-size: 1.05rem;
+  line-height: 1.6;
   font-weight: 300;
 }
 
 .sub {
-  font-size: clamp(1rem, 1.8vw, 1.125rem);
-  line-height: 1.8;
+  font-size: 1rem;
+  line-height: 1.6;
   font-weight: 300;
 }
 
 .small {
-  font-size: clamp(0.9375rem, 1.5vw, 1rem);
-  line-height: 1.7;
+  font-size: 0.9375rem;
+  line-height: 1.6;
   font-weight: 300;
 }
 
@@ -182,6 +197,27 @@ select {
 
 .text-dark-muted {
   color: rgba(28, 13, 23, 0.7);
+}
+
+.display-heading {
+  display: block;
+  font-weight: 300;
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+.display-heading-lg {
+  font-size: clamp(2.35rem, 10vw, 3.8rem);
+}
+
+.display-heading-xl {
+  font-size: clamp(2.7rem, 13vw, 4.4rem);
+}
+
+.display-heading-hero {
+  font-size: clamp(2.45rem, 10vw, 3.9rem);
+  line-height: 1.04;
 }
 
 
@@ -207,6 +243,7 @@ select {
 }
 
 .btn-primary {
+  gap: 0.5rem;
   background: #efbd78;
   color: #000000;
   font-weight: 500;
@@ -243,6 +280,59 @@ select {
   color: white;
 }
 
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: rgba(0, 0, 0, 0.72);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.form-input {
+  min-height: 3.5rem;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.875rem;
+  background: #ffffff;
+  padding: 0 1rem;
+  color: #000000;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.form-input::placeholder {
+  color: rgba(0, 0, 0, 0.35);
+}
+
+.form-input:hover {
+  border-color: rgba(0, 0, 0, 0.22);
+}
+
+.form-input:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.14);
+}
+
+textarea.form-input {
+  padding-block: 1rem;
+}
+
+select.form-input {
+  padding-right: 2.5rem;
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+:focus-visible {
+  outline: 2px solid #d4af37;
+  outline-offset: 3px;
+}
+
 
 /* ==================================================
    GLASS SURFACES
@@ -274,11 +364,15 @@ select {
 ================================================== */
 
 .page-padding {
-  padding-inline: clamp(1rem, 4vw, 5rem);
+  padding-inline: clamp(1rem, 4.2vw, 5rem);
 }
 
 .section-spacing {
-  padding-block: clamp(4.5rem, 8vw, 8rem);
+  padding-block: 4rem;
+}
+
+.page-intro {
+  padding-top: 7.5rem;
 }
 
 .container-custom {
@@ -350,7 +444,7 @@ select {
   }
 
   .heading-1 {
-    font-size: clamp(2.5rem, 11vw, 3.5rem);
+    font-size: clamp(2.35rem, 10.5vw, 3.5rem);
     line-height: 0.95;
   }
 
@@ -360,8 +454,21 @@ select {
   }
 
   .heading-3 {
-    font-size: clamp(1.75rem, 8vw, 2.25rem);
+    font-size: clamp(1.75rem, 7.5vw, 2.4rem);
     line-height: 1.08;
+  }
+
+  .display-heading-lg {
+    font-size: clamp(2.35rem, 10vw, 3.8rem);
+  }
+
+  .display-heading-xl {
+    font-size: clamp(2.7rem, 13vw, 4.4rem);
+  }
+
+  .display-heading-hero {
+    font-size: clamp(2.45rem, 10vw, 3.9rem);
+    line-height: 1.04;
   }
 
   .heading-4 {
@@ -378,12 +485,12 @@ select {
 
   .sub-lg {
     font-size: 1.05rem;
-    line-height: 1.65;
+    line-height: 1.6;
   }
 
   .sub {
     font-size: 1rem;
-    line-height: 1.65;
+    line-height: 1.6;
   }
 
   .small {
@@ -392,7 +499,11 @@ select {
   }
 
   .section-spacing {
-    padding-block: 4.5rem;
+    padding-block: 4rem;
+  }
+
+  .page-intro {
+    padding-top: 7.5rem;
   }
 
   .btn-primary,
@@ -400,6 +511,64 @@ select {
   .btn-dark {
     min-height: 48px;
     padding-inline: 24px;
+  }
+}
+
+
+/* ==================================================
+   TABLET AND DESKTOP
+================================================== */
+
+@media (min-width: 768px) {
+  .heading-1 {
+    font-size: clamp(3.5rem, 7vw, 5.75rem);
+    line-height: 0.95;
+  }
+
+  .heading-2 {
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1;
+  }
+
+  .heading-3 {
+    font-size: clamp(2.3rem, 3.6vw, 3rem);
+    line-height: 1.02;
+  }
+
+  .sub-lg {
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.7;
+  }
+
+  .sub {
+    font-size: clamp(1rem, 1.8vw, 1.125rem);
+    line-height: 1.7;
+  }
+
+  .small {
+    font-size: clamp(0.9375rem, 1.5vw, 1rem);
+    line-height: 1.7;
+  }
+
+  .display-heading-lg {
+    font-size: clamp(3.25rem, 5.5vw, 5.25rem);
+  }
+
+  .display-heading-xl {
+    font-size: clamp(3.75rem, 7vw, 6.5rem);
+  }
+
+  .display-heading-hero {
+    font-size: clamp(3.5rem, 5.8vw, 5.5rem);
+    line-height: 1.02;
+  }
+
+  .section-spacing {
+    padding-block: clamp(5rem, 7vw, 7.5rem);
+  }
+
+  .page-intro {
+    padding-top: clamp(8rem, 12vw, 10rem);
   }
 }
 
@@ -418,10 +587,29 @@ select {
     padding-block: 4rem;
   }
 
+  .page-intro {
+    padding-top: 7rem;
+  }
+
   .btn-primary,
   .btn-secondary,
   .btn-dark {
     width: 100%;
     max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

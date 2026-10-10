@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Search,
@@ -35,9 +35,12 @@ export default function Agents() {
         overflow-hidden
         bg-white
         page-padding
-        py-20
-        sm:py-24
-        lg:py-28
+        pb-20
+        pt-32
+        sm:pb-24
+        sm:pt-36
+        lg:pb-28
+        lg:pt-40
       "
     >
       {/* BACKGROUND GLOW */}
@@ -79,35 +82,22 @@ export default function Agents() {
           className="max-w-4xl"
         >
           <p className="eyebrow">
-            OUR ADVISORS
+             THE ADHIHAVEN ADVISORY TEAM
           </p>
 
           <h2
-  className="
-    mt-5
-    max-w-4xl
-    text-[2.8rem]
-    font-light
-    leading-[1.02]
-    tracking-[-0.04em]
-    text-black
-    sm:mt-6
-    sm:text-[4rem]
-    lg:text-[4.5rem]
-  "
+  className="display-heading display-heading-lg mt-5 max-w-4xl text-black sm:mt-6"
 >
-  Meet The Advisors
+  Meet the people behind
   <br />
   <span className="text-black/35">
-    Behind The Decisions
+     your next move
   </span>
 </h2>
 
           <p className="sub text-black/70 mt-5 sm:mt-6 max-w-2xl">
-            Work directly with experienced advisors who help
-            investors identify opportunities, evaluate
-            developments, and build long-term wealth through
-            Dubai real estate.
+             Speak with people who listen first, bring useful market context,
+             and help you evaluate Dubai property with a clearer point of view.
           </p>
         </motion.div>
 
@@ -151,6 +141,7 @@ export default function Agents() {
             <input
               type="text"
               placeholder="Search advisors, languages or specializations..."
+              aria-label="Search advisors, languages or specializations"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="
@@ -231,6 +222,8 @@ export default function Agents() {
                   <img
                     src={advisor.image}
                     alt={advisor.name}
+                    loading={index < 4 ? "eager" : "lazy"}
+                    decoding="async"
                     className="
                       h-full
                       w-full
@@ -268,7 +261,7 @@ export default function Agents() {
                   {/* NAME */}
                   <h3
                     className="
-                      text-[14px]
+                      text-[15px]
                       sm:text-lg
                       lg:text-xl
                       font-medium
@@ -283,7 +276,7 @@ export default function Agents() {
                   <p
                     className="
                       mt-1.5
-                      text-[9px]
+                      text-[11px]
                       sm:text-sm
                       lg:text-base
                       leading-tight
@@ -322,8 +315,8 @@ export default function Agents() {
                       <div className="min-w-0">
                         <p
                           className="
-                            text-[9px]
-                            sm:text-sm
+                            text-[10px]
+                            sm:text-xs
                             leading-none
                             text-[#D4AF37]
                           "
@@ -335,7 +328,7 @@ export default function Agents() {
                           className="
                             mt-1
                             break-words
-                            text-[9px]
+                            text-[10px]
                             sm:text-sm
                             leading-tight
                             text-black/65
@@ -362,8 +355,8 @@ export default function Agents() {
                       <div className="min-w-0">
                         <p
                           className="
-                            text-[9px]
-                            sm:text-sm
+                            text-[10px]
+                            sm:text-xs
                             leading-none
                             text-[#D4AF37]
                           "
@@ -375,7 +368,7 @@ export default function Agents() {
                           className="
                             mt-1
                             break-words
-                            text-[9px]
+                            text-[10px]
                             sm:text-sm
                             leading-tight
                             text-black/65
@@ -402,8 +395,8 @@ export default function Agents() {
                       <div className="min-w-0">
                         <p
                           className="
-                            text-[9px]
-                            sm:text-sm
+                            text-[10px]
+                            sm:text-xs
                             leading-none
                             text-[#D4AF37]
                           "
@@ -414,7 +407,7 @@ export default function Agents() {
                         <p
                           className="
                             mt-1
-                            text-[9px]
+                            text-[10px]
                             sm:text-sm
                             leading-tight
                             text-black/65

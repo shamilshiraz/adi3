@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import {
   TrendingUp,
@@ -10,27 +9,27 @@ import {
 const pillars = [
   {
     icon: TrendingUp,
-    title: "Property Advice",
+     title: "Practical Guidance",
     description:
-      "Get trusted guidance from experienced real estate professionals.",
+       "Understand the opportunity, the numbers, and the next step before you commit.",
   },
   {
     icon: KeyRound,
-    title: "Market Opportunities",
+     title: "Curated Opportunities",
     description:
-      "Find properties that match your budget and investment goals.",
+       "Explore properties selected around your goals, budget, and timeline.",
   },
   {
     icon: Compass,
-    title: "Offers & Payment Plans",
+     title: "Smarter Payment Planning",
     description:
-      "Explore investment opportunities with suitable payment structures.",
+       "Compare payment structures and plan your investment with greater visibility.",
   },
   {
     icon: Handshake,
-    title: "End-to-End Support",
+     title: "Support Through Handover",
     description:
-      "From property selection to handover, we're with you every step.",
+       "Stay supported from your first conversation through purchase, handover, and beyond.",
   },
 ];
 
@@ -41,13 +40,11 @@ export default function WhyChooseAdhi() {
         relative
         overflow-hidden
         bg-black
-        px-5
-        py-20
+        page-padding
+        py-16
         text-white
-        sm:px-8
-        sm:py-24
-        lg:px-20
-        lg:py-28
+        sm:py-20
+        lg:py-24
       "
     >
       {/* AMBIENT GOLD GLOW */}
@@ -99,7 +96,7 @@ export default function WhyChooseAdhi() {
             duration: 0.8,
             ease: [0.16, 1, 0.3, 1],
           }}
-          className="text-center"
+          className="max-w-3xl text-left"
         >
           <p
             className="
@@ -111,30 +108,20 @@ export default function WhyChooseAdhi() {
               sm:text-xs
             "
           >
-            THE ADHI DIFFERENCE
+             THE ADHIHAVEN APPROACH
           </p>
 
           <h2
-            className="
-              mt-4
-              text-2xl
-              font-medium
-              uppercase
-              tracking-tight
-              text-white
-              sm:text-3xl
-              lg:text-4xl
-            "
+             className="heading-3 mt-4 max-w-3xl font-medium text-white"
           >
-            Why Choose ADHI
+             Clarity behind every confident decision
           </h2>
 
-          <div className="mx-auto mt-5 h-px w-12 bg-[#D4AF37]" />
+           <div className="mt-5 h-px w-12 bg-[#D4AF37]" />
 
           <p
             className="
-              mx-auto
-              mt-6
+             mt-6
               max-w-2xl
               text-sm
               leading-7
@@ -143,23 +130,22 @@ export default function WhyChooseAdhi() {
               sm:leading-8
             "
           >
-            A strategic approach to Dubai real estate,
-            built around clarity, opportunity, and long-term
-            investor relationships.
+             Property decisions are personal. We bring structure, perspective,
+             and thoughtful guidance to every stage of the journey.
           </p>
         </motion.div>
 
         {/* PILLARS */}
         <div
           className="
-            mt-14
+             mt-12
             grid
             grid-cols-1
             gap-5
-            sm:mt-16
+             sm:mt-14
             sm:grid-cols-2
             sm:gap-6
-            lg:mt-20
+             lg:mt-16
             lg:grid-cols-4
             lg:gap-8
           "

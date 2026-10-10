@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -12,7 +11,7 @@ import advisors from "../assets/agents.json";
 
 export default function InvestmentAdvisors() {
   return (
-    <section className="relative overflow-hidden bg-white page-padding section-spacing">
+    <section id="advisors" className="relative overflow-hidden bg-white page-padding section-spacing">
       <div className="container-custom">
 
         {/* ================================
@@ -29,31 +28,21 @@ export default function InvestmentAdvisors() {
           className="max-w-4xl"
         >
 
+          <p className="eyebrow">THE ADHIHAVEN TEAM</p>
           <h2
-  className="
-    mt-5
-    max-w-4xl
-    text-[2.8rem]
-    font-light
-    leading-[1.02]
-    tracking-[-0.04em]
-    text-black
-    sm:mt-6
-    sm:text-[4rem]
-    lg:text-[4.5rem]
-  "
+  className="display-heading display-heading-lg mt-5 max-w-4xl text-black sm:mt-6"
 >
-  Meet The Advisors
+  Meet the people behind
   <br />
   <span className="text-black/35">
-    Behind The Decisions
+     your next move
   </span>
 </h2>
 
           <p className="sub text-dark-muted mt-5 sm:mt-6 max-w-2xl">
-            Connect with experienced investment advisors who help investors
-            evaluate opportunities, understand market dynamics, and build
-            long-term strategies in Dubai real estate.
+             Real estate decisions are personal. Our advisors bring market
+             knowledge, thoughtful questions, and practical guidance to every
+             conversation.
           </p>
         </motion.div>
 
@@ -74,7 +63,7 @@ export default function InvestmentAdvisors() {
             items-stretch
           "
         >
-          {advisors.slice(0, 8).map((advisor, index) => (
+           {advisors.slice(0, 4).map((advisor, index) => (
             <motion.div
               key={advisor.id}
               initial={{
@@ -144,6 +133,8 @@ export default function InvestmentAdvisors() {
                 <img
                   src={advisor.image}
                   alt={advisor.name}
+                  loading={index < 4 ? "eager" : "lazy"}
+                  decoding="async"
                   className="
                     h-full
                     w-full
@@ -237,7 +228,7 @@ export default function InvestmentAdvisors() {
                     <div className="min-w-0 flex-1">
                       <p
                         className="
-                          text-[9px]
+                           text-[10px]
                           sm:text-[10px]
                           lg:text-xs
                           uppercase
@@ -281,7 +272,7 @@ export default function InvestmentAdvisors() {
                     <div className="min-w-0 flex-1">
                       <p
                         className="
-                          text-[9px]
+                           text-[10px]
                           sm:text-[10px]
                           lg:text-xs
                           uppercase
@@ -325,7 +316,7 @@ export default function InvestmentAdvisors() {
                     <div className="min-w-0 flex-1">
                       <p
                         className="
-                          text-[9px]
+                           text-[10px]
                           sm:text-[10px]
                           lg:text-xs
                           uppercase
@@ -444,7 +435,7 @@ export default function InvestmentAdvisors() {
       sm:px-8
     "
   >
-    <span>View All Advisors</span>
+     <span>Meet all advisors</span>
 
     <ArrowUpRight
       size={16}

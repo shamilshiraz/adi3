@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   Search,
   Wallet,
@@ -12,33 +13,33 @@ const GOLD = "#D4AF37";
 
 const steps = [
   {
-    title: "Select",
+     title: "Explore options",
     description:
-      "Choose your preferred property and developer.",
+       "Compare properties and developers against your goals, budget, and timeline.",
     icon: Search,
   },
   {
-    title: "Booking Payment",
+     title: "Reserve your preferred unit",
     description:
-      "Pay the booking amount/down payment (typically 10%).",
+       "Secure the unit with the required booking amount, based on the selected payment plan.",
     icon: Wallet,
   },
   {
-    title: "Book your unit",
+     title: "Confirm the purchase",
     description:
-      "Sign the Booking Form and complete the required payment (up to 24%, including DLD fees, as per the developer's payment plan).",
+       "Complete the booking form and required initial payments in line with the developer’s agreed schedule.",
     icon: FileSignature,
   },
   {
-    title: "Sales Agreement",
+     title: "Sign the agreement",
     description:
-      "Sign the Sales Purchase Agreement (SPA).",
+       "Review and sign the Sales Purchase Agreement with the relevant parties.",
     icon: FileCheck,
   },
   {
-    title: "Continue Payments",
+     title: "Follow your plan",
     description:
-      "Continue making payments according to the developer's payment plan until completion.",
+       "Stay on track with the agreed payment plan through completion and handover.",
     icon: CalendarClock,
   },
 ];
@@ -323,7 +324,7 @@ function TimelineStepHorizontal({
         opacity,
         y,
       }}
-      className="
+       className="
         relative
         flex
         w-[300px]
@@ -497,23 +498,13 @@ function InvestorJourneyHorizontal() {
             </p>
 
             <h2
-              className="
-                mt-6
-                max-w-5xl
-                text-[2.8rem]
-                font-light
-                leading-[1.02]
-                tracking-[-0.04em]
-                text-white
-                sm:text-[4rem]
-                lg:text-[4.5rem]
-              "
+             className="display-heading display-heading-lg mt-6 max-w-5xl text-white"
             >
-              A Structured Process
+               A clearer path to ownership
               <br />
 
               <span className="text-white/35">
-                Designed Around Investors
+                 Designed around your goals
               </span>
             </h2>
 
@@ -528,10 +519,9 @@ function InvestorJourneyHorizontal() {
                 sm:leading-8
               "
             >
-              Every investment follows a clear framework,
-              ensuring confidence, transparency and informed
-              decision-making from the first conversation to
-              long-term portfolio support.
+               From your first question to long-term portfolio support, every
+               step is designed to keep your decisions clear, considered, and
+               informed.
             </p>
 
           </div>
@@ -641,6 +631,7 @@ function InvestorJourneyHorizontal() {
 export default function InvestorJourney() {
   return (
     <section
+      id="process"
       className="
         relative
         bg-black
@@ -687,22 +678,13 @@ export default function InvestorJourney() {
           </p>
 
           <h2
-            className="
-              mt-6
-              max-w-5xl
-              text-[2.8rem]
-              font-light
-              leading-[1.02]
-              tracking-[-0.04em]
-              text-white
-              sm:text-[4rem]
-            "
+             className="display-heading display-heading-lg mt-6 max-w-5xl text-white"
           >
-            A Structured Process
+             A clearer path to ownership
             <br />
 
             <span className="text-white/35">
-              Designed Around Investors
+               Designed around your goals
             </span>
           </h2>
 
@@ -717,10 +699,9 @@ export default function InvestorJourney() {
               sm:leading-8
             "
           >
-            Every investment follows a clear framework,
-            ensuring confidence, transparency and informed
-            decision-making from the first conversation to
-            long-term portfolio support.
+             From your first question to long-term portfolio support, every
+             step is designed to keep your decisions clear, considered, and
+             informed.
           </p>
 
         </motion.div>
@@ -764,9 +745,9 @@ export default function InvestorJourney() {
             sm:mt-20
           "
         >
-          <button className="btn-gold">
-            Book Consultation
-          </button>
+          <Link to="/contact" className="btn-primary">
+            Start your consultation
+          </Link>
         </motion.div>
 
       </div>

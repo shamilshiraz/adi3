@@ -1,27 +1,27 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 
 const faqs = [
   {
-    question: "How long is the consultation?",
+    question: "What happens during a consultation?",
     answer:
-      "Our investment strategy sessions typically last between 30–60 minutes, depending on your investment goals, experience, and the topics you'd like to discuss with your advisor.",
+      "We discuss your goals, budget, timeline, and priorities, then explore the questions and opportunities most relevant to you. Most sessions take around 30–60 minutes.",
   },
   {
     question: "Who is the consultation for?",
     answer:
-      "The consultation is ideal for first-time investors, experienced buyers, NRIs, international investors, and anyone looking to invest confidently in Dubai real estate.",
+      "It is designed for first-time buyers, experienced investors, NRIs, international clients, and anyone who wants a clearer view before making a Dubai property decision.",
   },
   {
-    question: "Is there any cost for the consultation?",
+    question: "Is the first consultation complimentary?",
     answer:
-      "Your initial strategy session is completely complimentary. It allows us to understand your objectives, answer your questions, and recommend suitable investment opportunities without any obligation.",
+      "Yes. The initial conversation is complimentary and gives us the opportunity to understand your objectives and discuss suitable next steps without obligation.",
   },
   {
-    question: "Can international investors join?",
+    question: "Can I join from outside the UAE?",
     answer:
-      "Absolutely. We regularly advise investors from around the world through virtual consultations and provide complete support throughout the Dubai property investment process.",
+      "Yes. We support international clients through virtual consultations and can guide you through the key stages of considering property in Dubai.",
   },
 ];
 
@@ -63,19 +63,18 @@ export default function ConsultationFAQ() {
             className="lg:sticky lg:top-28 h-fit"
           >
             <p className="eyebrow">
-              FREQUENTLY ASKED QUESTIONS
+               QUESTIONS WORTH ASKING
             </p>
 
             <h2 className="heading-3 text-white mt-6">
-              Everything You
+               Better questions.
               <br />
-              Need To Know
+               Clearer decisions.
             </h2>
 
             <p className="sub text-white/70 mt-6 max-w-md">
-              Before booking your investment consultation,
-              here are the questions we hear most often from
-              investors across the world.
+               Here are the questions investors most often ask before starting
+               a conversation with ADHIHAVEN.
             </p>
           </motion.div>
 
@@ -116,6 +115,9 @@ export default function ConsultationFAQ() {
                   "
                 >
                   <button
+                    type="button"
+                    aria-expanded={open}
+                    aria-controls={`faq-answer-${index}`}
                     onClick={() =>
                       setActive(open ? -1 : index)
                     }
@@ -157,6 +159,7 @@ export default function ConsultationFAQ() {
                   <AnimatePresence initial={false}>
                     {open && (
                       <motion.div
+                        id={`faq-answer-${index}`}
                         initial={{
                           height: 0,
                           opacity: 0,

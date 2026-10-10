@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import {
   Send,
@@ -10,26 +10,26 @@ import {
 const steps = [
   {
     number: "01",
-    title: "Submit Inquiry",
-    text: "Share your investment goals, budget and preferences through our consultation form.",
+    title: "Tell us what matters",
+    text: "Share your goals, budget, timing, and preferences through a short consultation form.",
     icon: Send,
   },
   {
     number: "02",
-    title: "Advisor Assignment",
-    text: "We'll match you with an experienced advisor based on your investment objectives.",
+    title: "Meet the right advisor",
+    text: "We connect you with an advisor whose experience fits your questions and objectives.",
     icon: UserCheck,
   },
   {
     number: "03",
-    title: "Strategy Session",
-    text: "Meet with your advisor to explore opportunities, market insights and tailored recommendations.",
+    title: "Have a useful conversation",
+    text: "Explore market context, relevant opportunities, and practical considerations together.",
     icon: MessagesSquare,
   },
   {
     number: "04",
-    title: "Investment Plan",
-    text: "Receive a personalized investment roadmap with recommended projects and next steps.",
+    title: "Leave with a clear next step",
+    text: "Take away a considered direction, potential opportunities, and an actionable path forward.",
     icon: FileText,
   },
 ];
@@ -181,15 +181,14 @@ export default function ConsultationProcess() {
           <p className="eyebrow">CONSULTATION PROCESS</p>
 
           <h2 className="heading-3 text-black mt-6">
-            From First Conversation
+             From your first question
             <br />
-            To Investment Confidence
+             to a clearer next step
           </h2>
 
           <p className="sub text-black/70 mt-6 max-w-2xl">
-            A simple, transparent consultation process designed to help you
-            make informed real estate investment decisions with expert
-            guidance at every stage.
+             A simple, transparent process designed to help you make a more
+             informed property decision with the right guidance at each stage.
           </p>
         </motion.div>
 

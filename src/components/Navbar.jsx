@@ -1,18 +1,19 @@
 "use client";
 
-import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { motion, useCycle } from "framer-motion";
 
 function Navbar() {
   const [open, cycleOpen] = useCycle(false, true);
+  const { pathname } = useLocation();
 
   const navigation = [
     { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
     { name: "Agents", path: "/agents" },
     { name: "Roadshows", path: "/roadshows" },
-    { name: "Developer", path: "/developer" },
+    { name: "Consultation", path: "/developer" },
   ];
 
   return (
@@ -40,26 +41,27 @@ function Navbar() {
               ease: "easeOut",
             }}
             className="shrink-0"
-          >
+        >
             <Link to="/" onClick={() => open && cycleOpen()}>
               <img
                 src="/logo.png"
                 className="h-10 sm:h-12 w-auto object-contain"
-                alt="ADHI Haven Real Estate"
+                 alt="ADHIHAVEN"
               />
             </Link>
           </motion.div>
 
           {/* Desktop Menu */}
-          <motion.nav
-            className="
+           <motion.nav
+             aria-label="Primary navigation"
+             className="
               hidden md:flex
               absolute left-1/2
               -translate-x-1/2
               items-center
               gap-6 lg:gap-8
               text-white
-              text-sm lg:text-md
+               text-sm lg:text-base
             "
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -80,7 +82,11 @@ function Navbar() {
                   delay: 0.25 + i * 0.05,
                 }}
               >
-                <Link to={item.path}>
+                <Link
+                  to={item.path}
+                  aria-current={pathname === item.path ? "page" : undefined}
+                  className={pathname === item.path ? "text-[#EFBD78]" : undefined}
+                >
                   {item.name}
                 </Link>
 
@@ -123,7 +129,8 @@ function Navbar() {
           <motion.button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
+               aria-expanded={open}
+               aria-controls="mobile-navigation"
             className="
               md:hidden
               flex
@@ -153,6 +160,8 @@ function Navbar() {
 
       {/* Mobile Menu */}
       <motion.div
+        id="mobile-navigation"
+        aria-hidden={!open}
         className="
           fixed
           top-[72px]

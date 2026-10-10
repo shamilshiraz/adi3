@@ -1,5 +1,5 @@
-import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   CalendarDays,
   MapPin,
@@ -35,7 +35,7 @@ const events = [
 
 export default function RoadshowsEvents() {
   return (
-    <section className="relative bg-white page-padding py-24 sm:py-28 lg:py-32">
+    <section id="roadshows" className="relative bg-white page-padding py-20 sm:py-24 lg:py-28">
       <div className="container-custom relative">
 
         {/* HEADER + CAROUSEL */}
@@ -66,33 +66,21 @@ export default function RoadshowsEvents() {
                 
 
                 <span className="text-xs uppercase tracking-[0.3em] text-[#C48A3A]">
-                  ROADSHOWS
+                   ADHIHAVEN ROADSHOWS
                 </span>
               </div>
 
            <h2
-  className="
-    mt-6
-    max-w-[900px]
-    text-[3.25rem]
-    leading-[0.92]
-    tracking-[-0.055em]
-    font-normal
-    text-black
-    sm:text-6xl
-    sm:leading-[0.92]
-    lg:text-7xl
-    xl:text-[5.5rem]
-  "
+   className="display-heading display-heading-lg mt-6 max-w-[900px] font-normal text-black"
 >
-  <span className="block">Meet Us</span>
+   <span className="block">Meet the people</span>
   <span className="block text-black/30">
-    Around The World
+     behind the opportunity
   </span>
 </h2>
               <p className="sub mt-6 max-w-md text-black/60">
-                Join exclusive investor roadshows, private briefings
-                and curated events across major global markets.
+                 Join private briefings, property showcases, and investor
+                 conversations across the markets that matter to you.
               </p>
 
               {/* Divider */}
@@ -134,7 +122,7 @@ export default function RoadshowsEvents() {
               </div>
 
               {/* Scroll indicator */}
-              <div className="mt-12 hidden items-center gap-3 lg:flex">
+              <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center lg:mt-12">
                 <div className="flex h-9 w-9 items-center justify-center rounded-full border border-black/15">
                   <span className="h-1.5 w-1.5 rounded-full bg-[#C48A3A]" />
                 </div>
@@ -142,6 +130,11 @@ export default function RoadshowsEvents() {
                 <span className="text-xs uppercase tracking-[0.2em] text-black/45">
                   Scroll to explore
                 </span>
+
+                <Link to="/roadshows" className="btn-dark sm:ml-2">
+                  View all roadshows
+                  <ArrowUpRight size={16} />
+                </Link>
               </div>
 
             </motion.div>
@@ -247,6 +240,8 @@ export default function RoadshowsEvents() {
                   <img
                     src={event.image}
                     alt={event.city}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    decoding="async"
                     className="
                       absolute
                       inset-0
@@ -382,17 +377,17 @@ export default function RoadshowsEvents() {
                         </span>
                       </div>
 
-                      <ArrowUpRight
-                        size={22}
-                        strokeWidth={1.5}
-                        className="
-                          text-[#EFBD78]
-                          transition-transform
-                          duration-300
-                          group-hover:translate-x-1
-                          group-hover:-translate-y-1
-                        "
-                      />
+                       <Link
+                         to="/contact"
+                         aria-label={`Register interest for ${event.title}`}
+                         className="rounded-full p-1 focus-visible:ring-2 focus-visible:ring-[#EFBD78]"
+                       >
+                         <ArrowUpRight
+                           size={22}
+                           strokeWidth={1.5}
+                           className="text-[#EFBD78] transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                         />
+                       </Link>
 
                     </div>
                   </div>

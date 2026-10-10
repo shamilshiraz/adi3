@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const HeroSect = () => {
   return (
@@ -112,36 +114,17 @@ const HeroSect = () => {
               sm:text-xs
             "
           >
-            DUBAI REAL ESTATE
+             DUBAI PROPERTY, CLEARLY CONSIDERED
           </p>
 
           {/* MAIN HEADING */}
-          <h1
-            className="
-              w-full
-              font-medium
-              tracking-[-0.035em]
-              text-[#D4AF37]
-
-              /* MOBILE */
-              text-[clamp(2.6rem,9vw,4rem)]
-              leading-[1.08]
-
-              /* TABLET */
-              sm:text-[clamp(3.5rem,7vw,5rem)]
-              sm:leading-[1.05]
-
-              /* DESKTOP */
-              lg:text-[clamp(3.8rem,5vw,5.4rem)]
-              lg:leading-[1.05]
-            "
-          >
-            <span className="block">
-              Building Reliability.
+           <h1 className="display-heading display-heading-hero max-w-5xl w-full font-medium text-white">
+             <span className="block">
+               Invest in Dubai with clarity.
             </span>
 
-            <span className="block">
-              Delivering Excellence.
+             <span className="block text-[#EFBD78]">
+               Move forward with confidence.
             </span>
           </h1>
 
@@ -163,10 +146,28 @@ const HeroSect = () => {
               lg:leading-8
             "
           >
-            Your trusted partner for Dubai real estate,
-            investment opportunities, and strategic property
-            advisory.
-          </p>
+             ADHIHAVEN brings together local market perspective, carefully
+             selected opportunities, and personal guidance for investors
+             building their next chapter in Dubai.
+           </p>
+
+           <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row">
+             <Link to="/contact" className="btn-primary w-full sm:w-auto">
+               Start a conversation
+               <ArrowUpRight size={17} />
+             </Link>
+             <Link to="/agents" className="btn-secondary w-full sm:w-auto">
+               Meet our advisors
+             </Link>
+           </div>
+
+           <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-[10px] uppercase tracking-[0.18em] text-white/45 sm:mt-10 sm:text-xs">
+             <span>Dubai property</span>
+             <span className="h-1 w-1 rounded-full bg-[#EFBD78]" />
+             <span>Investor guidance</span>
+             <span className="h-1 w-1 rounded-full bg-[#EFBD78]" />
+             <span>International perspective</span>
+           </div>
 
         </motion.div>
       </div>
