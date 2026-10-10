@@ -1,174 +1,78 @@
-import { motion } from "framer-motion";
+
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const HeroSect = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section
-      className="
-        relative
-        min-h-[calc(100svh-72px)]
-        sm:min-h-[calc(100svh-80px)]
-        overflow-hidden
-        bg-black
-      "
+      aria-labelledby="hero-title"
+      className="relative isolate flex min-h-[calc(100svh-72px)] overflow-hidden bg-black sm:min-h-[calc(100svh-80px)]"
     >
-    {/* BACKGROUND IMAGE */}
-<div
-  className="
-    absolute
-    inset-0
-    bg-cover
-    bg-center
-    bg-no-repeat
-  "
-  style={{
-    backgroundImage: "url('/land.jpg')",
-  }}
-/>
-
-{/* LIGHT DARK OVERLAY */}
-<div
-  className="
-    absolute
-    inset-0
-    bg-black/25
-    sm:bg-black/20
-  "
-/>
-
-{/* LEFT GRADIENT — keeps text readable without hiding the building */}
-<div
-  className="
-    absolute
-    inset-0
-    bg-gradient-to-r
-    from-black/65
-    via-black/25
-    to-transparent
-  "
-/>
-
-{/* BOTTOM GRADIENT */}
-<div
-  className="
-    absolute
-    inset-x-0
-    bottom-0
-    h-[35%]
-    bg-gradient-to-t
-    from-black/65
-    to-transparent
-  "
-/>
-
-      {/* CONTENT */}
+      {/* Background image */}
       <div
-        className="
-          relative
-          z-10
-          mx-auto
-          flex
-          min-h-[calc(100svh-72px)]
-          max-w-[1440px]
-          items-end
-          px-5
-          pb-14
+        aria-hidden="true"
+        className="absolute inset-0 -z-30 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/land.jpg')" }}
+      />
 
-          sm:min-h-[calc(100svh-80px)]
-          sm:px-8
-          sm:pb-20
+      {/* Contrast overlays */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-20 bg-black/35"
+      />
 
-          lg:items-center
-          lg:px-20
-          lg:pb-0
-        "
-      >
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-black/80 via-black/45 to-black/10"
+      />
+
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10 bg-gradient-to-t from-black/75 via-transparent to-black/15"
+      />
+
+      {/* Hero content */}
+      <div className="mx-auto flex w-full max-w-[1600px] items-end px-5 pb-14 pt-28 sm:px-8 sm:pb-20 sm:pt-32 lg:items-center lg:px-16 lg:py-28 xl:px-20">
         <motion.div
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
+          initial={
+            shouldReduceMotion
+              ? false
+              : { opacity: 0, y: 24 }
+          }
+          animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: 1,
+            duration: shouldReduceMotion ? 0 : 0.75,
             ease: [0.16, 1, 0.3, 1],
           }}
-          className="w-full max-w-[1250px]"
+          className="w-full max-w-[1000px]"
         >
+          {/* Eyebrow */}
+          <div className="mb-6 flex items-center gap-3 sm:mb-8">
+          </div>
 
-          {/* EYEBROW */}
-          <p
-            className="
-              mb-5
-              text-[10px]
-              font-medium
-              uppercase
-              tracking-[0.28em]
-              text-[#D4AF37]
-
-              sm:mb-7
-              sm:text-xs
-            "
+          {/* Main heading */}
+          <h1
+            id="hero-title"
+            className="display-heading max-w-[950px] text-[clamp(2.75rem,7.5vw,6.75rem)] text-white"
           >
-             DUBAI PROPERTY, CLEARLY CONSIDERED
-          </p>
-
-          {/* MAIN HEADING */}
-           <h1 className="display-heading display-heading-hero max-w-5xl w-full font-medium text-white">
-             <span className="block">
-               Invest in Dubai with clarity.
-            </span>
-
-             <span className="block text-[#EFBD78]">
-               Move forward with confidence.
+            Invest in Dubai
+            <span className="mt-2 block text-[#EFBD78]">
+              with clarity.
             </span>
           </h1>
 
-          {/* DESCRIPTION */}
-          <p
-            className="
-              mt-7
-              max-w-[650px]
-              text-base
-              leading-7
-              text-white/85
+          {/* Description */}
+          <p className="mt-6 max-w-[580px] text-sm leading-7 text-white/85 sm:mt-8 sm:text-base sm:leading-8 lg:text-lg">
+            ADHIHAVEN brings together local market perspective,
+            carefully selected opportunities, and personal guidance
+            to help you approach your next Dubai property decision
+            with confidence.
+          </p>
 
-              sm:mt-8
-              sm:text-lg
-              sm:leading-8
-
-              lg:mt-9
-              lg:text-xl
-              lg:leading-8
-            "
-          >
-             ADHIHAVEN brings together local market perspective, carefully
-             selected opportunities, and personal guidance for investors
-             building their next chapter in Dubai.
-           </p>
-
-           <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row">
-             <Link to="/contact" className="btn-primary w-full sm:w-auto">
-               Start a conversation
-               <ArrowUpRight size={17} />
-             </Link>
-             <Link to="/agents" className="btn-secondary w-full sm:w-auto">
-               Meet our advisors
-             </Link>
-           </div>
-
-           <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 text-[10px] uppercase tracking-[0.18em] text-white/45 sm:mt-10 sm:text-xs">
-             <span>Dubai property</span>
-             <span className="h-1 w-1 rounded-full bg-[#EFBD78]" />
-             <span>Investor guidance</span>
-             <span className="h-1 w-1 rounded-full bg-[#EFBD78]" />
-             <span>International perspective</span>
-           </div>
-
+          
         </motion.div>
       </div>
     </section>

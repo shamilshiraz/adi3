@@ -16,8 +16,8 @@ function Landing() {
         <WhyChooseAdhi/>
         <WhyChooseAdhiWhite/>
         <InvestmentOpportunities/>
-        <InvestorJourney/>
         <FounderSpotlight/>
+        <InvestorJourney/>
         <InvestmentAdvisors/>
         <RoadshowsEvents/>
     </div>

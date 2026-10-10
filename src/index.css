@@ -121,6 +121,18 @@ select {
    TYPOGRAPHY
 ================================================== */
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
 .eyebrow {
   font-size: 12px;
   font-weight: 500;
@@ -131,38 +143,41 @@ select {
 
 .heading-1 {
   font-size: clamp(2.35rem, 10.5vw, 3.5rem);
-  line-height: 0.95;
-  letter-spacing: -0.05em;
-  font-weight: 300;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  font-weight: 500;
 }
 
 .heading-2 {
   font-size: clamp(2rem, 9vw, 2.75rem);
-  line-height: 1.02;
-  letter-spacing: -0.04em;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  font-weight: 500;
 }
 
 .heading-3 {
   font-size: clamp(1.75rem, 7.5vw, 2.4rem);
-  line-height: 1.08;
-  letter-spacing: -0.03em;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  font-weight: 500;
 }
 
 .heading-4 {
   font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-  line-height: 1.2;
+  line-height: 0.98;
+  font-weight: 500;
 }
 
 .heading-5 {
   font-size: clamp(1.1rem, 2vw, 1.25rem);
-  line-height: 1.3;
-  font-weight: 400;
+  line-height: 0.98;
+  font-weight: 500;
 }
 
 .heading-6 {
   font-size: clamp(1rem, 1.8vw, 1.125rem);
-  line-height: 1.4;
-  font-weight: 400;
+  line-height: 0.98;
+  font-weight: 500;
 }
 
 .sub-lg {
@@ -201,7 +216,7 @@ select {
 
 .display-heading {
   display: block;
-  font-weight: 300;
+  font-weight: 500;
   letter-spacing: -0.055em;
   line-height: 0.98;
   text-wrap: balance;
@@ -217,7 +232,7 @@ select {
 
 .display-heading-hero {
   font-size: clamp(2.45rem, 10vw, 3.9rem);
-  line-height: 1.04;
+  line-height: 0.98;
 }
 
 
@@ -445,17 +460,17 @@ button:disabled {
 
   .heading-1 {
     font-size: clamp(2.35rem, 10.5vw, 3.5rem);
-    line-height: 0.95;
+    line-height: 0.98;
   }
 
   .heading-2 {
     font-size: clamp(2rem, 9vw, 2.75rem);
-    line-height: 1.02;
+    line-height: 0.98;
   }
 
   .heading-3 {
     font-size: clamp(1.75rem, 7.5vw, 2.4rem);
-    line-height: 1.08;
+    line-height: 0.98;
   }
 
   .display-heading-lg {
@@ -468,7 +483,7 @@ button:disabled {
 
   .display-heading-hero {
     font-size: clamp(2.45rem, 10vw, 3.9rem);
-    line-height: 1.04;
+    line-height: 0.98;
   }
 
   .heading-4 {
@@ -522,17 +537,17 @@ button:disabled {
 @media (min-width: 768px) {
   .heading-1 {
     font-size: clamp(3.5rem, 7vw, 5.75rem);
-    line-height: 0.95;
+    line-height: 0.98;
   }
 
   .heading-2 {
     font-size: clamp(3rem, 5vw, 4.5rem);
-    line-height: 1;
+    line-height: 0.98;
   }
 
   .heading-3 {
     font-size: clamp(2.3rem, 3.6vw, 3rem);
-    line-height: 1.02;
+    line-height: 0.98;
   }
 
   .sub-lg {
@@ -560,7 +575,7 @@ button:disabled {
 
   .display-heading-hero {
     font-size: clamp(3.5rem, 5.8vw, 5.5rem);
-    line-height: 1.02;
+    line-height: 0.98;
   }
 
   .section-spacing {

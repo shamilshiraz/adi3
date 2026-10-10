@@ -1,26 +1,60 @@
+
 import { motion } from "framer-motion";
-import { ArrowUpRight, Compass, Globe2, Users } from "lucide-react";
+import {
+  ArrowDownRight,
+  ArrowRight,
+  ArrowUpRight,
+  Compass,
+  Globe2,
+  Users,
+  Building2,
+  Handshake,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { founder } from "../data/founder";
+
+const GOLD = "#F2C078";
+const DARK = "#0D0D0B";
 
 const principles = [
   {
     icon: Globe2,
     number: "01",
     title: "International perspective",
-    text: "A career shaped by diverse markets, cultures, industries, and clients.",
+    text: "A global outlook shaped by different markets, cultures, and investor perspectives.",
   },
   {
     icon: Compass,
     number: "02",
     title: "Purposeful guidance",
-    text: "A focus on understanding the person behind every property decision.",
+    text: "Clear, considered advice shaped around your goals and property ambitions.",
   },
   {
-    icon: Users,
+    icon: Handshake,
     number: "03",
-    title: "People-first leadership",
-    text: "Strong teams built around trust, performance, and shared growth.",
+    title: "Relationships built on trust",
+    text: "A people-first approach focused on meaningful connections and lasting value.",
+  },
+];
+
+const journey = [
+  {
+    number: "01",
+    title: "Understand your goals",
+    text: "Start with your priorities, investment objectives, preferred location, and long-term vision.",
+    icon: Compass,
+  },
+  {
+    number: "02",
+    title: "Explore the right opportunities",
+    text: "Review suitable properties and compare the details that matter to your decision.",
+    icon: Building2,
+  },
+  {
+    number: "03",
+    title: "Make an informed decision",
+    text: "Move forward with clear information, considered guidance, and an understanding of the next steps.",
+    icon: ArrowUpRight,
   },
 ];
 
@@ -32,202 +66,386 @@ const founderSkills = [
   "Client advisory",
 ];
 
+const reveal = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const transition = {
+  duration: 0.7,
+  ease: [0.16, 1, 0.3, 1],
+};
+
+function Eyebrow({ children, light = false }) {
+  return (
+    <p
+      className={`text-xs font-medium uppercase tracking-[0.22em] ${
+        light ? "text-white/50" : "text-black/45"
+      }`}
+    >
+      {children}
+    </p>
+  );
+}
+
 export default function AboutPage() {
   return (
-    <main className="bg-[#F7F6F3]">
-      {/* INTRODUCTION */}
-      <section className="relative overflow-hidden bg-black page-padding pb-20 pt-36 text-white sm:pb-24 sm:pt-44 lg:pb-28 lg:pt-52">
-        <div className="pointer-events-none absolute -right-48 top-0 h-[520px] w-[520px] rounded-full bg-[#D4AF37]/10 blur-[170px]" />
+    <main className="overflow-hidden bg-[#0D0D0B] text-white">
+      {/* HERO */}
+      <section className="relative isolate overflow-hidden px-5 pb-20 pt-32 sm:px-8 sm:pb-28 sm:pt-40 lg:px-12 lg:pb-32 lg:pt-48">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-40 -top-20 -z-10 h-[360px] w-[360px] rounded-full blur-[130px] sm:h-[560px] sm:w-[560px]"
+          style={{ backgroundColor: `${GOLD}18` }}
+        />
 
-        <div className="container-custom relative grid gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(260px,0.85fr)] lg:items-end lg:gap-24">
+        <div className="container-custom mx-auto max-w-7xl">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-4xl"
+            variants={reveal}
+            initial="hidden"
+            animate="visible"
+            transition={transition}
+            className="max-w-5xl"
           >
-            <p className="eyebrow">ABOUT ADHIHAVEN</p>
-            <h1 className="display-heading display-heading-lg mt-6">
-              A business built on
+            
+
+            <h1 className="mt-7 text-[clamp(3rem,8vw,7.5rem)] font-medium leading-[0.94] tracking-[-0.065em]">
+              Real estate,
               <br />
-              <span className="text-white/40">better conversations.</span>
+              guided by{" "}
+              <span style={{ color: GOLD }}>perspective.</span>
             </h1>
-            <p className="sub mt-7 max-w-2xl text-white/65 sm:mt-8">
-              Meet Abdul Abid, CEO &amp; Founder of ADHIHAVEN—bringing together
-              real estate experience, international perspective, and a belief
-              that good advice begins with listening.
-            </p>
+
+            <div className="mt-8 grid gap-8 border-t border-white/15 pt-7 sm:mt-10 sm:grid-cols-[1fr_auto] sm:items-end sm:gap-12 sm:pt-8">
+              <p className="max-w-2xl text-base leading-7 text-white/60 sm:text-lg sm:leading-8">
+                Meet the founder behind ADHIHAVEN and discover a considered
+                approach to Dubai real estate—built around people, informed
+                decisions, and relationships that last.
+              </p>
+
+              <a
+                href="#founder"
+                className="inline-flex w-fit items-center gap-3 text-sm font-medium transition-colors hover:text-[#F2C078]"
+              >
+                Discover our story
+                <ArrowDownRight size={18} style={{ color: GOLD }} />
+              </a>
+            </div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.12 }}
-            className="border-l border-white/20 pl-6 sm:pl-8 lg:mb-1"
-          >
-            <p className="text-xs uppercase tracking-[0.2em] text-[#EFBD78]">
-              The founder&apos;s perspective
-            </p>
-            <p className="mt-4 max-w-sm text-lg leading-8 text-white/75 sm:text-xl">
-              “Real estate is about people before it is about property.”
-            </p>
-          </motion.div>
+          
         </div>
       </section>
 
-      {/* FOUNDER STORY */}
-      <section className="page-padding section-spacing">
-        <div className="container-custom grid gap-10 lg:grid-cols-[minmax(260px,0.72fr)_minmax(0,1.28fr)] lg:gap-20">
+      {/* FOUNDER */}
+      <section
+        id="founder"
+        className="scroll-mt-20 bg-[#F7F6F3] px-5 py-16 text-black sm:px-8 sm:py-24 lg:px-12 lg:py-32"
+      >
+        <div className="container-custom mx-auto grid max-w-7xl items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={reveal}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:sticky lg:top-28 lg:self-start"
+            transition={transition}
+            className="lg:sticky lg:top-24"
           >
-            <div className="overflow-hidden rounded-[26px] bg-black p-2 shadow-[0_18px_60px_rgba(0,0,0,0.12)] sm:rounded-[32px] sm:p-3">
-              <img
-                src={founder.image}
-                alt="Mock portrait placeholder for Abdul Abid, CEO and Founder of ADHIHAVEN"
-                onError={(event) => {
-                  event.currentTarget.src = "/abdul-abid-placeholder.svg";
+            <div className="relative">
+              <div
+                aria-hidden="true"
+                className="absolute -bottom-3 -right-3 h-1/3 w-1/3 rounded-br-[28px]"
+                style={{
+                  borderBottom: `2px solid ${GOLD}`,
+                  borderRight: `2px solid ${GOLD}`,
                 }}
-                className="aspect-[4/5] w-full rounded-[20px] object-cover sm:rounded-[24px]"
               />
+
+              <div className="relative overflow-hidden rounded-[24px] bg-black p-2 sm:rounded-[30px] sm:p-3">
+                <img
+                  src={founder.image}
+                  alt="Abdul Abid, CEO and Founder of ADHIHAVEN"
+                  loading="lazy"
+                  onError={(event) => {
+                    event.currentTarget.onerror = null;
+                    event.currentTarget.src =
+                      "/abdul-abid-placeholder.svg";
+                  }}
+                  className="aspect-[4/5] w-full rounded-[18px] object-cover sm:rounded-[22px]"
+                />
+              </div>
             </div>
 
-            <div className="mt-5 flex items-end justify-between border-b border-black/10 pb-5">
+            <div className="mt-6 flex items-end justify-between gap-4 border-b border-black/10 pb-5">
               <div>
-                <h2 className="text-2xl font-medium tracking-[-0.03em] text-black">
+                <h2 className="text-2xl font-medium tracking-[-0.04em] sm:text-3xl">
                   {founder.name}
                 </h2>
-                <p className="mt-1 text-xs font-medium uppercase tracking-[0.18em] text-[#A87927]">
+                <p
+                  className="mt-2 text-xs font-medium uppercase tracking-[0.18em]"
+                  style={{ color: "#98703B" }}
+                >
                   {founder.role}
                 </p>
               </div>
-              <span className="h-px w-12 bg-[#D4AF37]" />
+
+              
             </div>
 
-            <div className="mt-5 flex flex-wrap gap-2">
-              {founderSkills.map((skill) => (
-                <span
-                  key={skill}
-                  className="rounded-full border border-black/10 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.1em] text-black/50"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
+            
           </motion.div>
 
           <motion.article
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-3xl"
+            variants={reveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.12 }}
+            transition={{ ...transition, delay: 0.08 }}
+            className="lg:pt-3"
           >
-            <p className="eyebrow">A FOUNDER&apos;S STORY</p>
-            <h2 className="display-heading display-heading-lg mt-5 text-black">
-              Experience that turns perspective into direction.
+            <Eyebrow>THE FOUNDER&apos;S STORY</Eyebrow>
+
+            <h2 className="mt-6 text-[clamp(2.5rem,5.2vw,5rem)] font-medium leading-[1.02] tracking-[-0.06em]">
+              Experience.
+              <br />
+              Insight.
+              <br />
+              <span style={{ color: "#98703B" }}>Direction.</span>
             </h2>
 
-            <div className="mt-8 space-y-6 text-sm leading-7 text-black/65 sm:mt-10 sm:text-base sm:leading-8">
-              <p className="border-l-2 border-[#D4AF37] pl-5 text-lg leading-8 text-black/80 sm:text-xl sm:leading-9">
-                With extensive experience in real estate, sales, and strategic
-                marketing, I have built my career around understanding markets,
-                connecting with people, and creating opportunities that deliver
-                meaningful results.
+            <p
+              className="mt-8 border-l-2 pl-5 text-lg leading-8 text-black/80 sm:mt-10 sm:text-xl sm:leading-9"
+              style={{ borderColor: GOLD }}
+            >
+              “Real estate is about understanding people first, then helping
+              them make decisions with clarity and confidence.”
+            </p>
+
+            <div className="mt-8 space-y-5 text-sm leading-7 text-black/65 sm:mt-10 sm:space-y-6 sm:text-base sm:leading-8">
+              <p>
+                With experience in real estate, sales, and strategic
+                marketing, I have built my career around understanding
+                markets, connecting with people, and identifying meaningful
+                opportunities.
               </p>
 
               <p>
-                My professional journey has given me the opportunity to work
-                with diverse markets, cultures, industries, and clients. These
-                experiences have developed a strong understanding of
-                international real estate and the requirements of investors
-                from different backgrounds.
+                Working across different markets, cultures, and industries
+                has strengthened my understanding of international real
+                estate and the needs of investors from diverse backgrounds.
               </p>
 
               <p>
-                Global travel and business exposure have further strengthened
-                my ability to understand different perspectives and build
-                lasting relationships.
+                I have also planned and led international real estate
+                roadshows and investor events, bringing clients, investors,
+                and businesses together to explore opportunities and make
+                informed decisions.
               </p>
 
               <p>
-                I have successfully planned and led international real estate
-                roadshows and investor events across multiple markets, creating
-                opportunities for clients, investors, and businesses to connect
-                with the right projects and make informed decisions.
-              </p>
-
-              <p>
-                As a leader, I focus on building strong, motivated, and
-                performance-driven teams. Successful real estate is not only
-                about selling property—it is about understanding people,
-                providing the right advice, and building relationships based on
-                trust.
-              </p>
-
-              <p>
-                Today, as CEO &amp; Founder, my vision is to combine real estate
-                expertise, strategic marketing, international experience, and
-                strong leadership to create exceptional client experiences and
-                sustainable growth for ADHIHAVEN.
+                As CEO and Founder of ADHIHAVEN, my focus is on combining
+                real estate knowledge, international perspective, and
+                people-first leadership to create a more considered client
+                experience.
               </p>
             </div>
+
+            <Link
+              to="/contact"
+              className="mt-8 inline-flex items-center gap-3 border-b border-black/20 pb-2 text-sm font-medium transition-colors hover:border-black"
+            >
+              Connect with our team
+              <ArrowUpRight size={17} />
+            </Link>
           </motion.article>
         </div>
       </section>
 
       {/* PRINCIPLES */}
-      <section className="bg-black page-padding section-spacing text-white">
-        <div className="container-custom">
-          <div className="max-w-2xl">
-            <p className="eyebrow">THE ADHIHAVEN STANDARD</p>
-            <h2 className="display-heading display-heading-lg mt-5">
-              The principles behind the work.
-            </h2>
-          </div>
+      <section className="bg-[#0D0D0B] px-5 py-16 sm:px-8 sm:py-24 lg:px-12 lg:py-32">
+        <div className="container-custom mx-auto max-w-7xl">
+          <motion.div
+            variants={reveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            transition={transition}
+            className="max-w-3xl"
+          >
+            <Eyebrow light>THE ADHIHAVEN STANDARD</Eyebrow>
 
-          <div className="mt-12 grid gap-8 sm:mt-16 sm:grid-cols-3 sm:gap-6 lg:gap-10">
+            <h2 className="mt-6 text-[clamp(2.5rem,6vw,5.5rem)] font-medium leading-[1.02] tracking-[-0.06em]">
+              Built on trust.
+              <br />
+              Driven by{" "}
+              <span style={{ color: GOLD }}>understanding.</span>
+            </h2>
+
+            <p className="mt-6 max-w-xl text-base leading-7 text-white/55 sm:text-lg sm:leading-8">
+              The principles that shape how we approach property, people,
+              and every conversation along the way.
+            </p>
+          </motion.div>
+
+          <div className="mt-12 grid gap-9 sm:mt-16 sm:grid-cols-3 sm:gap-7 lg:gap-12">
             {principles.map((principle, index) => {
               const Icon = principle.icon;
 
               return (
-                <motion.div
-                  key={principle.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                <motion.article
+                  key={principle.number}
+                  variants={reveal}
+                  initial="hidden"
+                  whileInView="visible"
                   viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.7, delay: index * 0.08 }}
-                  className="group border-t border-white/15 pt-5 sm:pt-6"
+                  transition={{ ...transition, delay: index * 0.08 }}
+                  className="border-t border-white/15 pt-6"
                 >
                   <div className="flex items-center justify-between">
-                    <Icon className="text-[#EFBD78]" size={24} strokeWidth={1.4} />
-                    <span className="text-xs tracking-[0.18em] text-white/25">
+                    <Icon
+                      size={25}
+                      strokeWidth={1.4}
+                      style={{ color: GOLD }}
+                    />
+                    <span className="text-xs tracking-[0.2em] text-white/30">
                       {principle.number}
                     </span>
                   </div>
-                  <h3 className="heading-4 mt-6">{principle.title}</h3>
-                  <p className="mt-3 max-w-xs text-sm leading-7 text-white/55">
+
+                  <h3 className="mt-7 text-xl font-medium tracking-[-0.03em] sm:text-2xl">
+                    {principle.title}
+                  </h3>
+
+                  <p className="mt-4 max-w-sm text-sm leading-7 text-white/55 sm:text-base">
                     {principle.text}
                   </p>
-                </motion.div>
+                </motion.article>
               );
             })}
           </div>
+        </div>
+      </section>
 
-          <div className="mt-12 flex flex-col gap-5 border-t border-white/10 pt-8 sm:mt-16 sm:flex-row sm:items-center sm:justify-between">
-            <p className="max-w-xl text-sm leading-7 text-white/60 sm:text-base">
-              Ready to talk through your next Dubai property decision?
+      {/* CLIENT JOURNEY */}
+      <section className="bg-[#11110F] px-5 py-16 sm:px-8 sm:py-24 lg:px-12 lg:py-32">
+        <div className="container-custom mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+          <motion.div
+            variants={reveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            transition={transition}
+            className="lg:sticky lg:top-28 lg:self-start"
+          >
+            <Eyebrow light>YOUR NEXT CHAPTER</Eyebrow>
+
+            <h2 className="mt-6 text-[clamp(2.5rem,5vw,4.8rem)] font-medium leading-[1.03] tracking-[-0.06em]">
+              A clearer path to your{" "}
+              <span style={{ color: GOLD }}>next property.</span>
+            </h2>
+
+            <p className="mt-6 max-w-md text-base leading-7 text-white/55">
+              Every property journey is different. Start with your goals,
+              explore your options, and move forward with a clearer
+              understanding of the process.
             </p>
-            <Link to="/contact" className="btn-primary w-full sm:w-auto">
-              Start a conversation
-              <ArrowUpRight size={17} />
+
+            <Link
+              to="/contact"
+              className="mt-8 inline-flex items-center gap-3 text-sm font-medium transition-colors hover:text-[#F2C078]"
+            >
+              Discuss your plans
+              <ArrowRight size={17} style={{ color: GOLD }} />
             </Link>
+          </motion.div>
+
+          <div className="relative">
+            <div
+              aria-hidden="true"
+              className="absolute bottom-8 left-[27px] top-8 w-px sm:left-[31px]"
+              style={{
+                background: `linear-gradient(to bottom, ${GOLD}, rgba(242,192,120,0.12))`,
+              }}
+            />
+
+            <div className="space-y-10 sm:space-y-12">
+              {journey.map((step, index) => {
+                const Icon = step.icon;
+
+                return (
+                  <motion.article
+                    key={step.number}
+                    variants={reveal}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ ...transition, delay: index * 0.08 }}
+                    className="relative grid grid-cols-[56px_minmax(0,1fr)] gap-5 sm:grid-cols-[64px_minmax(0,1fr)] sm:gap-8"
+                  >
+                    <div
+                      className="relative z-10 flex h-14 w-14 items-center justify-center rounded-full border border-[#F2C078]/50 sm:h-16 sm:w-16"
+                      style={{ backgroundColor: GOLD }}
+                    >
+                      <Icon size={24} strokeWidth={1.5} color={DARK} />
+                    </div>
+
+                    <div className="pt-1">
+                      <p
+                        className="text-xs font-semibold tracking-[0.2em]"
+                        style={{ color: GOLD }}
+                      >
+                        STEP {step.number}
+                      </p>
+
+                      <h3 className="mt-3 text-xl font-medium tracking-[-0.035em] text-white sm:text-2xl lg:text-3xl">
+                        {step.title}
+                      </h3>
+
+                      <p className="mt-3 max-w-xl text-sm leading-7 text-white/55 sm:mt-4 sm:text-base sm:leading-8">
+                        {step.text}
+                      </p>
+                    </div>
+                  </motion.article>
+                );
+              })}
+            </div>
           </div>
         </div>
+      </section>
+
+      {/* FINAL CTA */}
+      <section className="bg-[#F7F6F3] px-5 py-16 text-black sm:px-8 sm:py-24 lg:px-12 lg:py-28">
+        <motion.div
+          variants={reveal}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          transition={transition}
+          className="container-custom mx-auto flex max-w-7xl flex-col gap-8 sm:flex-row sm:items-end sm:justify-between"
+        >
+          <div className="max-w-3xl">
+            <Eyebrow>LET&apos;S START A CONVERSATION</Eyebrow>
+
+            <h2 className="mt-5 text-[clamp(2.5rem,6vw,5rem)] font-medium leading-[1.02] tracking-[-0.06em]">
+              Your next move starts with{" "}
+              <span style={{ color: "#" }}>the right conversation.</span>
+            </h2>
+
+            <p className="mt-5 max-w-xl text-sm leading-7 text-black/60 sm:text-base sm:leading-8">
+              Tell us what you are looking for, and let&apos;s explore the
+              next steps together.
+            </p>
+          </div>
+
+          <Link
+            to="/contact"
+            className="inline-flex min-h-12 w-full shrink-0 items-center justify-center gap-3 rounded-full px-6 py-3 text-sm font-medium text-black transition duration-300 hover:-translate-y-0.5 hover:brightness-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 sm:w-auto"
+            style={{ backgroundColor: GOLD, outlineColor: GOLD }}
+          >
+            Start a conversation
+            <ArrowUpRight size={18} />
+          </Link>
+        </motion.div>
       </section>
     </main>
   );

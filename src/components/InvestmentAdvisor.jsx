@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+
+import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
   Languages,
@@ -9,440 +10,211 @@ import {
 
 import advisors from "../assets/agents.json";
 
-export default function InvestmentAdvisors() {
-  return (
-    <section id="advisors" className="relative overflow-hidden bg-white page-padding section-spacing">
-      <div className="container-custom">
+const GOLD = "#F2C078";
 
-        {/* ================================
-            HEADER
-        ================================= */}
-        <motion.div
-          initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true }}
+export default function InvestmentAdvisors() {
+  const reducedMotion = useReducedMotion();
+
+  return (
+    <section
+      id="advisors"
+      className="relative overflow-hidden bg-white page-padding section-spacing"
+    >
+      <div className="container-custom">
+        {/* HEADER */}
+        <motion.header
+          initial={reducedMotion ? false : { opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{
-            duration: 0.8,
+            duration: reducedMotion ? 0 : 0.65,
             ease: [0.16, 1, 0.3, 1],
           }}
           className="max-w-4xl"
         >
+          
 
-          <p className="eyebrow">THE ADHIHAVEN TEAM</p>
-          <h2
-  className="display-heading display-heading-lg mt-5 max-w-4xl text-black sm:mt-6"
->
-  Meet the people behind
-  <br />
-  <span className="text-black/35">
-     your next move
-  </span>
-</h2>
+          <h2 className="display-heading display-heading-lg mt-5 max-w-4xl text-black sm:mt-6">
+            Meet the people behind{" "}
+            <span style={{ color: GOLD }}>your next move.</span>
+          </h2>
 
-          <p className="sub text-dark-muted mt-5 sm:mt-6 max-w-2xl">
-             Real estate decisions are personal. Our advisors bring market
-             knowledge, thoughtful questions, and practical guidance to every
-             conversation.
+          <p className="sub mt-5 max-w-2xl text-dark-muted sm:mt-6">
+            Real estate decisions are personal. Our advisors bring market
+            knowledge, thoughtful questions, and practical guidance to
+            every conversation.
           </p>
-        </motion.div>
+        </motion.header>
 
-        {/* ================================
-            ADVISORS GRID
-        ================================= */}
-        <div
-          className="
-            mt-8
-            sm:mt-10
-            lg:mt-12
-            grid
-            grid-cols-2
-            lg:grid-cols-4
-            gap-3
-            sm:gap-5
-            lg:gap-8
-            items-stretch
-          "
-        >
-           {advisors.slice(0, 4).map((advisor, index) => (
-            <motion.div
-              key={advisor.id}
-              initial={{
-                opacity: 0,
-                y: 40,
-                filter: "blur(10px)",
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-                filter: "blur(0px)",
-              }}
-              viewport={{ once: true }}
-              transition={{
-                delay: index * 0.08,
-                duration: 0.8,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="
-                group
-                relative
-                flex
-                h-full
-                min-w-0
-                flex-col
-                overflow-hidden
-                rounded-[22px]
-                sm:rounded-[24px]
-                lg:rounded-[28px]
+        {/* ADVISOR CARDS */}
+        <div className="mt-8 grid grid-cols-2 items-stretch gap-3 sm:mt-10 sm:gap-5 lg:mt-14 lg:grid-cols-4 lg:gap-6 xl:gap-8">
+          {advisors.slice(0, 4).map((advisor, index) => {
+            const whatsappMessage = encodeURIComponent(
+              `Hi ${advisor.name}, I would like to discuss a Dubai real estate investment opportunity.`
+            );
 
-                border
-                border-[#D4AF37]/25
+            const whatsappUrl = `https://wa.me/${String(
+              advisor.whatsapp ?? ""
+            ).replace(/\D/g, "")}?text=${whatsappMessage}`;
 
-                bg-white
+            return (
+              <motion.article
+                key={advisor.id ?? advisor.name}
+                initial={
+                  reducedMotion
+                    ? false
+                    : { opacity: 0, y: 24 }
+                }
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.12 }}
+                transition={{
+                  duration: reducedMotion ? 0 : 0.55,
+                  delay: reducedMotion ? 0 : index * 0.08,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="group relative flex min-w-0 flex-col overflow-hidden rounded-2xl border border-black/[0.08] bg-white shadow-[0_8px_30px_rgba(0,0,0,0.035)] transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1 hover:border-[#F2C078]/70 hover:shadow-[0_18px_42px_rgba(0,0,0,0.09)] sm:rounded-3xl"
+              >
+                {/* PORTRAIT */}
+                <div className="relative aspect-[4/5] overflow-hidden bg-[#F5F3EF]">
+                  <img
+                    src={advisor.image}
+                    alt={advisor.name}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                  />
 
-                shadow-[0_8px_30px_rgba(0,0,0,0.05)]
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
 
-                transition-all
-                duration-500
-
-                hover:-translate-y-1
-                hover:border-[#D4AF37]/60
-                hover:shadow-[0_18px_50px_rgba(0,0,0,0.10)]
-              "
-            >
-
-              {/* Subtle inner border */}
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  inset-0
-                  z-20
-                  rounded-[22px]
-                  sm:rounded-[24px]
-                  lg:rounded-[28px]
-                  border
-                  border-black/[0.04]
-                "
-              />
-
-              {/* ================================
-                  PORTRAIT
-              ================================= */}
-              <div className="relative aspect-[4/5] overflow-hidden bg-neutral-100">
-
-                <img
-                  src={advisor.image}
-                  alt={advisor.name}
-                  loading={index < 4 ? "eager" : "lazy"}
-                  decoding="async"
-                  className="
-                    h-full
-                    w-full
-                    object-cover
-                    transition-transform
-                    duration-700
-                    group-hover:scale-[1.03]
-                  "
-                />
-
-                {/* Image gradient */}
-                <div
-                  className="
-                    absolute
-                    inset-0
-                    bg-gradient-to-t
-                    from-black/20
-                    via-transparent
-                    to-white/5
-                    pointer-events-none
-                  "
-                />
-              </div>
-
-              {/* Gold accent */}
-              <div
-                className="
-                  h-[2px]
-                  w-full
-                  shrink-0
-                  bg-gradient-to-r
-                  from-transparent
-                  via-[#D4AF37]/70
-                  to-transparent
-                "
-              />
-
-              {/* ================================
-                  CONTENT
-              ================================= */}
-              <div className="flex flex-1 min-w-0 flex-col p-3 sm:p-5">
-
-                {/* Name */}
-                <h3
-                  className="
-                    text-[15px]
-                    sm:text-lg
-                    lg:text-xl
-                    font-medium
-                    leading-tight
-                    text-black
-                  "
-                >
-                  {advisor.name}
-                </h3>
-
-                {/* Role */}
-                <p
-                  className="
-                    mt-1
-                    text-[10px]
-                    sm:text-xs
-                    lg:text-sm
-                    leading-tight
-                    text-black/55
-                  "
-                >
-                  {advisor.role}
-                </p>
-
-                {/* Divider */}
-                <div className="divider-dark my-3 sm:my-4 lg:my-5" />
-
-                {/* Information */}
-                <div className="flex-1 space-y-3 sm:space-y-4">
-
-                  {/* Languages */}
-                  <div className="flex min-w-0 gap-2 sm:gap-3">
-                    <Languages
-                      size={15}
-                      strokeWidth={1.5}
-                      className="
-                        mt-0.5
-                        shrink-0
-                        text-[#D4AF37]
-                        sm:h-[18px]
-                        sm:w-[18px]
-                      "
-                    />
-
-                    <div className="min-w-0 flex-1">
-                      <p
-                        className="
-                           text-[10px]
-                          sm:text-[10px]
-                          lg:text-xs
-                          uppercase
-                          tracking-wide
-                          text-[#D4AF37]
-                        "
-                      >
-                        Languages
-                      </p>
-
-                      <p
-                        className="
-                          mt-0.5
-                          text-[10px]
-                          sm:text-xs
-                          lg:text-sm
-                          leading-snug
-                          text-black/55
-                          break-words
-                        "
-                      >
-                        {advisor.languages.join(" • ")}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Specialization */}
-                  <div className="flex min-w-0 gap-2 sm:gap-3">
-                    <BriefcaseBusiness
-                      size={15}
-                      strokeWidth={1.5}
-                      className="
-                        mt-0.5
-                        shrink-0
-                        text-[#D4AF37]
-                        sm:h-[18px]
-                        sm:w-[18px]
-                      "
-                    />
-
-                    <div className="min-w-0 flex-1">
-                      <p
-                        className="
-                           text-[10px]
-                          sm:text-[10px]
-                          lg:text-xs
-                          uppercase
-                          tracking-wide
-                          text-[#D4AF37]
-                        "
-                      >
-                        Specialization
-                      </p>
-
-                      <p
-                        className="
-                          mt-0.5
-                          text-[10px]
-                          sm:text-xs
-                          lg:text-sm
-                          leading-snug
-                          text-black/55
-                          break-words
-                        "
-                      >
-                        {advisor.specialization}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Experience */}
-                  <div className="flex min-w-0 gap-2 sm:gap-3">
-                    <Clock3
-                      size={15}
-                      strokeWidth={1.5}
-                      className="
-                        mt-0.5
-                        shrink-0
-                        text-[#D4AF37]
-                        sm:h-[18px]
-                        sm:w-[18px]
-                      "
-                    />
-
-                    <div className="min-w-0 flex-1">
-                      <p
-                        className="
-                           text-[10px]
-                          sm:text-[10px]
-                          lg:text-xs
-                          uppercase
-                          tracking-wide
-                          text-[#D4AF37]
-                        "
-                      >
-                        Experience
-                      </p>
-
-                      <p
-                        className="
-                          mt-0.5
-                          text-[10px]
-                          sm:text-xs
-                          lg:text-sm
-                          leading-snug
-                          text-black/55
-                        "
-                      >
-                        {advisor.experience}
-                      </p>
-                    </div>
-                  </div>
+                  <div
+                    className="absolute bottom-0 left-0 h-[3px] w-full origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100"
+                    style={{ backgroundColor: GOLD }}
+                  />
                 </div>
 
-                {/* ================================
-                    CONSULT BUTTON
-                ================================= */}
-                <a
-  href={`https://wa.me/${advisor.whatsapp}?text=${encodeURIComponent(
-    `Hi ${advisor.name}, I would like to discuss a Dubai real estate investment opportunity.`
-  )}`}
-  target="_blank"
-  rel="noopener noreferrer"
-                  className="
-                    mt-4
-                    sm:mt-5
-                    lg:mt-6
+                {/* CARD CONTENT */}
+                <div className="flex flex-1 flex-col p-3 sm:p-4 lg:p-5">
+                  {/* NAME AND ROLE */}
+                  <h3 className="break-words text-sm font-semibold leading-snug tracking-tight text-black sm:text-lg lg:text-xl">
+                    {advisor.name}
+                  </h3>
 
-                    w-full
+                  <p className="mt-1.5 text-[10px] leading-relaxed text-black/55 sm:text-xs lg:text-sm">
+                    {advisor.role}
+                  </p>
 
-                    inline-flex
-                    items-center
-                    justify-center
-                    gap-1.5
-                    sm:gap-2
+                  <div className="my-3 h-px w-full bg-black/[0.08] sm:my-4" />
 
-                    rounded-full
+                  {/* ADVISOR DETAILS */}
+                  <div className="flex-1 space-y-3 sm:space-y-4">
+                    {/* LANGUAGES */}
+                    <div className="flex min-w-0 items-start gap-2 sm:gap-3">
+                      <Languages
+                        size={16}
+                        strokeWidth={1.6}
+                        className="mt-0.5 shrink-0 sm:h-[18px] sm:w-[18px]"
+                        style={{ color: GOLD }}
+                      />
 
-                    border
-                    border-black
+                      <div className="min-w-0 flex-1">
+                        <p className="text-[9px] font-semibold uppercase tracking-[0.12em] text-[#9A713C] sm:text-[10px] lg:text-xs">
+                          Languages
+                        </p>
 
-                    bg-black
+                        <p className="mt-1 break-words text-[10px] leading-relaxed text-black/65 sm:text-xs lg:text-sm">
+                          {Array.isArray(advisor.languages)
+                            ? advisor.languages.join(" · ")
+                            : advisor.languages || "Contact for details"}
+                        </p>
+                      </div>
+                    </div>
 
-                    px-2
-                    sm:px-4
+                    {/* SPECIALIZATION */}
+                    <div className="flex min-w-0 items-start gap-2 sm:gap-3">
+                      <BriefcaseBusiness
+                        size={16}
+                        strokeWidth={1.6}
+                        className="mt-0.5 shrink-0 sm:h-[18px] sm:w-[18px]"
+                        style={{ color: GOLD }}
+                      />
 
-                    py-2.5
-                    sm:py-3
+                      <div className="min-w-0 flex-1">
+                        <p className="text-[9px] font-semibold uppercase tracking-[0.12em] text-[#9A713C] sm:text-[10px] lg:text-xs">
+                          Specialization
+                        </p>
 
-                    text-[10px]
-                    sm:text-xs
-                    lg:text-sm
+                        <p className="mt-1 break-words text-[10px] leading-relaxed text-black/65 sm:text-xs lg:text-sm">
+                          {advisor.specialization || "Real estate advisory"}
+                        </p>
+                      </div>
+                    </div>
 
-                    text-white
+                    {/* EXPERIENCE */}
+                    <div className="flex min-w-0 items-start gap-2 sm:gap-3">
+                      <Clock3
+                        size={16}
+                        strokeWidth={1.6}
+                        className="mt-0.5 shrink-0 sm:h-[18px] sm:w-[18px]"
+                        style={{ color: GOLD }}
+                      />
 
-                    transition-all
-                    duration-300
+                      <div className="min-w-0 flex-1">
+                        <p className="text-[9px] font-semibold uppercase tracking-[0.12em] text-[#9A713C] sm:text-[10px] lg:text-xs">
+                          Experience
+                        </p>
 
-                    hover:border-[#D4AF37]
-                    hover:bg-[#D4AF37]
-                    hover:text-black
-                  "
-                >
-                  <span>Consult</span>
+                        <p className="mt-1 break-words text-[10px] leading-relaxed text-black/65 sm:text-xs lg:text-sm">
+                          {advisor.experience || "Contact for details"}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
 
-                  <ArrowUpRight
-                    size={14}
-                    strokeWidth={1.8}
-                    className="sm:h-4 sm:w-4"
-                  />
-                </a>
-              </div>
-            </motion.div>
-          ))}
+                  {/* WHATSAPP CONSULTATION */}
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Consult ${advisor.name} on WhatsApp`}
+                    className="mt-4 inline-flex min-h-10 w-full items-center justify-center gap-1.5 rounded-full border border-black bg-black px-2 py-2.5 text-[10px] font-medium text-white transition-colors duration-300 hover:border-[#F2C078] hover:bg-[#F2C078] hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2C078] focus-visible:ring-offset-2 sm:mt-5 sm:min-h-11 sm:gap-2 sm:px-4 sm:text-xs lg:mt-6 lg:text-sm"
+                  >
+                    <span>Consult</span>
+                    <ArrowUpRight
+                      size={14}
+                      strokeWidth={1.8}
+                      className="sm:h-4 sm:w-4"
+                    />
+                  </a>
+                </div>
+              </motion.article>
+            );
+          })}
         </div>
 
-        {/* ================================
-            BOTTOM CTA
-        ================================= */}
+        {/* BOTTOM CTA */}
         <motion.div
-  initial={{ opacity: 0, y: 30 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{
-    delay: 0.2,
-    duration: 0.8,
-  }}
-  className="
-    mt-8
-    sm:mt-10
-    lg:mt-16
-    flex
-    justify-center
-  "
->
-  <Link
-    to="/agents"
-    className="
-      btn-violet
-      w-full
-      sm:w-auto
-      rounded-full
-      px-6
-      sm:px-8
-    "
-  >
-     <span>Meet all advisors</span>
+          initial={reducedMotion ? false : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{
+            duration: reducedMotion ? 0 : 0.55,
+            delay: reducedMotion ? 0 : 0.1,
+          }}
+          className="mt-8 flex justify-center sm:mt-12 lg:mt-16"
+        >
+          <Link
+            to="/agents"
+            className="group inline-flex min-h-12 w-full items-center justify-center gap-3 rounded-full border border-black bg-black px-6 py-3 text-sm font-medium text-white transition-colors duration-300 hover:border-[#F2C078] hover:bg-[#F2C078] hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2C078] focus-visible:ring-offset-2 sm:w-auto sm:px-8"
+          >
+            <span>Meet all advisors</span>
 
-    <ArrowUpRight
-      size={16}
-      strokeWidth={1.8}
-    />
-  </Link>
-</motion.div>
+            <ArrowUpRight
+              size={16}
+              strokeWidth={1.8}
+              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

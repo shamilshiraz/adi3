@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+
+import { motion, useReducedMotion } from "framer-motion";
 import {
   Building2,
   ArrowRightLeft,
@@ -7,284 +8,172 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 
-const sections = [
+const GOLD = "#F2C078";
+const ease = [0.16, 1, 0.3, 1];
+
+const opportunities = [
   {
-    icon: Building2,
     number: "01",
-     title: "Buy with a plan",
+    
+    title: "Buy with\na plan.",
     description:
-       "Dubai offers a dynamic market for long-term ownership, rental income, and lifestyle-led decisions. We help you approach the purchase with a clear plan.",
+      "Approach Dubai property with a clear strategy shaped around your budget, long-term goals, and lifestyle.",
+    icon: Building2,
   },
   {
-    icon: ArrowRightLeft,
     number: "02",
-     title: "Rent or sell with flexibility",
+    
+    title: "Rent or sell.\nYour choice.",
     description:
-       "Choose a path that fits your priorities—generate rental income, hold for the long term, or sell when the timing and opportunity are right.",
+      "Explore rental income, continued ownership, or a future sale based on your priorities and circumstances.",
+    icon: ArrowRightLeft,
   },
   {
-    icon: Hammer,
     number: "03",
-     title: "Explore off-plan opportunity",
+    
+    title: "Invest in\nwhat's next.",
     description:
-       "Consider new developments with staged payment plans and a longer ownership horizon, supported by a clear view of the project and its timeline.",
+      "Discover new developments, staged payment plans, and project timelines before making your decision.",
+    icon: Hammer,
   },
   {
-    icon: KeyRound,
     number: "04",
-     title: "Move into ready property",
+    
+    title: "Find your\nnext address.",
     description:
-       "Ready homes offer immediate access—move in, begin leasing, or add an income-producing asset to your portfolio without waiting for construction.",
+      "Consider completed properties for immediate occupancy, potential leasing, or your wider portfolio.",
+    icon: KeyRound,
   },
 ];
 
 export default function WhyChooseAdhiWhite() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section
-      className="
-        relative
-        overflow-hidden
-        bg-white
-        page-padding
-        section-spacing
-      "
+      id="dubai-opportunities"
+      aria-labelledby="dubai-market-heading"
+      className="relative overflow-hidden bg-white text-black page-padding section-spacing"
     >
-      {/* Very subtle gold atmosphere */}
-      <div
-        className="
-          pointer-events-none
-          absolute
-          -right-40
-          top-0
-          h-[500px]
-          w-[500px]
-          rounded-full
-          bg-[#D4AF37]/[0.035]
-          blur-[150px]
-        "
-      />
-
-      <div className="container-custom relative">
-
-        {/* ================= HEADER ================= */}
-
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.8,
-            ease: [0.16, 1, 0.3, 1],
-          }}
-         className="max-w-5xl"
-        >
-          <p className="eyebrow">THE DUBAI MARKET</p>
-         <h2
-   className="display-heading display-heading-lg text-black"
->
-             Why investors choose
-            <br />
-            <span className="text-black/35">
-               Dubai
-            </span>
-          </h2>
-
-      
-
-          <p
-            className="
-              mt-7
-              max-w-2xl
-              text-sm
-              leading-7
-              text-black/55
-              sm:text-base
-              sm:leading-8
-            "
+      <div className="container-custom">
+        {/* EDITORIAL INTRODUCTION */}
+        <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
+          <motion.div
+            initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.7,
+              ease,
+            }}
+            className="lg:col-span-8"
           >
-             A globally connected market, strong infrastructure, and a
-             lifestyle people want to be part of make Dubai a compelling place
-             to consider for your next property decision.
-          </p>
-        </motion.div>
+            
 
-        {/* ================= LIST ================= */}
+            <h2
+              id="dubai-market-heading"
+              className="max-w-4xl text-4xl font-medium leading-[1.06] tracking-[-0.055em] sm:text-5xl md:text-6xl lg:text-7xl"
+            >
+              Dubai offers more
+              <br className="hidden sm:block" /> than one way to{" "}
+              <span style={{ color: GOLD }}>move forward.</span>
+            </h2>
+          </motion.div>
 
-        <div className="mt-12 sm:mt-20 lg:mt-24">
+          <motion.div
+            initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+              duration: reduceMotion ? 0 : 0.7,
+              delay: reduceMotion ? 0 : 0.12,
+              ease,
+            }}
+            className="flex flex-col justify-end lg:col-span-4 lg:pb-2"
+          >
+            <p className="max-w-md text-sm leading-7 text-black/60 sm:text-base sm:leading-8">
+              Whether you're buying, selling, renting, or exploring
+              new developments, the right approach starts with
+              understanding what matters to you.
+            </p>
 
-          {sections.map((item, index) => {
-            const Icon = item.icon;
 
-            return (
-              <motion.div
-                key={item.title}
-                initial={{
-                  opacity: 0,
-                  y: 40,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                  amount: 0.2,
-                }}
-                transition={{
-                  delay: index * 0.08,
-                  duration: 0.8,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className="
-                  group
-                  relative
-                  border-t
-                  border-black/10
-                  py-10
-                  sm:py-14
-                  lg:py-16
-                "
-              >
-                {/* Gold progress line */}
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    delay: index * 0.08 + 0.2,
-                    duration: 0.8,
-                    ease: [0.16, 1, 0.3, 1],
-                  }}
-                  className="
-                    absolute
-                    left-0
-                    top-0
-                    h-px
-                    w-20
-                    origin-left
-                    bg-[#D4AF37]
-                  "
-                />
-
-                <div
-                  className="
-                    grid
-                    gap-8
-                    lg:grid-cols-[100px_1fr_1.2fr_80px]
-                    lg:items-start
-                  "
-                >
-
-                  {/* NUMBER */}
-                  <div
-                    className="
-                      flex
-                      items-center
-                      gap-3
-                    "
-                  >
-                    <span
-                      className="
-                        text-xs
-                        font-medium
-                        tracking-[0.2em]
-                        text-[#B8862C]
-                      "
-                    >
-                      {item.number}
-                    </span>
-
-                    <div className="h-px w-8 bg-[#D4AF37]/40 lg:hidden" />
-                  </div>
-
-                  {/* TITLE + ICON */}
-                  <div className="flex items-start gap-5">
-
-                    <div
-                      className="
-                        mt-1
-                        shrink-0
-                        text-[#C48A3A]
-                        transition-transform
-                        duration-500
-                        group-hover:translate-x-1
-                      "
-                    >
-                      <Icon
-                        size={32}
-                        strokeWidth={1.25}
-                      />
-                    </div>
-
-                    <h3
-                      className="
-                        max-w-md
-                        text-2xl
-                        font-light
-                        leading-tight
-                        tracking-[-0.025em]
-                        text-black
-                        sm:text-3xl
-                        lg:text-4xl
-                      "
-                    >
-                      {item.title}
-                    </h3>
-
-                  </div>
-
-                  {/* DESCRIPTION */}
-                  <p
-                    className="
-                      max-w-xl
-                      text-sm
-                      leading-7
-                      text-black/50
-                      sm:text-base
-                      sm:leading-8
-                    "
-                  >
-                    {item.description}
-                  </p>
-
-                  {/* ARROW */}
-                  <div
-                    className="
-                      hidden
-                      justify-end
-                      lg:flex
-                    "
-                  >
-                    <ArrowUpRight
-                      size={24}
-                      strokeWidth={1.2}
-                      className="
-                        text-black/20
-                        transition-all
-                        duration-500
-                        group-hover:-translate-y-1
-                        group-hover:translate-x-1
-                        group-hover:text-[#C48A3A]
-                      "
-                    />
-                  </div>
-
-                </div>
-              </motion.div>
-            );
-          })}
-
-          {/* Bottom border */}
-          <div className="border-t border-black/10" />
-
+          </motion.div>
         </div>
 
+        {/* ASYMMETRIC EDITORIAL LAYOUT */}
+        <div className="mt-14 grid grid-cols-1 gap-x-12 sm:grid-cols-2 lg:mt-20 lg:grid-cols-12 lg:gap-x-14">
+          {opportunities.map((item, index) => {
+            const Icon = item.icon;
+            const isOffset = index % 2 === 1;
+
+            return (
+              <motion.article
+                key={item.number}
+                initial={
+                  reduceMotion
+                    ? false
+                    : {
+                        opacity: 0,
+                        y: 28,
+                      }
+                }
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{
+                  duration: reduceMotion ? 0 : 0.65,
+                  delay: reduceMotion ? 0 : index * 0.08,
+                  ease,
+                }}
+                className={[
+                  "group relative min-w-0 border-t border-black/15 py-7 sm:py-9 lg:col-span-5 lg:py-10",
+                  isOffset ? "lg:col-start-8 lg:mt-24" : "lg:col-start-2",
+                ].join(" ")}
+              >
+                {/* NUMBER AND ICON */}
+                <div className="flex items-start justify-between">
+                  <span
+                    className="text-[56px] font-light leading-none tracking-[-0.08em] sm:text-7xl lg:text-[88px]"
+                    style={{ color: GOLD }}
+                  >
+                    {item.number}
+                  </span>
+
+                  <span className="mt-2 flex h-11 w-11 items-center justify-center rounded-full border border-black/15 transition-all duration-300 group-hover:border-[#B88A47] group-hover:bg-[#B88A47] group-hover:text-white">
+                    <Icon
+                      size={19}
+                      strokeWidth={1.35}
+                      className="transition-transform duration-300 group-hover:rotate-[-8deg]"
+                    />
+                  </span>
+                </div>
+
+                {/* TITLE */}
+               
+
+                <h3 className="mt-5 whitespace-pre-line text-3xl font-medium leading-[1.08] tracking-[-0.045em] sm:text-4xl lg:text-[42px]">
+                  {item.title}
+                </h3>
+
+                <p className="mt-5 max-w-md text-sm leading-7 text-black/60 sm:text-base sm:leading-8">
+                  {item.description}
+                </p>
+
+                
+
+                {/* FINE GOLD DETAIL */}
+                <div
+                  aria-hidden="true"
+                  className="absolute left-0 top-0 h-px w-12 transition-all duration-500 group-hover:w-24"
+                  style={{ backgroundColor: GOLD }}
+                />
+              </motion.article>
+            );
+          })}
+        </div>
+
+        {/* SECTION FOOTER */}
+        
       </div>
     </section>
   );

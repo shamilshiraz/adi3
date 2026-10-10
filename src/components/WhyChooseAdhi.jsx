@@ -1,287 +1,247 @@
-import { motion } from "framer-motion";
+
+import { motion, useReducedMotion } from "framer-motion";
 import {
   TrendingUp,
   KeyRound,
   Compass,
   Handshake,
+  ArrowUpRight,
 } from "lucide-react";
+
+const GOLD = "#F2C078";
 
 const pillars = [
   {
     icon: TrendingUp,
-     title: "Practical Guidance",
+    title: "Practical Guidance",
     description:
-       "Understand the opportunity, the numbers, and the next step before you commit.",
+      "Understand the opportunity, the numbers, and the next step before you commit.",
   },
   {
     icon: KeyRound,
-     title: "Curated Opportunities",
+    title: "Curated Opportunities",
     description:
-       "Explore properties selected around your goals, budget, and timeline.",
+      "Explore properties selected around your goals, budget, and timeline.",
   },
   {
     icon: Compass,
-     title: "Smarter Payment Planning",
+    title: "Smarter Payment Planning",
     description:
-       "Compare payment structures and plan your investment with greater visibility.",
+      "Compare payment structures and plan your investment with greater visibility.",
   },
   {
     icon: Handshake,
-     title: "Support Through Handover",
+    title: "Support Through Handover",
     description:
-       "Stay supported from your first conversation through purchase, handover, and beyond.",
+      "Stay supported from your first conversation through purchase, handover, and beyond.",
   },
 ];
 
+const ease = [0.16, 1, 0.3, 1];
+
 export default function WhyChooseAdhi() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section
+      aria-labelledby="why-adhi-heading"
       className="
-        relative
-        overflow-hidden
-        bg-black
-        page-padding
-        py-16
-        text-white
-        sm:py-20
-        lg:py-24
+        relative isolate overflow-hidden
+        bg-[#080808] text-white
+        page-padding py-16
+        sm:py-20 lg:py-28
       "
     >
-      {/* AMBIENT GOLD GLOW */}
+      {/* Consistent ADHIHAVEN ambient lighting */}
       <div
+        aria-hidden="true"
         className="
-          pointer-events-none
-          absolute
-          -left-40
-          top-0
-          h-[450px]
-          w-[450px]
-          rounded-full
-          bg-[#D4AF37]/10
-          blur-[160px]
-          sm:h-[600px]
-          sm:w-[600px]
-          sm:blur-[180px]
+          pointer-events-none absolute -left-40 top-0 -z-10
+          h-[400px] w-[400px] rounded-full
+          bg-[#F2C078]/[0.07] blur-[140px]
+          sm:h-[520px] sm:w-[520px]
         "
       />
 
       <div
+        aria-hidden="true"
         className="
-          pointer-events-none
-          absolute
-          bottom-0
-          right-[-150px]
-          h-[350px]
-          w-[350px]
-          rounded-full
-          bg-[#D4AF37]/5
-          blur-[140px]
+          pointer-events-none absolute -bottom-40 -right-40 -z-10
+          h-[380px] w-[380px] rounded-full
+          bg-[#F2C078]/[0.04] blur-[140px]
         "
       />
 
-      <div className="relative mx-auto max-w-[1440px]">
-
-        {/* SECTION HEADER */}
+      <div className="relative mx-auto w-full max-w-[1440px]">
+        {/* Section heading */}
         <motion.div
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{ once: true, amount: 0.3 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{
-            duration: 0.8,
-            ease: [0.16, 1, 0.3, 1],
+            duration: reduceMotion ? 0 : 0.7,
+            ease,
           }}
-          className="max-w-3xl text-left"
+          className="max-w-3xl"
         >
-          <p
+          
+<h2
+            id="why-adhi-heading"
             className="
-              text-[10px]
-              font-medium
-              uppercase
-              tracking-[0.3em]
-              text-[#D4AF37]
-              sm:text-xs
+              display-heading display-heading-lg
+              mt-5 max-w-4xl text-white
             "
           >
-             THE ADHIHAVEN APPROACH
-          </p>
-
-          <h2
-             className="heading-3 mt-4 max-w-3xl font-medium text-white"
-          >
-             Clarity behind every confident decision
+            Clarity behind every{" "}
+            <span style={{ color: GOLD }}>decision.</span>
           </h2>
+          
 
-           <div className="mt-5 h-px w-12 bg-[#D4AF37]" />
+          <div
+            aria-hidden="true"
+            className="mt-6 h-px w-14"
+            style={{ backgroundColor: GOLD }}
+          />
 
           <p
             className="
-             mt-6
-              max-w-2xl
-              text-sm
-              leading-7
-              text-white/60
-              sm:text-base
-              sm:leading-8
+              mt-6 max-w-2xl
+              text-sm leading-7 text-white/65
+              sm:text-base sm:leading-8
             "
           >
-             Property decisions are personal. We bring structure, perspective,
-             and thoughtful guidance to every stage of the journey.
+            Property decisions are personal. We bring structure,
+            perspective, and thoughtful guidance to every stage of
+            the journey.
           </p>
         </motion.div>
 
-        {/* PILLARS */}
+        {/* Feature cards */}
         <div
           className="
-             mt-12
-            grid
-            grid-cols-1
-            gap-5
-             sm:mt-14
-            sm:grid-cols-2
-            sm:gap-6
-             lg:mt-16
-            lg:grid-cols-4
-            lg:gap-8
+            mt-10 grid grid-cols-1 gap-4
+            sm:mt-12 sm:grid-cols-2 sm:gap-5
+            lg:mt-16 lg:grid-cols-4 lg:gap-5
+            xl:gap-6
           "
         >
           {pillars.map((item, index) => {
             const Icon = item.icon;
 
             return (
-              <motion.div
+              <motion.article
                 key={item.title}
-                initial={{
-                  opacity: 0,
-                  y: 35,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                  amount: 0.2,
-                }}
+                initial={
+                  reduceMotion
+                    ? false
+                    : { opacity: 0, y: 22 }
+                }
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
                 transition={{
-                  delay: index * 0.08,
-                  duration: 0.7,
-                  ease: [0.16, 1, 0.3, 1],
+                  duration: reduceMotion ? 0 : 0.6,
+                  delay: reduceMotion ? 0 : index * 0.08,
+                  ease,
                 }}
                 className="
-                  group
-                  relative
-                  overflow-hidden
-                  rounded-2xl
-                  border
-                  border-white/10
-                  bg-white/[0.03]
-                  p-6
-                  transition-all
-                  duration-500
-                  hover:border-[#D4AF37]/40
-                  hover:bg-white/[0.05]
-                  sm:p-7
-                  lg:p-8
+                  group relative flex min-h-[250px]
+                  flex-col overflow-hidden
+                  rounded-xl border border-white/10
+                  bg-white/[0.025]
+                  p-6 pb-14
+                  transition-colors duration-300
+                  hover:border-[#F2C078]/40
+                  hover:bg-white/[0.04]
+                  sm:min-h-[265px] sm:p-7 sm:pb-14
+                  lg:min-h-[285px]
+                  motion-reduce:transition-none
                 "
               >
-                {/* GOLD TOP LINE */}
+                {/* Gold top line */}
                 <div
+                  aria-hidden="true"
                   className="
-                    absolute
-                    left-0
-                    top-0
-                    h-px
-                    w-0
-                    bg-[#D4AF37]
-                    transition-all
-                    duration-500
+                    absolute left-0 top-0 h-px w-0
+                    bg-[#F2C078]
+                    transition-[width] duration-500
                     group-hover:w-full
+                    motion-reduce:transition-none
                   "
                 />
 
-                {/* ICON */}
+                {/* Icon */}
                 <div
                   className="
-                    flex
-                    h-12
-                    w-12
-                    items-center
-                    justify-center
-                    rounded-xl
-                    border
-                    border-[#D4AF37]/30
-                    bg-[#D4AF37]/5
-                    transition-all
-                    duration-500
-                    group-hover:border-[#D4AF37]/60
-                    group-hover:bg-[#D4AF37]/10
-                    sm:h-14
-                    sm:w-14
+                    flex h-12 w-12 shrink-0
+                    items-center justify-center
+                    rounded-lg border border-[#F2C078]/30
+                    bg-[#F2C078]/[0.06]
+                    transition-colors duration-300
+                    group-hover:bg-[#F2C078]/[0.12]
+                    sm:h-[52px] sm:w-[52px]
+                    motion-reduce:transition-none
                   "
                 >
                   <Icon
-                    size={25}
-                    strokeWidth={1.4}
+                    aria-hidden="true"
+                    size={23}
+                    strokeWidth={1.5}
+                    style={{ color: GOLD }}
                     className="
-                      text-[#D4AF37]
-                      transition-transform
-                      duration-500
-                      group-hover:scale-110
+                      transition-transform duration-300
+                      group-hover:-translate-y-0.5
+                      motion-reduce:transition-none
                     "
                   />
                 </div>
 
-                {/* CONTENT */}
-                <div className="mt-6">
+                {/* Card content */}
+                <div className="mt-6 flex-1">
                   <h3
                     className="
-                      text-lg
-                      font-medium
-                      leading-tight
-                      text-white
+                      text-lg font-medium leading-snug
+                      tracking-[-0.02em] text-white
                       sm:text-xl
                     "
                   >
                     {item.title}
                   </h3>
 
-                  <p
-                    className="
-                      mt-3
-                      text-sm
-                      leading-6
-                      text-white/55
-                      sm:leading-7
-                    "
-                  >
+                  <p className="mt-3 text-sm leading-7 text-white/60">
                     {item.description}
                   </p>
                 </div>
 
-                {/* NUMBER */}
-                <span
+                {/* Card numbering */}
+                <div
+                  aria-hidden="true"
                   className="
-                    absolute
-                    bottom-5
-                    right-6
-                    text-[10px]
-                    tracking-[0.2em]
-                    text-white/15
+                    absolute bottom-5 left-6 right-6
+                    flex items-center justify-between
+                    sm:left-7 sm:right-7
                   "
                 >
-                  0{index + 1}
-                </span>
-              </motion.div>
+                  <span className="text-[10px] font-medium tracking-[0.2em] text-white/35">
+                    0{index + 1}
+                  </span>
+
+                  <ArrowUpRight
+                    size={16}
+                    strokeWidth={1.4}
+                    style={{ color: GOLD }}
+                    className="
+                      opacity-50 transition-all duration-300
+                      group-hover:translate-x-0.5
+                      group-hover:-translate-y-0.5
+                      group-hover:opacity-100
+                      motion-reduce:transition-none
+                    "
+                  />
+                </div>
+              </motion.article>
             );
           })}
         </div>
-
       </div>
     </section>
   );

@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -45,21 +46,12 @@ const benefits = [
 
 export default function StrategySession() {
   return (
-    <section
-      className="
-        relative
-        overflow-hidden
-        bg-black
-        page-padding
-        section-spacing
-        page-intro
-      "
-    >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(239,189,120,0.18),transparent_45%)]" />
+    <section className="relative overflow-hidden bg-[#181715] page-padding section-spacing page-intro">
+      {/* BACKGROUND GLOW */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(242,192,120,0.12),transparent_45%)]" />
 
       <div className="container-custom relative">
-        <div className="grid lg:grid-cols-[480px_1fr] gap-16 items-start">
-          
+        <div className="grid items-start gap-12 lg:grid-cols-[480px_1fr] lg:gap-16">
           {/* LEFT */}
           <motion.div
             initial={{
@@ -79,45 +71,34 @@ export default function StrategySession() {
             }}
             className="lg:sticky lg:top-28"
           >
-        
-<h2
-  className="display-heading display-heading-lg max-w-[560px] text-white"
->
-            A clearer strategy
-              <br />
-              for your Dubai property
+            <p className="eyebrow text-[#F2C078]">
+              YOUR PROPERTY JOURNEY
+            </p>
+
+            <h2 className="display-heading display-heading-lg mt-5 max-w-[560px] text-white">
+              Clarity behind every{" "}
+              <span className="text-[#F2C078]">
+                decision.
+              </span>
             </h2>
 
-            <p
-  className="
-    mt-6
-    max-w-md
-    text-[15px]
-    leading-7
-    text-white/70
-
-    sm:text-base
-    sm:leading-8
-
-    lg:text-lg
-  "
->
-              A focused conversation to help you understand the market, compare
-              opportunities, and choose your next step with confidence.
+            <p className="mt-6 max-w-md text-[15px] leading-7 text-white/65 sm:text-base sm:leading-8 lg:text-lg">
+              Property decisions are personal. We bring structure,
+              perspective, and thoughtful guidance to every stage of
+              your Dubai property journey.
             </p>
 
             <Link
               to="/contact"
-              className="btn-gold mt-10 inline-flex items-center gap-2"
+              className="btn-gold mt-8 inline-flex items-center gap-2 sm:mt-10"
             >
               Start your strategy session
-
               <ArrowUpRight size={18} />
             </Link>
           </motion.div>
 
           {/* RIGHT */}
-          <div className="grid gap-6 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
             {benefits.map((item, index) => {
               const Icon = item.icon;
 
@@ -140,42 +121,21 @@ export default function StrategySession() {
                     duration: 0.8,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className="
-                    group
-                    rounded-[28px]
-                    border
-                    border-white/10
-                    bg-white/5
-                    backdrop-blur
-                    p-8
-                    transition-all
-                    duration-500
-                    hover:border-[#EFBD78]/40
-                    hover:bg-white/8
-                  "
+                  className="group rounded-[24px] border border-white/10 bg-white/[0.04] p-6 backdrop-blur transition-all duration-500 hover:border-[#F2C078]/40 hover:bg-white/[0.07] sm:rounded-[28px] sm:p-8"
                 >
-                  <div
-                    className="
-                      flex
-                      h-14
-                      w-14
-                      items-center
-                      justify-center
-                      rounded-2xl
-                      bg-[#EFBD78]/15
-                    "
-                  >
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#F2C078]/10 transition-colors duration-300 group-hover:bg-[#F2C078]/20 sm:h-14 sm:w-14">
                     <Icon
                       size={24}
-                      className="text-[#EFBD78]"
+                      strokeWidth={1.5}
+                      className="text-[#F2C078]"
                     />
                   </div>
 
-                  <h3 className="heading-4 text-light mt-8">
+                  <h3 className="heading-4 mt-6 text-light sm:mt-8">
                     {item.title}
                   </h3>
 
-                  <p className="small text-white/65 mt-4 leading-relaxed">
+                  <p className="small mt-3 leading-relaxed text-white/60 sm:mt-4">
                     {item.text}
                   </p>
                 </motion.div>

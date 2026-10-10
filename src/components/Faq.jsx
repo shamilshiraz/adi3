@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
@@ -29,20 +30,12 @@ export default function ConsultationFAQ() {
   const [active, setActive] = useState(0);
 
   return (
-    <section
-      className="
-        relative
-        overflow-hidden
-        bg-black
-        page-padding
-        section-spacing
-      "
-    >
+    <section className="relative overflow-hidden bg-[#181715] page-padding section-spacing">
       {/* Background Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(239,189,120,0.12),transparent_45%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(242,192,120,0.12),transparent_45%)]" />
 
       <div className="container-custom relative">
-        <div className="grid lg:grid-cols-[420px_1fr] gap-16">
+        <div className="grid items-start gap-10 lg:grid-cols-[420px_1fr] lg:gap-16">
           {/* Left Content */}
           <motion.div
             initial={{
@@ -60,26 +53,28 @@ export default function ConsultationFAQ() {
               duration: 0.8,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="lg:sticky lg:top-28 h-fit"
+            className="h-fit lg:sticky lg:top-28"
           >
-            <p className="eyebrow">
-               QUESTIONS WORTH ASKING
+            <p className="eyebrow text-[#F2C078]">
+              QUESTIONS WORTH ASKING
             </p>
 
-            <h2 className="heading-3 text-white mt-6">
-               Better questions.
-              <br />
-               Clearer decisions.
+            <h2 className="heading-3 mt-5 text-white sm:mt-6">
+              The answers behind{" "}
+              <span className="text-[#F2C078]">
+                confident decisions.
+              </span>
             </h2>
 
-            <p className="sub text-white/70 mt-6 max-w-md">
-               Here are the questions investors most often ask before starting
-               a conversation with ADHIHAVEN.
+            <p className="sub mt-5 max-w-md leading-relaxed text-white/65 sm:mt-6">
+              Get to know our approach, understand what to expect,
+              and find clarity before taking your next step in
+              Dubai real estate.
             </p>
           </motion.div>
 
           {/* FAQ List */}
-          <div className="space-y-5">
+          <div className="space-y-4 sm:space-y-5">
             {faqs.map((faq, index) => {
               const open = active === index;
 
@@ -102,17 +97,7 @@ export default function ConsultationFAQ() {
                     duration: 0.7,
                     ease: [0.16, 1, 0.3, 1],
                   }}
-                  className="
-                    overflow-hidden
-                    rounded-[28px]
-                    border
-                    border-white/10
-                    bg-white/5
-                    backdrop-blur-sm
-                    transition-all
-                    duration-300
-                    hover:border-[#EFBD78]/40
-                  "
+                  className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm transition-all duration-300 hover:border-[#F2C078]/40 sm:rounded-[28px]"
                 >
                   <button
                     type="button"
@@ -121,45 +106,36 @@ export default function ConsultationFAQ() {
                     onClick={() =>
                       setActive(open ? -1 : index)
                     }
-                    className="
-                      flex
-                      w-full
-                      items-center
-                      justify-between
-                      gap-6
-                      p-7
-                      text-left
-                    "
+                    className="flex w-full items-center justify-between gap-4 p-5 text-left sm:gap-6 sm:p-7"
                   >
-                    <h3 className="heading-4 text-white">
+                    <h3 className="heading-4 min-w-0 text-white">
                       {faq.question}
                     </h3>
 
-                    <div
-                      className="
-                        flex
-                        h-11
-                        w-11
-                        shrink-0
-                        items-center
-                        justify-center
-                        rounded-full
-                        bg-[#EFBD78]
-                        text-black
-                      "
+                    <motion.div
+                      animate={{
+                        rotate: open ? 180 : 0,
+                        backgroundColor: open
+                          ? "#F2C078"
+                          : "rgba(242,192,120,0.12)",
+                        color: open ? "#181715" : "#F2C078",
+                      }}
+                      transition={{ duration: 0.25 }}
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#F2C078]/20 sm:h-11 sm:w-11"
                     >
                       {open ? (
                         <Minus size={18} />
                       ) : (
                         <Plus size={18} />
                       )}
-                    </div>
+                    </motion.div>
                   </button>
 
                   <AnimatePresence initial={false}>
                     {open && (
                       <motion.div
                         id={`faq-answer-${index}`}
+                        key="answer"
                         initial={{
                           height: 0,
                           opacity: 0,
@@ -174,12 +150,14 @@ export default function ConsultationFAQ() {
                         }}
                         transition={{
                           duration: 0.35,
+                          ease: [0.16, 1, 0.3, 1],
                         }}
+                        className="overflow-hidden"
                       >
-                        <div className="px-7 pb-7">
-                          <div className="mb-6 h-px bg-white/10" />
+                        <div className="px-5 pb-5 sm:px-7 sm:pb-7">
+                          <div className="mb-4 h-px bg-white/10 sm:mb-6" />
 
-                          <p className="sub leading-relaxed text-white/70">
+                          <p className="sub text-sm leading-7 text-white/60 sm:text-base">
                             {faq.answer}
                           </p>
                         </div>

@@ -126,23 +126,12 @@ export default function Clients() {
     >
       {/* HEADER */}
       <div className="mx-auto max-w-[1440px] px-5 text-center sm:px-8 lg:px-20">
-        <p
-          className="
-            text-[10px]
-            font-medium
-            uppercase
-            tracking-[0.3em]
-            text-[#D4AF37]
-            sm:text-xs
-          "
-        >
-           SELECTED DEVELOPER RELATIONSHIPS
-        </p>
+        
 
         <h2
              className="heading-3 mx-auto mt-4 max-w-2xl font-medium text-black"
         >
-           The right opportunities start with the right relationships
+          Strong Partnerships Opportunities.
         </h2>
 
         <div className="mx-auto mt-5 h-px w-12 bg-[#D4AF37]" />

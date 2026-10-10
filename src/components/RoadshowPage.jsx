@@ -1,4 +1,3 @@
-"use client";
 
 import { useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
@@ -17,6 +16,9 @@ import {
   ChevronDown,
   SlidersHorizontal,
 } from "lucide-react";
+
+const GOLD = "#F2C078";
+const DARK = "#181715";
 
 const roadshows = [
   {
@@ -65,12 +67,8 @@ const roadshows = [
 
 const locations = [
   "All locations",
-  ...Array.from(new Set(roadshows.map((event) => event.location))),
+  ...new Set(roadshows.map((event) => event.location)),
 ];
-
-/* =========================================================
-   DATE HELPERS
-========================================================= */
 
 function parseLocalDate(iso) {
   const [year, month, day] = iso.split("-").map(Number);
@@ -79,7 +77,6 @@ function parseLocalDate(iso) {
 
 function getLocalISODate() {
   const now = new Date();
-
   const year = now.getFullYear();
   const month = String(now.getMonth() + 1).padStart(2, "0");
   const day = String(now.getDate()).padStart(2, "0");
@@ -91,25 +88,17 @@ function formatDateParts(iso) {
   const date = parseLocalDate(iso);
 
   return {
-    day: date.toLocaleDateString("en-US", {
-      day: "2-digit",
-    }),
-    month: date.toLocaleDateString("en-US", {
-      month: "short",
-    }),
-    year: date.toLocaleDateString("en-US", {
-      year: "numeric",
-    }),
+    day: date.toLocaleDateString("en-US", { day: "2-digit" }),
+    month: date.toLocaleDateString("en-US", { month: "short" }),
+    year: date.toLocaleDateString("en-US", { year: "numeric" }),
   };
 }
 
-/* =========================================================
-   HERO
-========================================================= */
+/* HERO */
 
 function EventsHero() {
   const heroRef = useRef(null);
-  const shouldReduceMotion = useReducedMotion();
+  const reduceMotion = useReducedMotion();
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -119,34 +108,23 @@ function EventsHero() {
   const imageY = useTransform(
     scrollYProgress,
     [0, 1],
-    shouldReduceMotion ? ["0%", "0%"] : ["0%", "10%"]
+    reduceMotion ? ["0%", "0%"] : ["0%", "10%"]
   );
 
   const imageScale = useTransform(
     scrollYProgress,
     [0, 1],
-    shouldReduceMotion ? [1.05, 1.05] : [1.05, 1.12]
+    reduceMotion ? [1.05, 1.05] : [1.05, 1.12]
   );
 
   return (
     <section
       ref={heroRef}
-      className="
-        relative
-        min-h-[68svh]
-        overflow-hidden
-        bg-black
-        sm:min-h-[72svh]
-        lg:min-h-[78svh]
-      "
+      className="relative flex min-h-[68svh] items-end overflow-hidden bg-black sm:min-h-[72svh] lg:min-h-[78svh]"
     >
-      {/* CINEMATIC IMAGE */}
       <motion.div
         className="absolute inset-[-6%]"
-        style={{
-          y: imageY,
-          scale: imageScale,
-        }}
+        style={{ y: imageY, scale: imageScale }}
       >
         <img
           src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2200&q=90"
@@ -155,179 +133,45 @@ function EventsHero() {
         />
       </motion.div>
 
-      {/* CINEMATIC OVERLAY */}
-      <div
-        className="
-          absolute
-          inset-0
-          bg-black/35
-        "
-      />
+      <div className="absolute inset-0 bg-black/35" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-black/10" />
+      <div className="absolute inset-x-0 bottom-0 h-[55%] bg-gradient-to-t from-black via-black/45 to-transparent" />
 
-      {/* LEFT READABILITY GRADIENT */}
-      <div
-        className="
-          absolute
-          inset-0
-          bg-gradient-to-r
-          from-black/80
-          via-black/40
-          to-black/10
-        "
-      />
-
-      {/* BOTTOM GRADIENT */}
-      <div
-        className="
-          absolute
-          inset-x-0
-          bottom-0
-          h-[55%]
-          bg-gradient-to-t
-          from-black
-          via-black/45
-          to-transparent
-        "
-      />
-
-      {/* CONTENT */}
-      <div
-        className="
-          relative
-          z-10
-          mx-auto
-          flex
-          min-h-[68svh]
-          max-w-[1440px]
-          items-end
-          px-5
-          pb-24
-
-          sm:min-h-[72svh]
-          sm:px-8
-          sm:pb-28
-
-          lg:min-h-[78svh]
-          lg:px-20
-          lg:pb-32
-        "
-      >
+      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-24 sm:px-8 sm:pb-28 lg:px-20 lg:pb-32">
         <motion.div
-          initial={
-            shouldReduceMotion
-              ? false
-              : {
-                  opacity: 0,
-                  y: 35,
-                }
-          }
-          animate={
-            shouldReduceMotion
-              ? {}
-              : {
-                  opacity: 1,
-                  y: 0,
-                }
-          }
-          transition={{
-            duration: 1,
-            ease: [0.16, 1, 0.3, 1],
-          }}
+          initial={reduceMotion ? false : { opacity: 0, y: 35 }}
+          animate={reduceMotion ? {} : { opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-4xl"
         >
-          {/* EYEBROW */}
-          <div className="mb-5 flex items-center gap-3 sm:mb-7">
-            <span className="h-px w-8 bg-[#D4AF37]" />
+          
 
-            
-          </div>
+          <h1 className="display-heading display-heading-lg max-w-4xl text-white">
+  Meet {" "}
+  <span className="text-[#F2C078]">
+    ADHIHAVEN
+  </span> in person{" "}
+</h1>
 
-          {/* TITLE */}
-          <h1
-             className="display-heading display-heading-lg max-w-4xl text-white"
-          >
-             Meet ADHIHAVEN in person
-          </h1>
-
-          {/* DESCRIPTION */}
-          <p
-            className="
-              mt-6
-              max-w-xl
-              text-sm
-              leading-7
-              text-white/70
-
-              sm:mt-7
-              sm:text-base
-              sm:leading-8
-
-              lg:text-lg
-            "
-          >
-            Private briefings, property showcases, and investor conversations
-            across Dubai&apos;s most sought-after destinations.
+          <p className="mt-6 max-w-xl text-sm leading-7 text-white/70 sm:mt-7 sm:text-base sm:leading-8 lg:text-lg">
+            Discover curated property showcases, private briefings,
+            and investor conversations across Dubai.
           </p>
         </motion.div>
       </div>
 
-      {/* SCROLL INDICATOR */}
       <motion.div
-        initial={
-          shouldReduceMotion
-            ? false
-            : {
-                opacity: 0,
-              }
-        }
-        animate={
-          shouldReduceMotion
-            ? {}
-            : {
-                opacity: 1,
-              }
-        }
-        transition={{
-          delay: 1.2,
-          duration: 0.8,
-        }}
-        className="
-          absolute
-          bottom-8
-          right-5
-          z-10
-          hidden
-          items-center
-          gap-3
-          sm:flex
-          lg:bottom-10
-          lg:right-20
-        "
+        initial={reduceMotion ? false : { opacity: 0 }}
+        animate={reduceMotion ? {} : { opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.8 }}
+        className="absolute bottom-8 right-5 z-10 hidden items-center gap-3 sm:flex lg:bottom-10 lg:right-20"
       >
-        <span
-          className="
-            text-[9px]
-            uppercase
-            tracking-[0.28em]
-            text-white/45
-          "
-        >
+        <span className="text-[9px] uppercase tracking-[0.28em] text-white/45">
           Scroll to explore
         </span>
-
         <motion.div
-          animate={
-            shouldReduceMotion
-              ? {}
-              : {
-                  y: [0, 7, 0],
-                }
-          }
-          transition={{
-            duration: 1.8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          animate={reduceMotion ? {} : { y: [0, 7, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
           className="h-8 w-px bg-white/35"
         />
       </motion.div>
@@ -335,9 +179,7 @@ function EventsHero() {
   );
 }
 
-/* =========================================================
-   FILTER BAR
-========================================================= */
+/* SEARCH, FILTERS AND SORTING */
 
 function FilterBar({
   search,
@@ -351,210 +193,61 @@ function FilterBar({
   return (
     <section className="relative z-30 -mt-10 px-5 sm:-mt-14 sm:px-8 lg:px-20">
       <div className="mx-auto max-w-[1440px]">
-        <div
-          className="
-            rounded-[24px]
-            border
-            border-white/10
-            bg-[#111]/90
-            p-3
-            shadow-[0_25px_80px_rgba(0,0,0,0.35)]
-            backdrop-blur-2xl
-
-            sm:rounded-[28px]
-            sm:p-4
-          "
-        >
-          <div
-            className="
-              grid
-              gap-2
-
-              lg:grid-cols-[minmax(0,1fr)_220px_190px]
-            "
-          >
-            {/* SEARCH */}
+        <div className="rounded-[24px] border border-white/10 bg-[#181715]/95 p-3 shadow-[0_25px_80px_rgba(0,0,0,0.35)] backdrop-blur-2xl sm:rounded-[28px] sm:p-4">
+          <div className="grid gap-2 lg:grid-cols-[minmax(0,1fr)_220px_190px]">
             <div className="relative">
               <Search
                 size={17}
-                strokeWidth={1.5}
-                className="
-                  pointer-events-none
-                  absolute
-                  left-4
-                  top-1/2
-                  -translate-y-1/2
-                  text-white/35
-                "
+                className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-white/35"
               />
-
               <input
                 type="search"
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
                 placeholder="Search events, locations..."
                 aria-label="Search events"
-                className="
-                  h-14
-                  w-full
-                  rounded-[16px]
-                  border
-                  border-white/10
-                  bg-white/[0.045]
-                  pl-11
-                  pr-4
-                  text-sm
-                  text-white
-                  outline-none
-                  transition-all
-                  duration-300
-                  placeholder:text-white/30
-
-                  hover:border-white/20
-                  focus:border-[#D4AF37]/60
-                  focus:bg-white/[0.07]
-                  focus:ring-1
-                  focus:ring-[#D4AF37]/20
-                "
+                className="h-14 w-full rounded-2xl border border-white/10 bg-white/[0.045] pl-11 pr-4 text-sm text-white outline-none transition placeholder:text-white/30 hover:border-white/20 focus:border-[#F2C078]/60 focus:ring-1 focus:ring-[#F2C078]/20"
               />
             </div>
 
-            {/* LOCATION */}
             <div className="relative">
               <MapPin
                 size={16}
-                strokeWidth={1.5}
-                className="
-                  pointer-events-none
-                  absolute
-                  left-4
-                  top-1/2
-                  z-10
-                  -translate-y-1/2
-                  text-[#D4AF37]/70
-                "
+                className="pointer-events-none absolute left-4 top-1/2 z-10 -translate-y-1/2 text-[#F2C078]"
               />
-
               <select
                 value={location}
                 onChange={(event) => setLocation(event.target.value)}
                 aria-label="Filter by location"
-                className="
-                  h-14
-                  w-full
-                  appearance-none
-                  rounded-[16px]
-                  border
-                  border-white/10
-                  bg-white/[0.045]
-                  pl-11
-                  pr-10
-                  text-sm
-                  text-white
-                  outline-none
-                  transition-all
-                  duration-300
-                  cursor-pointer
-
-                  hover:border-white/20
-                  focus:border-[#D4AF37]/60
-                  focus:ring-1
-                  focus:ring-[#D4AF37]/20
-                "
+                className="h-14 w-full cursor-pointer appearance-none rounded-2xl border border-white/10 bg-[#24221E] pl-11 pr-10 text-sm text-white outline-none transition hover:border-white/20 focus:border-[#F2C078]/60"
               >
                 {locations.map((loc) => (
-                  <option
-                    key={loc}
-                    value={loc}
-                    className="bg-[#111] text-white"
-                  >
+                  <option key={loc} value={loc} className="bg-[#181715]">
                     {loc}
                   </option>
                 ))}
               </select>
-
               <ChevronDown
                 size={16}
-                strokeWidth={1.5}
-                className="
-                  pointer-events-none
-                  absolute
-                  right-4
-                  top-1/2
-                  -translate-y-1/2
-                  text-white/35
-                "
+                className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-white/35"
               />
             </div>
 
-            {/* SORT */}
             <button
               type="button"
               onClick={toggleSort}
-              aria-label={`Sort events by ${
-                sortOrder === "soonest" ? "latest" : "soonest"
-              } date`}
-              className="
-                flex
-                h-14
-                items-center
-                justify-center
-                gap-2
-                rounded-[16px]
-                border
-                border-white/10
-                bg-white/[0.045]
-                px-5
-                text-sm
-                text-white/80
-                outline-none
-                transition-all
-                duration-300
-
-                hover:border-[#D4AF37]/40
-                hover:bg-[#D4AF37]/[0.06]
-                hover:text-white
-
-                focus:border-[#D4AF37]/60
-                focus:ring-1
-                focus:ring-[#D4AF37]/20
-              "
+              className="flex h-14 items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[0.045] px-5 text-sm text-white/80 transition hover:border-[#F2C078]/40 hover:bg-[#F2C078]/[0.06]"
             >
-              <ArrowUpDown
-                size={16}
-                strokeWidth={1.5}
-                className="text-[#D4AF37]"
-              />
-
-              <span>
-                {sortOrder === "soonest"
-                  ? "Soonest first"
-                  : "Latest first"}
-              </span>
+              <ArrowUpDown size={16} className="text-[#F2C078]" />
+              {sortOrder === "soonest" ? "Soonest first" : "Latest first"}
             </button>
           </div>
 
-          {/* RESULT SUMMARY */}
-          <div
-            className="
-              flex
-              items-center
-              justify-between
-              px-2
-              pt-3
-              sm:px-3
-            "
-          >
+          <div className="flex items-center justify-between px-2 pt-3 sm:px-3">
             <div className="flex items-center gap-2">
-              <SlidersHorizontal
-                size={12}
-                strokeWidth={1.5}
-                className="text-[#D4AF37]"
-              />
-
-              <p className="text-[10px] uppercase tracking-[0.18em] text-white/35">
-                {resultCount}{" "}
-                {resultCount === 1 ? "event" : "events"} available
+              <SlidersHorizontal size={12} className="text-[#F2C078]" />
+              <p className="text-[10px] uppercase tracking-[0.18em] text-white/40">
+                {resultCount} {resultCount === 1 ? "event" : "events"} available
               </p>
             </div>
 
@@ -565,16 +258,7 @@ function FilterBar({
                   setSearch("");
                   setLocation("All locations");
                 }}
-                className="
-                  text-[10px]
-                  uppercase
-                  tracking-[0.16em]
-                  text-white/40
-                  transition-colors
-                  hover:text-[#D4AF37]
-                  focus:outline-none
-                  focus:text-[#D4AF37]
-                "
+                className="text-[10px] uppercase tracking-[0.16em] text-white/50 transition hover:text-[#F2C078]"
               >
                 Clear filters
               </button>
@@ -586,70 +270,28 @@ function FilterBar({
   );
 }
 
-/* =========================================================
-   DATE BADGE
-========================================================= */
+/* EVENT DATE BADGE */
 
-function DateBadge({ date, past = false }) {
+function DateBadge({ date, past }) {
   const parts = formatDateParts(date);
 
   return (
-    <div
-      className={`
-        absolute
-        left-5
-        top-5
-        z-20
-        min-w-[68px]
-        overflow-hidden
-        rounded-[14px]
-        border
-        backdrop-blur-xl
-        sm:left-6
-        sm:top-6
-
-        ${
-          past
-            ? "border-white/10 bg-black/50"
-            : "border-white/15 bg-black/35"
-        }
-      `}
-    >
+    <div className={`absolute left-5 top-5 z-20 min-w-[68px] overflow-hidden rounded-[14px] border backdrop-blur-xl sm:left-6 sm:top-6 ${
+      past ? "border-white/10 bg-black/50" : "border-white/15 bg-black/35"
+    }`}>
       <div className="border-b border-white/10 px-3 py-1.5 text-center">
-        <span
-          className={`
-            text-[9px]
-            font-medium
-            uppercase
-            tracking-[0.2em]
-            ${
-              past
-                ? "text-white/40"
-                : "text-[#D4AF37]"
-            }
-          `}
-        >
+        <span className={`text-[9px] font-medium uppercase tracking-[0.2em] ${
+          past ? "text-white/40" : "text-[#F2C078]"
+        }`}>
           {parts.month}
         </span>
       </div>
-
       <div className="px-3 py-2 text-center">
-        <span
-          className={`
-            block
-            text-xl
-            font-light
-            leading-none
-            ${
-              past
-                ? "text-white/60"
-                : "text-white"
-            }
-          `}
-        >
+        <span className={`block text-xl font-light leading-none ${
+          past ? "text-white/60" : "text-white"
+        }`}>
           {parts.day}
         </span>
-
         <span className="mt-1 block text-[8px] text-white/35">
           {parts.year}
         </span>
@@ -658,267 +300,101 @@ function DateBadge({ date, past = false }) {
   );
 }
 
-/* =========================================================
-   EVENT CARD
-========================================================= */
+/* EVENT CARD */
 
-function RoadshowCard({
-  item,
-  index,
-  past = false,
-  shouldReduceMotion,
-}) {
+function RoadshowCard({ item, index, past, reduceMotion }) {
   return (
     <motion.article
       layout
-      initial={
-        shouldReduceMotion
-          ? false
-          : {
-              opacity: 0,
-              y: 30,
-            }
-      }
-      animate={{
-        opacity: 1,
-        y: 0,
-      }}
-      exit={
-        shouldReduceMotion
-          ? undefined
-          : {
-              opacity: 0,
-              y: 15,
-            }
-      }
+      initial={reduceMotion ? false : { opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={reduceMotion ? undefined : { opacity: 0, y: 15 }}
       transition={{
-        duration: shouldReduceMotion ? 0 : 0.7,
-        delay: shouldReduceMotion ? 0 : index * 0.06,
+        duration: reduceMotion ? 0 : 0.7,
+        delay: reduceMotion ? 0 : index * 0.06,
         ease: [0.16, 1, 0.3, 1],
       }}
-      className={`
-        group
-        relative
-        min-h-[470px]
-        overflow-hidden
-        rounded-[24px]
-        border
-        bg-[#101010]
-        outline-none
-        transition-all
-        duration-700
-
-        sm:min-h-[500px]
-        sm:rounded-[28px]
-
-        ${
-          past
-            ? "border-white/[0.07] opacity-65"
-            : "border-white/[0.10] hover:-translate-y-1 hover:border-[#D4AF37]/35 hover:shadow-[0_25px_70px_rgba(0,0,0,0.35)]"
-        }
-      `}
+      className={`group relative min-h-[470px] overflow-hidden rounded-[24px] border bg-[#10100E] outline-none transition-all duration-700 sm:min-h-[500px] sm:rounded-[28px] ${
+        past
+          ? "border-white/[0.07] opacity-65"
+          : "border-white/10 hover:-translate-y-1 hover:border-[#F2C078]/35 hover:shadow-[0_25px_70px_rgba(0,0,0,0.35)]"
+      }`}
     >
-      {/* IMAGE */}
-      <motion.img
+      <img
         src={item.img}
         alt={`${item.title} — ${item.location}`}
         loading={index < 3 ? "eager" : "lazy"}
-        className={`
-          absolute
-          inset-0
-          h-full
-          w-full
-          object-cover
-          transition-all
-          duration-[1200ms]
-          ease-[cubic-bezier(0.16,1,0.3,1)]
-
-          ${
-            past
-              ? "grayscale-[45%]"
-              : "grayscale-0 group-hover:scale-[1.045]"
-          }
-        `}
+        className={`absolute inset-0 h-full w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          past ? "grayscale-[45%]" : "group-hover:scale-[1.045]"
+        }`}
       />
 
-      {/* IMAGE TINT */}
-      <div
-        className={`
-          absolute
-          inset-0
-          transition-opacity
-          duration-700
-          ${
-            past
-              ? "bg-black/30"
-              : "bg-black/5 group-hover:bg-black/0"
-          }
-        `}
-      />
+      <div className={`absolute inset-0 ${
+        past ? "bg-black/30" : "bg-black/5"
+      }`} />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/5 to-black/95" />
 
-      {/* CINEMATIC GRADIENT */}
-      <div
-        className="
-          absolute
-          inset-0
-          bg-gradient-to-b
-          from-black/10
-          via-black/5
-          to-black/95
-        "
-      />
-
-      {/* HOVER LIGHT */}
       {!past && (
-        <div
-          className="
-            pointer-events-none
-            absolute
-            inset-0
-            bg-gradient-to-br
-            from-[#D4AF37]/0
-            via-transparent
-            to-[#D4AF37]/0
-            opacity-0
-            transition-opacity
-            duration-700
-            group-hover:opacity-100
-          "
-        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#F2C078]/0 via-transparent to-[#F2C078]/0 opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
       )}
 
-      {/* DATE */}
       <DateBadge date={item.date} past={past} />
 
-      {/* TOP LABEL */}
       <div className="absolute right-5 top-5 z-20 sm:right-6 sm:top-6">
-        <span
-          className={`
-            rounded-full
-            border
-            px-3
-            py-1.5
-            text-[8px]
-            font-medium
-            uppercase
-            tracking-[0.18em]
-            backdrop-blur-xl
-
-            ${
-              past
-                ? "border-white/10 bg-black/35 text-white/35"
-                : "border-white/10 bg-black/25 text-white/55"
-            }
-          `}
-        >
+        <span className={`rounded-full border px-3 py-1.5 text-[8px] font-medium uppercase tracking-[0.18em] backdrop-blur-xl ${
+          past
+            ? "border-white/10 bg-black/35 text-white/35"
+            : "border-white/10 bg-black/25 text-white/65"
+        }`}>
           {past ? "Past Event" : "Upcoming"}
         </span>
       </div>
 
-      {/* CONTENT */}
-      <div
-        className="
-          absolute
-          inset-x-0
-          bottom-0
-          z-20
-          p-5
-          sm:p-6
-          lg:p-7
-        "
-      >
-        {/* LOCATION */}
+      <div className="absolute inset-x-0 bottom-0 z-20 p-5 sm:p-6 lg:p-7">
         <div className="mb-3 flex items-center gap-2">
           <MapPin
             size={13}
-            strokeWidth={1.5}
-            className={
-              past
-                ? "text-white/30"
-                : "text-[#D4AF37]"
-            }
+            className={past ? "text-white/30" : "text-[#F2C078]"}
           />
-
-          <span
-            className={`
-              text-[9px]
-              font-medium
-              uppercase
-              tracking-[0.2em]
-              ${
-                past
-                  ? "text-white/35"
-                  : "text-white/55"
-              }
-            `}
-          >
+          <span className={`text-[9px] font-medium uppercase tracking-[0.2em] ${
+            past ? "text-white/35" : "text-white/60"
+          }`}>
             {item.location}
           </span>
         </div>
 
-        {/* TITLE */}
-        <h3
-          className={`
-            max-w-lg
-            text-2xl
-            font-light
-            leading-[1.08]
-            tracking-[-0.025em]
-
-            sm:text-3xl
-
-            ${
-              past
-                ? "text-white/65"
-                : "text-white"
-            }
-          `}
-        >
+        <h3 className={`max-w-lg text-2xl font-light leading-[1.08] tracking-[-0.025em] sm:text-3xl ${
+          past ? "text-white/65" : "text-white"
+        }`}>
           {item.title}
         </h3>
 
-        {/* DESCRIPTION */}
-        <p
-          className={`
-            mt-3
-            max-w-lg
-            text-sm
-            leading-6
-
-            ${
-              past
-                ? "text-white/35"
-                : "text-white/60"
-            }
-          `}
-        >
+        <p className={`mt-3 max-w-lg text-sm leading-6 ${
+          past ? "text-white/35" : "text-white/65"
+        }`}>
           {item.text}
         </p>
 
-        {/* DISCOVER INTERACTION */}
         <div className="mt-6 flex items-center justify-between border-t border-white/10 pt-4">
-          <span
-            className={`text-[9px] font-medium uppercase tracking-[0.2em] ${
-              past ? "text-white/25" : "text-white/45"
-            }`}
-          >
+          <span className={`text-[9px] font-medium uppercase tracking-[0.2em] ${
+            past ? "text-white/25" : "text-white/55"
+          }`}>
             {past ? "Event concluded" : "Register your interest"}
           </span>
 
           {past ? (
             <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white/25">
-              <ArrowUpRight size={15} strokeWidth={1.5} />
+              <ArrowUpRight size={15} />
             </span>
           ) : (
             <Link
               to="/contact"
               aria-label={`Register interest for ${item.title}`}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white/55 transition-all duration-500 hover:border-[#D4AF37]/60 hover:bg-[#D4AF37] hover:text-black focus-visible:ring-2 focus-visible:ring-[#D4AF37]"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 text-white/70 transition-all duration-300 hover:border-[#F2C078] hover:bg-[#F2C078] hover:text-[#181715] focus-visible:ring-2 focus-visible:ring-[#F2C078]"
             >
               <ArrowUpRight
                 size={15}
-                strokeWidth={1.5}
-                className="transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
               />
             </Link>
           )}
@@ -928,48 +404,21 @@ function RoadshowCard({
   );
 }
 
-/* =========================================================
-   EVENT GRID
-========================================================= */
+/* EVENT GRID */
 
-function RoadshowGrid({
-  items,
-  past = false,
-  shouldReduceMotion,
-}) {
+function RoadshowGrid({ items, past = false, reduceMotion }) {
   if (items.length === 0) {
     return (
       <motion.div
-        initial={
-          shouldReduceMotion
-            ? false
-            : {
-                opacity: 0,
-              }
-        }
-        animate={{
-          opacity: 1,
-        }}
-        className="
-          flex
-          min-h-[260px]
-          items-center
-          justify-center
-          rounded-[24px]
-          border
-          border-dashed
-          border-white/10
-          bg-white/[0.02]
-          px-6
-          text-center
-        "
+        initial={reduceMotion ? false : { opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="flex min-h-[260px] items-center justify-center rounded-[24px] border border-dashed border-white/10 bg-white/[0.02] px-6 text-center"
       >
         <div>
-          <p className="text-sm text-white/55">
+          <p className="text-sm text-white/60">
             No events match your current filters.
           </p>
-
-          <p className="mt-2 text-xs text-white/25">
+          <p className="mt-2 text-xs text-white/35">
             Try another location or search term.
           </p>
         </div>
@@ -980,18 +429,7 @@ function RoadshowGrid({
   return (
     <motion.div
       layout
-      className="
-        grid
-        grid-cols-1
-        gap-5
-
-        md:grid-cols-2
-
-        xl:grid-cols-3
-        xl:gap-7
-
-        2xl:gap-8
-      "
+      className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3 xl:gap-7 2xl:gap-8"
     >
       <AnimatePresence mode="popLayout">
         {items.map((item, index) => (
@@ -1000,7 +438,7 @@ function RoadshowGrid({
             item={item}
             index={index}
             past={past}
-            shouldReduceMotion={shouldReduceMotion}
+            reduceMotion={reduceMotion}
           />
         ))}
       </AnimatePresence>
@@ -1008,161 +446,88 @@ function RoadshowGrid({
   );
 }
 
-/* =========================================================
-   SECTION HEADER
-========================================================= */
+/* SECTION HEADING */
 
 function SectionHeading({ label, count, muted = false }) {
   return (
     <div className="mb-8 flex items-end justify-between gap-6 sm:mb-10">
       <div>
         <div className="mb-3 flex items-center gap-3">
-          <span
-            className={`
-              h-px
-              w-7
-              ${
-                muted
-                  ? "bg-white/20"
-                  : "bg-[#D4AF37]"
-              }
-            `}
-          />
-
-          <span
-            className={`
-              text-[9px]
-              font-medium
-              uppercase
-              tracking-[0.28em]
-              ${
-                muted
-                  ? "text-white/25"
-                  : "text-[#D4AF37]"
-              }
-            `}
-          >
+          <span className={`h-px w-7 ${
+            muted ? "bg-white/20" : "bg-[#F2C078]"
+          }`} />
+          <span className={`text-[9px] font-medium uppercase tracking-[0.28em] ${
+            muted ? "text-white/30" : "text-[#F2C078]"
+          }`}>
             {label}
           </span>
         </div>
 
-        <h2
-          className={`
-            text-2xl
-            font-light
-            tracking-[-0.03em]
-            sm:text-3xl
-            ${
-              muted
-                ? "text-white/55"
-                : "text-white"
-            }
-          `}
-        >
+        <h2 className={`text-2xl font-light tracking-[-0.03em] sm:text-3xl ${
+          muted ? "text-white/55" : "text-white"
+        }`}>
           {label === "Upcoming" ? "What's ahead" : "From our archive"}
         </h2>
       </div>
 
-      <span
-        className={`
-          hidden
-          pb-1
-          text-[10px]
-          uppercase
-          tracking-[0.18em]
-          sm:block
-          ${
-            muted
-              ? "text-white/25"
-              : "text-white/30"
-          }
-        `}
-      >
-        {String(count).padStart(2, "0")}{" "}
-        {count === 1 ? "event" : "events"}
+      <span className="hidden pb-1 text-[10px] uppercase tracking-[0.18em] text-white/35 sm:block">
+        {String(count).padStart(2, "0")} {count === 1 ? "event" : "events"}
       </span>
     </div>
   );
 }
 
-/* =========================================================
-   PAGE
-========================================================= */
+/* MAIN PAGE */
 
 export default function RoadshowsPage() {
   const [search, setSearch] = useState("");
   const [location, setLocation] = useState("All locations");
   const [sortOrder, setSortOrder] = useState("soonest");
 
-  const shouldReduceMotion = useReducedMotion();
-
-  /*
-    Keep today's date local to the browser.
-    This avoids the UTC conversion issue caused by:
-    new Date("2026-09-28")
-  */
+  const reduceMotion = useReducedMotion();
   const today = useMemo(() => getLocalISODate(), []);
 
   const filtered = useMemo(() => {
     const normalizedSearch = search.trim().toLowerCase();
 
-    let list = roadshows.filter((item) => {
-      const searchableText = [
-        item.title,
-        item.text,
-        item.location,
-      ]
-        .join(" ")
-        .toLowerCase();
+    return roadshows
+      .filter((item) => {
+        const searchableText = [
+          item.title,
+          item.text,
+          item.location,
+        ].join(" ").toLowerCase();
 
-      const matchesSearch =
-        normalizedSearch.length === 0 ||
-        searchableText.includes(normalizedSearch);
+        const matchesSearch =
+          !normalizedSearch || searchableText.includes(normalizedSearch);
 
-      const matchesLocation =
-        location === "All locations" ||
-        item.location === location;
+        const matchesLocation =
+          location === "All locations" || item.location === location;
 
-      return matchesSearch && matchesLocation;
-    });
+        return matchesSearch && matchesLocation;
+      })
+      .sort((a, b) => {
+        const dateA = parseLocalDate(a.date).getTime();
+        const dateB = parseLocalDate(b.date).getTime();
 
-    list = [...list].sort((a, b) => {
-      const dateA = parseLocalDate(a.date).getTime();
-      const dateB = parseLocalDate(b.date).getTime();
-
-      return sortOrder === "soonest"
-        ? dateA - dateB
-        : dateB - dateA;
-    });
-
-    return list;
+        return sortOrder === "soonest"
+          ? dateA - dateB
+          : dateB - dateA;
+      });
   }, [search, location, sortOrder]);
 
-  const upcoming = filtered.filter(
-    (item) => item.date >= today
-  );
-
-  const past = filtered.filter(
-    (item) => item.date < today
-  );
+  const upcoming = filtered.filter((item) => item.date >= today);
+  const past = filtered.filter((item) => item.date < today);
 
   const toggleSort = () => {
-    setSortOrder((prev) =>
-      prev === "soonest" ? "latest" : "soonest"
+    setSortOrder((current) =>
+      current === "soonest" ? "latest" : "soonest"
     );
   };
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#080808]">
-      {/* =====================================================
-          HERO
-      ===================================================== */}
-
+    <main className="min-h-screen overflow-hidden bg-[#181715]">
       <EventsHero />
-
-      {/* =====================================================
-          FILTERS
-      ===================================================== */}
 
       <FilterBar
         search={search}
@@ -1174,12 +539,7 @@ export default function RoadshowsPage() {
         resultCount={filtered.length}
       />
 
-      {/* =====================================================
-          EVENTS CONTENT
-      ===================================================== */}
-
       <div className="mx-auto max-w-[1440px] px-5 pb-24 pt-20 sm:px-8 sm:pb-28 sm:pt-24 lg:px-20 lg:pb-32 lg:pt-28">
-        {/* UPCOMING */}
         <section aria-labelledby="upcoming-events">
           <div id="upcoming-events">
             <SectionHeading
@@ -1190,32 +550,30 @@ export default function RoadshowsPage() {
 
           <RoadshowGrid
             items={upcoming}
-            shouldReduceMotion={shouldReduceMotion}
+            reduceMotion={reduceMotion}
           />
         </section>
 
-        {/* DIVIDER */}
         {past.length > 0 && (
-          <div className="my-20 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent sm:my-28" />
-        )}
+          <>
+            <div className="my-20 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent sm:my-28" />
 
-        {/* PAST */}
-        {past.length > 0 && (
-          <section aria-labelledby="past-events">
-            <div id="past-events">
-              <SectionHeading
-                label="Past"
-                count={past.length}
-                muted
+            <section aria-labelledby="past-events">
+              <div id="past-events">
+                <SectionHeading
+                  label="Past"
+                  count={past.length}
+                  muted
+                />
+              </div>
+
+              <RoadshowGrid
+                items={past}
+                past
+                reduceMotion={reduceMotion}
               />
-            </div>
-
-            <RoadshowGrid
-              items={past}
-              past
-              shouldReduceMotion={shouldReduceMotion}
-            />
-          </section>
+            </section>
+          </>
         )}
       </div>
     </main>
