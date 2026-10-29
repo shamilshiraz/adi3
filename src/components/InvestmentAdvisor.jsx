@@ -172,19 +172,17 @@ export default function InvestmentAdvisors() {
 
                   {/* WHATSAPP CONSULTATION */}
                   <a
-                    href={whatsappUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Consult ${advisor.name} on WhatsApp`}
-                    className="mt-4 inline-flex min-h-10 w-full items-center justify-center gap-1.5 rounded-full border border-black bg-black px-2 py-2.5 text-[10px] font-medium text-white transition-colors duration-300 hover:border-[#F2C078] hover:bg-[#F2C078] hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F2C078] focus-visible:ring-offset-2 sm:mt-5 sm:min-h-11 sm:gap-2 sm:px-4 sm:text-xs lg:mt-6 lg:text-sm"
-                  >
-                    <span>Consult</span>
-                    <ArrowUpRight
-                      size={14}
-                      strokeWidth={1.8}
-                      className="sm:h-4 sm:w-4"
-                    />
-                  </a>
+  href="/contact"
+  aria-label={`Consult ${advisor.name} through the contact form`}
+  className="mt-4 flex w-full items-center justify-center gap-1.5 rounded-full px-3 py-2.5 text-[10px] font-medium text-black no-underline transition-all duration-300 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F2C078] sm:mt-7 sm:gap-2 sm:px-6 sm:py-3 sm:text-sm"
+  style={{ backgroundColor: GOLD }}
+>
+  <span>Consult</span>
+  <ArrowUpRight
+    size={14}
+    className="shrink-0 sm:h-4 sm:w-4"
+  />
+</a>
                 </div>
               </motion.article>
             );

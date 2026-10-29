@@ -224,21 +224,17 @@ export default function Agents() {
 
                   {/* WHATSAPP CONSULTATION */}
                   <a
-                    href={`https://wa.me/${String(advisor.whatsapp || "").replace(/\D/g, "")}?text=${encodeURIComponent(
-                      `Hi ${advisor.name}, I would like to discuss a Dubai real estate opportunity.`
-                    )}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Consult ${advisor.name} on WhatsApp`}
-                    className="mt-4 flex w-full items-center justify-center gap-1.5 rounded-full px-3 py-2.5 text-[10px] font-medium text-black no-underline transition-all duration-300 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F2C078] sm:mt-7 sm:gap-2 sm:px-6 sm:py-3 sm:text-sm"
-                    style={{ backgroundColor: GOLD }}
-                  >
-                    <span>Consult</span>
-                    <ArrowUpRight
-                      size={14}
-                      className="shrink-0 sm:h-4 sm:w-4"
-                    />
-                  </a>
+  href="/contact"
+  aria-label={`Consult ${advisor.name} through the contact form`}
+  className="mt-4 flex w-full items-center justify-center gap-1.5 rounded-full px-3 py-2.5 text-[10px] font-medium text-black no-underline transition-all duration-300 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#F2C078] sm:mt-7 sm:gap-2 sm:px-6 sm:py-3 sm:text-sm"
+  style={{ backgroundColor: GOLD }}
+>
+  <span>Consult</span>
+  <ArrowUpRight
+    size={14}
+    className="shrink-0 sm:h-4 sm:w-4"
+  />
+</a>
                 </div>
               </motion.article>
             ))}
