@@ -142,59 +142,12 @@ const LoadingScreen = () => {
           )}
         </motion.div>
 
-        {/* GOLD LINE EXPANSION */}
-        <motion.div
-          className="relative mt-8 h-px w-36 overflow-hidden sm:w-48"
-          initial={{ scaleX: 0, opacity: 0 }}
-          animate={{ scaleX: 1, opacity: 1 }}
-          transition={{
-            duration: reducedMotion ? 0.25 : 1,
-            delay: reducedMotion ? 0 : 0.65,
-            ease: [0.16, 1, 0.3, 1],
-          }}
-          style={{
-            background:
-              "linear-gradient(90deg, transparent, #F2C078, #FFF0D6, #F2C078, transparent)",
-          }}
-        />
+        
 
-        {/* BRAND STATEMENT */}
-        <motion.p
-          className="mt-5 text-center text-[9px] font-medium uppercase tracking-[0.38em] text-white/55 sm:text-[10px] sm:tracking-[0.48em]"
-          initial={{ opacity: 0, y: 12, letterSpacing: "0.2em" }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            letterSpacing: "0.38em",
-          }}
-          transition={{
-            duration: reducedMotion ? 0.25 : 0.9,
-            delay: reducedMotion ? 0 : 0.7,
-            ease: "easeOut",
-          }}
-        >
-          A Higher Standard of Living
-        </motion.p>
+        
       </div>
 
-      {/* BOTTOM LOADING LINE */}
-      <div className="absolute bottom-0 left-0 h-[2px] w-full bg-white/[0.04]">
-        <motion.div
-          className="h-full origin-left"
-          style={{
-            background:
-              "linear-gradient(90deg, #8E6535, #F2C078, #FFF1D5)",
-            boxShadow: "0 0 14px #F2C07865",
-          }}
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{
-            duration: reducedMotion ? 0.25 : 2.1,
-            delay: reducedMotion ? 0 : 0.15,
-            ease: [0.65, 0, 0.35, 1],
-          }}
-        />
-      </div>
+     
 
       {/* EDGE DETAILS */}
       <motion.div
@@ -203,11 +156,7 @@ const LoadingScreen = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: reducedMotion ? 0 : 0.9 }}
       >
-        <span className="h-px w-5 bg-[#F2C078]/40" />
-        <span className="text-[8px] uppercase tracking-[0.3em] text-white/30">
-          Dubai · United Arab Emirates
-        </span>
-        <span className="h-px w-5 bg-[#F2C078]/40" />
+        
       </motion.div>
 
       {/* EXIT CURTAIN ACCENT */}
